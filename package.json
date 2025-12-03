@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "lessgo": "^0.1.6",
+    "lessgo": "^0.1.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
