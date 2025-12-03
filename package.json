@@ -8,6 +8,11 @@
       "lessgo": "^0.2.0"
     }
   },
+  "pnpm": {
+    "overrides": {
+      "lessgo": "^0.2.0"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
