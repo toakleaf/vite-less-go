@@ -1,0 +1,276 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Peacock Theme - Majestic, Colorful, Royal
+@peacock-primary: #1a5f7a;
+@peacock-secondary: #159895;
+@peacock-accent: #57c5b6;
+@peacock-dark: #0c2d48;
+@peacock-light: #e8f6f3;
+@peacock-gold: #ffd700;
+@peacock-purple: #6a0dad;
+
+.animal-peacock {
+  .profile-cover {
+    background: linear-gradient(135deg, @peacock-dark 0%, @peacock-primary 30%, @peacock-secondary 60%, @peacock-accent 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Feather eye patterns
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse 30px 40px at 15% 30%, @peacock-gold 0%, @peacock-secondary 20%, @peacock-dark 40%, transparent 50%),
+        radial-gradient(ellipse 25px 35px at 35% 60%, @peacock-gold 0%, @peacock-secondary 20%, @peacock-dark 40%, transparent 50%),
+        radial-gradient(ellipse 28px 38px at 55% 25%, @peacock-gold 0%, @peacock-secondary 20%, @peacock-dark 40%, transparent 50%),
+        radial-gradient(ellipse 32px 42px at 75% 55%, @peacock-gold 0%, @peacock-secondary 20%, @peacock-dark 40%, transparent 50%),
+        radial-gradient(ellipse 26px 36px at 90% 35%, @peacock-gold 0%, @peacock-secondary 20%, @peacock-dark 40%, transparent 50%);
+      opacity: 0.6;
+      animation: shimmer-feathers 5s ease-in-out infinite;
+    }
+
+    &::after {
+      content: '';
+      .absolute-fill();
+      background: linear-gradient(
+        45deg,
+        transparent,
+        fade(@peacock-gold, 10%),
+        transparent,
+        fade(@peacock-purple, 10%),
+        transparent
+      );
+      animation: iridescent 8s ease-in-out infinite;
+    }
+  }
+
+  @keyframes shimmer-feathers {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+  }
+
+  @keyframes iridescent {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(30deg); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @peacock-accent, @peacock-secondary, @peacock-primary);
+    border: 4px solid @peacock-gold;
+    box-shadow:
+      0 0 30px fade(@peacock-gold, 50%),
+      0 0 60px fade(@peacock-secondary, 30%),
+      0 10px 50px fade(@peacock-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @peacock-primary, @peacock-dark);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 0 15px fade(@peacock-gold, 60%));
+      animation: proud-display 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes proud-display {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(5deg); }
+  }
+
+  .online-status {
+    background: @peacock-gold;
+    border: 2px solid @peacock-dark;
+    box-shadow: 0 0 20px fade(@peacock-gold, 80%);
+  }
+
+  .profile-name {
+    .text-gradient(@peacock-secondary, @peacock-dark);
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+
+    &::after {
+      content: ' 👑';
+    }
+  }
+
+  .profile-category {
+    color: @peacock-primary;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @peacock-secondary, @peacock-primary);
+    border: 2px solid @peacock-gold;
+    text-transform: uppercase;
+
+    &:hover {
+      background: linear-gradient(135deg, @peacock-primary, @peacock-dark);
+      box-shadow: 0 0 30px fade(@peacock-gold, 50%);
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-message {
+    color: @peacock-primary;
+    border: 2px solid @peacock-primary;
+    background: fade(@peacock-light, 90%);
+
+    &:hover {
+      background: @peacock-primary;
+      color: @peacock-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @peacock-light, fade(@peacock-accent, 30%));
+    border: 2px solid @peacock-gold;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, @peacock-dark, @peacock-primary, @peacock-secondary, @peacock-accent, @peacock-gold);
+    }
+
+    .stat-value {
+      .text-gradient(@peacock-dark, @peacock-primary);
+    }
+  }
+
+  .section-title {
+    color: @peacock-dark;
+    border-bottom: 3px solid @peacock-gold;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '🦚';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @peacock-light;
+    border: 2px solid fade(@peacock-accent, 50%);
+    position: relative;
+    overflow: hidden;
+
+    // Feather eye decoration
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 25px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, @peacock-gold 0%, @peacock-secondary 30%, @peacock-dark 60%, transparent 70%);
+      opacity: 0.3;
+    }
+
+    &:hover {
+      background: fade(@peacock-accent, 30%);
+      border-color: @peacock-gold;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px fade(@peacock-primary, 20%);
+    }
+
+    .detail-icon {
+      background: @peacock-primary;
+      color: @peacock-gold;
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: linear-gradient(135deg, fade(@peacock-accent, 40%), @peacock-light);
+    color: @peacock-dark;
+    border: 2px solid @peacock-secondary;
+
+    &:nth-child(1) { border-color: @peacock-gold; }
+    &:nth-child(2) { border-color: @peacock-primary; }
+    &:nth-child(3) { border-color: @peacock-secondary; }
+    &:nth-child(4) { border-color: @peacock-purple; }
+
+    &:hover {
+      background: @peacock-secondary;
+      color: @peacock-light;
+      transform: scale(1.1) rotate(3deg);
+      box-shadow: 0 0 20px fade(@peacock-gold, 40%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @peacock-light, @peacock-accent, @peacock-secondary);
+      border: 3px solid @peacock-gold;
+      position: relative;
+
+      // Feather pattern
+      &::before {
+        content: '';
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        width: 25px;
+        height: 30px;
+        border-radius: 50%;
+        background: radial-gradient(ellipse, @peacock-gold 0%, @peacock-secondary 40%, transparent 70%);
+        opacity: 0.4;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      transform: scale(1.08);
+      box-shadow: 0 15px 50px fade(@peacock-primary, 30%);
+    }
+  }
+
+  .post-card {
+    background: @peacock-light;
+    border: 2px solid fade(@peacock-accent, 50%);
+    border-left: 5px solid @peacock-gold;
+
+    &:hover {
+      border-left-color: @peacock-primary;
+      box-shadow: 0 10px 40px fade(@peacock-primary, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @peacock-secondary, @peacock-accent);
+      border: 2px solid @peacock-gold;
+    }
+  }
+
+  .friend-card {
+    background: @peacock-light;
+    border: 2px solid fade(@peacock-accent, 50%);
+
+    &:hover {
+      background: fade(@peacock-accent, 40%);
+      border-color: @peacock-gold;
+    }
+  }
+
+  &::after {
+    content: '💎';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  @keyframes sparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.2; }
+    50% { transform: scale(1.2) rotate(10deg); opacity: 0.4; }
+  }
+}

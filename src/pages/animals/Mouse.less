@@ -1,0 +1,219 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Mouse Theme - Tiny, Quick, Clever
+@mouse-primary: #9e9e9e;
+@mouse-secondary: #757575;
+@mouse-accent: #e0e0e0;
+@mouse-dark: #424242;
+@mouse-light: #fafafa;
+@mouse-pink: #f8bbd0;
+@mouse-cheese: #ffc107;
+
+.animal-mouse {
+  .profile-cover {
+    background: linear-gradient(135deg, @mouse-secondary 0%, @mouse-primary 50%, @mouse-accent 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Cheese holes pattern
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle 8px at 15% 30%, fade(@mouse-cheese, 40%) 100%, transparent 100%),
+        radial-gradient(circle 12px at 40% 60%, fade(@mouse-cheese, 35%) 100%, transparent 100%),
+        radial-gradient(circle 6px at 60% 25%, fade(@mouse-cheese, 45%) 100%, transparent 100%),
+        radial-gradient(circle 10px at 80% 50%, fade(@mouse-cheese, 30%) 100%, transparent 100%),
+        radial-gradient(circle 7px at 25% 75%, fade(@mouse-cheese, 40%) 100%, transparent 100%);
+      opacity: 0.4;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @mouse-accent, @mouse-primary);
+    border: 4px solid @mouse-dark;
+    box-shadow:
+      0 0 30px fade(@mouse-primary, 40%),
+      0 10px 40px fade(@mouse-dark, 30%);
+    position: relative;
+
+    // Ears
+    &::before {
+      background: radial-gradient(
+        circle at center,
+        @mouse-pink 50%,
+        @mouse-primary 100%
+      );
+      width: 30%;
+      height: 25%;
+      top: 5%;
+      left: 10%;
+      border-radius: 50%;
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@mouse-dark, 50%));
+      animation: twitch 0.5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes twitch {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-1px); }
+    75% { transform: translateX(1px); }
+  }
+
+  .online-status {
+    background: @mouse-pink;
+    border: 2px solid @mouse-dark;
+    box-shadow: 0 0 15px fade(@mouse-pink, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@mouse-dark, @mouse-secondary);
+  }
+
+  .profile-category {
+    color: @mouse-secondary;
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @mouse-secondary, @mouse-dark);
+    border: 2px solid @mouse-accent;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @mouse-cheese;
+      color: @mouse-dark;
+      border-color: @mouse-cheese;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px fade(@mouse-cheese, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @mouse-dark;
+    border: 2px solid @mouse-dark;
+    border-radius: @radius-full;
+    background: @mouse-light;
+
+    &:hover {
+      background: @mouse-dark;
+      color: @mouse-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @mouse-light, @mouse-accent);
+    border: 2px solid @mouse-secondary;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@mouse-dark, @mouse-secondary);
+    }
+  }
+
+  .section-title {
+    color: @mouse-dark;
+    border-bottom: 2px solid @mouse-secondary;
+
+    &::after {
+      content: '🧀';
+      margin-left: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @mouse-light;
+    border: 2px solid @mouse-accent;
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: fade(@mouse-cheese, 15%);
+      border-color: @mouse-cheese;
+      transform: translateX(5px);
+    }
+
+    .detail-icon {
+      background: @mouse-secondary;
+      color: @mouse-light;
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: @mouse-accent;
+    color: @mouse-dark;
+    border: 2px solid @mouse-secondary;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @mouse-cheese;
+      border-color: @mouse-cheese;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @mouse-light, @mouse-accent);
+      border: 3px solid @mouse-secondary;
+      border-radius: @radius-lg;
+
+      // Cheese hole
+      &::before {
+        content: '';
+        position: absolute;
+        top: 25%;
+        left: 30%;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: fade(@mouse-cheese, 25%);
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @mouse-cheese;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @mouse-light;
+    border: 2px solid @mouse-accent;
+    border-radius: @radius-lg;
+
+    &:hover {
+      border-color: @mouse-secondary;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @mouse-primary, @mouse-accent);
+      border: 2px solid @mouse-dark;
+    }
+  }
+
+  .friend-card {
+    background: @mouse-light;
+    border: 2px solid @mouse-accent;
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: fade(@mouse-cheese, 15%);
+      border-color: @mouse-cheese;
+    }
+  }
+
+  &::after {
+    content: '🧀';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

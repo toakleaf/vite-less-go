@@ -1,0 +1,250 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Owl Theme - Wise, Nocturnal, Mysterious
+@owl-primary: #2c3e50;
+@owl-secondary: #34495e;
+@owl-accent: #95a5a6;
+@owl-dark: #1a252f;
+@owl-light: #ecf0f1;
+@owl-moon: #f5f6fa;
+@owl-amber: #f39c12;
+
+.animal-owl {
+  .profile-cover {
+    background: linear-gradient(180deg, @owl-dark 0%, @owl-primary 50%, @owl-secondary 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Stars
+    &::before {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, @owl-moon, transparent),
+        radial-gradient(2px 2px at 30% 40%, @owl-moon, transparent),
+        radial-gradient(1px 1px at 50% 15%, @owl-moon, transparent),
+        radial-gradient(2px 2px at 70% 35%, @owl-moon, transparent),
+        radial-gradient(1px 1px at 85% 50%, @owl-moon, transparent),
+        radial-gradient(2px 2px at 20% 70%, @owl-moon, transparent),
+        radial-gradient(1px 1px at 60% 80%, @owl-moon, transparent),
+        radial-gradient(2px 2px at 90% 75%, @owl-moon, transparent);
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    // Moon
+    &::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, @owl-moon 0%, #dfe6e9 100%);
+      box-shadow: 0 0 30px fade(@owl-moon, 50%);
+    }
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @owl-accent, @owl-secondary);
+    border: 4px solid @owl-dark;
+    box-shadow:
+      0 0 30px fade(@owl-amber, 30%),
+      0 10px 50px fade(@owl-dark, 50%);
+
+    &::before {
+      background: linear-gradient(135deg, @owl-primary, @owl-dark);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 0 15px fade(@owl-amber, 60%));
+      animation: blink-eyes 5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes blink-eyes {
+    0%, 95%, 100% { transform: scaleY(1); }
+    97% { transform: scaleY(0.1); }
+  }
+
+  .online-status {
+    background: @owl-amber;
+    border: 2px solid @owl-dark;
+    box-shadow: 0 0 20px fade(@owl-amber, 80%);
+    animation: glow-eyes 2s ease-in-out infinite;
+  }
+
+  @keyframes glow-eyes {
+    0%, 100% { box-shadow: 0 0 20px fade(@owl-amber, 80%); }
+    50% { box-shadow: 0 0 35px fade(@owl-amber, 100%); }
+  }
+
+  .profile-name {
+    .text-gradient(@owl-accent, @owl-dark);
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .profile-category {
+    color: @owl-accent;
+    letter-spacing: @letter-spacing-widest;
+
+    &::before {
+      content: '🌙 ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @owl-secondary, @owl-dark);
+    border: 2px solid @owl-amber;
+
+    &:hover {
+      background: @owl-amber;
+      color: @owl-dark;
+      box-shadow: 0 0 30px fade(@owl-amber, 50%);
+      transform: translateY(-2px);
+    }
+  }
+
+  .btn-message {
+    color: @owl-amber;
+    border: 2px solid @owl-amber;
+    background: transparent;
+
+    &:hover {
+      background: @owl-amber;
+      color: @owl-dark;
+    }
+  }
+
+  .profile-stats {
+    background: fade(@owl-dark, 80%);
+    border: 2px solid @owl-secondary;
+    backdrop-filter: blur(5px);
+
+    .stat-value {
+      color: @owl-amber;
+    }
+
+    .stat-label {
+      color: @owl-accent;
+    }
+  }
+
+  .section-title {
+    color: @owl-secondary;
+    border-bottom: 2px solid @owl-amber;
+
+    &::before {
+      content: '🦉';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @owl-light;
+    border: 2px solid @owl-accent;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 70%;
+      background: @owl-amber;
+    }
+
+    &:hover {
+      background: fade(@owl-secondary, 10%);
+      transform: translateX(5px);
+    }
+
+    .detail-icon {
+      background: @owl-secondary;
+      color: @owl-amber;
+      padding: @space-2;
+      border-radius: @radius-md;
+    }
+  }
+
+  .trait-badge {
+    background: @owl-secondary;
+    color: @owl-light;
+    border: 1px solid @owl-accent;
+
+    &:hover {
+      background: @owl-amber;
+      color: @owl-dark;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @owl-light, @owl-accent);
+      border: 2px solid @owl-secondary;
+
+      &::after {
+        content: '⭐';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: @font-size-sm;
+        opacity: 0.5;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @owl-amber;
+      box-shadow: 0 0 30px fade(@owl-amber, 20%);
+    }
+  }
+
+  .post-card {
+    background: @owl-light;
+    border: 2px solid @owl-accent;
+
+    &:hover {
+      border-color: @owl-amber;
+      box-shadow: 0 0 25px fade(@owl-amber, 15%);
+    }
+
+    .post-avatar {
+      background: @owl-secondary;
+      border: 2px solid @owl-amber;
+    }
+  }
+
+  .friend-card {
+    background: @owl-light;
+    border: 2px solid @owl-accent;
+
+    &:hover {
+      background: fade(@owl-secondary, 15%);
+      border-color: @owl-amber;
+    }
+  }
+
+  &::after {
+    content: '🌟';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.3;
+    animation: star-twinkle 2s ease-in-out infinite;
+  }
+
+  @keyframes star-twinkle {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+  }
+}

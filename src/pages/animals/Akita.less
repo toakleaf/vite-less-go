@@ -1,0 +1,233 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Akita Theme - Noble, Loyal, Dignified
+@akita-primary: #c41e3a;
+@akita-secondary: #8b0000;
+@akita-accent: #f5f5dc;
+@akita-dark: #2f1810;
+@akita-light: #faf8f5;
+@akita-gold: #d4af37;
+@akita-white: #ffffff;
+
+.animal-akita {
+  .profile-cover {
+    background: linear-gradient(180deg, @akita-secondary 0%, @akita-primary 50%, @akita-gold 100%);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 50% 100%, fade(@akita-white, 50%) 0%, transparent 40%);
+    }
+
+    // Japanese wave pattern
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.3;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @akita-accent, @akita-white);
+    border: 4px solid @akita-primary;
+    box-shadow:
+      0 0 0 4px @akita-gold,
+      0 10px 50px fade(@akita-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @akita-primary, @akita-secondary);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@akita-dark, 50%));
+    }
+  }
+
+  .online-status {
+    background: @akita-gold;
+    border: 2px solid @akita-primary;
+    box-shadow: 0 0 15px fade(@akita-gold, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@akita-primary, @akita-secondary);
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+    font-weight: @font-weight-light;
+  }
+
+  .profile-category {
+    color: @akita-secondary;
+    letter-spacing: @letter-spacing-widest;
+
+    &::before {
+      content: '🏯 ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @akita-primary, @akita-secondary);
+    border: 2px solid @akita-gold;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wide;
+
+    &:hover {
+      background: @akita-gold;
+      color: @akita-dark;
+      border-color: @akita-primary;
+      box-shadow: 0 8px 30px fade(@akita-gold, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @akita-primary;
+    border: 2px solid @akita-primary;
+    background: transparent;
+
+    &:hover {
+      background: @akita-primary;
+      color: @akita-white;
+    }
+  }
+
+  .profile-stats {
+    background: @akita-light;
+    border: 2px solid @akita-gold;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, @akita-primary, transparent);
+    }
+
+    .stat-value {
+      .text-gradient(@akita-primary, @akita-secondary);
+    }
+  }
+
+  .section-title {
+    color: @akita-dark;
+    border-bottom: 2px solid @akita-primary;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+    font-weight: @font-weight-light;
+
+    &::before {
+      content: '忠';
+      margin-right: @space-2;
+      color: @akita-primary;
+    }
+  }
+
+  .detail-item {
+    background: @akita-light;
+    border: 1px solid fade(@akita-gold, 50%);
+    border-radius: 0;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, @akita-primary, @akita-gold);
+    }
+
+    &:hover {
+      background: fade(@akita-accent, 70%);
+      box-shadow: 0 5px 20px fade(@akita-primary, 15%);
+    }
+
+    .detail-icon {
+      background: @akita-primary;
+      color: @akita-white;
+      padding: @space-2;
+      border-radius: 0;
+    }
+  }
+
+  .trait-badge {
+    background: @akita-light;
+    color: @akita-dark;
+    border: 1px solid @akita-primary;
+    border-radius: 0;
+    font-weight: @font-weight-light;
+    letter-spacing: @letter-spacing-wider;
+
+    &:hover {
+      background: @akita-primary;
+      color: @akita-white;
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @akita-light, @akita-accent);
+      border: 2px solid @akita-gold;
+      border-radius: 0;
+
+      &::after {
+        content: '🌸';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: @font-size-lg;
+        opacity: 0.4;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @akita-primary;
+      box-shadow: 0 10px 40px fade(@akita-primary, 20%);
+    }
+  }
+
+  .post-card {
+    background: @akita-light;
+    border: 1px solid fade(@akita-gold, 50%);
+    border-radius: 0;
+
+    &:hover {
+      border-color: @akita-primary;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @akita-accent, @akita-white);
+      border: 2px solid @akita-primary;
+      border-radius: 0;
+    }
+  }
+
+  .friend-card {
+    background: @akita-light;
+    border: 1px solid fade(@akita-gold, 50%);
+    border-radius: 0;
+
+    &:hover {
+      background: fade(@akita-accent, 70%);
+      border-color: @akita-primary;
+    }
+  }
+
+  &::after {
+    content: '🗻';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

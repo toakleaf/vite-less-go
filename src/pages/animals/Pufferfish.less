@@ -1,0 +1,211 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Pufferfish Theme - Puffy, Spiky, Cute
+@puff-primary: #ffc107;
+@puff-secondary: #ff9800;
+@puff-accent: #fff8e1;
+@puff-dark: #e65100;
+@puff-light: #fffde7;
+@puff-spots: #4e342e;
+@puff-ocean: #00bcd4;
+
+.animal-pufferfish {
+  .profile-cover {
+    background: linear-gradient(180deg, @puff-ocean 0%, #4dd0e1 50%, @puff-accent 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Bubbles
+    &::before {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(circle 8px at 15% 40%, fade(white, 50%), transparent),
+        radial-gradient(circle 5px at 30% 60%, fade(white, 40%), transparent),
+        radial-gradient(circle 10px at 50% 30%, fade(white, 45%), transparent),
+        radial-gradient(circle 6px at 70% 70%, fade(white, 50%), transparent),
+        radial-gradient(circle 8px at 85% 45%, fade(white, 40%), transparent);
+      animation: bubbles 6s ease-in-out infinite;
+    }
+  }
+
+  @keyframes bubbles {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @puff-accent, @puff-primary);
+    border: 4px solid @puff-dark;
+    box-shadow:
+      0 0 30px fade(@puff-primary, 50%),
+      0 10px 40px fade(@puff-dark, 30%);
+    position: relative;
+    animation: puff-up 3s ease-in-out infinite;
+
+    // Spikes effect
+    &::before {
+      background:
+        radial-gradient(circle 3px at 20% 15%, @puff-spots 100%, transparent),
+        radial-gradient(circle 3px at 40% 10%, @puff-spots 100%, transparent),
+        radial-gradient(circle 3px at 60% 15%, @puff-spots 100%, transparent),
+        radial-gradient(circle 3px at 80% 10%, @puff-spots 100%, transparent),
+        radial-gradient(circle 3px at 15% 85%, @puff-spots 100%, transparent),
+        radial-gradient(circle 3px at 85% 85%, @puff-spots 100%, transparent),
+        linear-gradient(135deg, @puff-secondary, @puff-primary);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@puff-dark, 50%));
+    }
+  }
+
+  @keyframes puff-up {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .online-status {
+    background: @puff-ocean;
+    border: 2px solid @puff-dark;
+    box-shadow: 0 0 15px fade(@puff-ocean, 70%);
+  }
+
+  .profile-name {
+    .text-gradient(@puff-dark, @puff-secondary);
+
+    &::after {
+      content: ' 🐡';
+    }
+  }
+
+  .profile-category {
+    color: @puff-secondary;
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @puff-primary, @puff-secondary);
+    border: 2px solid @puff-dark;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: linear-gradient(135deg, @puff-secondary, @puff-dark);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px fade(@puff-primary, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @puff-secondary;
+    border: 2px solid @puff-secondary;
+    border-radius: @radius-full;
+    background: @puff-light;
+
+    &:hover {
+      background: @puff-secondary;
+      color: @puff-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @puff-light, @puff-accent);
+    border: 2px solid @puff-primary;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@puff-dark, @puff-secondary);
+    }
+  }
+
+  .section-title {
+    color: @puff-dark;
+    border-bottom: 3px dashed @puff-primary;
+
+    &::after {
+      content: '💛';
+      margin-left: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @puff-light;
+    border: 2px solid @puff-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @puff-accent;
+      border-color: @puff-primary;
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    .detail-icon {
+      background: @puff-primary;
+      color: @puff-dark;
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: @puff-light;
+    color: @puff-dark;
+    border: 2px solid @puff-primary;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @puff-primary;
+      color: @puff-dark;
+      transform: scale(1.15);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @puff-light, @puff-accent);
+      border: 3px solid @puff-primary;
+      border-radius: @radius-xl;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @puff-secondary;
+      transform: scale(1.08);
+    }
+  }
+
+  .post-card {
+    background: @puff-light;
+    border: 2px solid @puff-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @puff-primary;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @puff-primary, @puff-accent);
+      border-radius: @radius-full;
+    }
+  }
+
+  .friend-card {
+    background: @puff-light;
+    border: 2px solid @puff-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @puff-accent;
+      border-color: @puff-primary;
+    }
+  }
+
+  &::after {
+    content: '🫧';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.3;
+  }
+}

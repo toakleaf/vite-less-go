@@ -1,0 +1,215 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Flamingo Theme - Elegant, Pink, Tropical
+@flamingo-primary: #ff69b4;
+@flamingo-secondary: #ff1493;
+@flamingo-accent: #ffb6c1;
+@flamingo-dark: #c71585;
+@flamingo-light: #fff0f5;
+@flamingo-coral: #ff7f7f;
+@flamingo-sunset: #ff6347;
+
+.animal-flamingo {
+  .profile-cover {
+    background: linear-gradient(180deg, @flamingo-sunset 0%, @flamingo-secondary 50%, @flamingo-primary 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Water reflection effect
+    &::before {
+      content: '';
+      .absolute-fill();
+      background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        fade(#87ceeb, 30%) 100%
+      );
+    }
+
+    &::after {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 20% 80%, fade(white, 20%) 0%, transparent 30%),
+        radial-gradient(ellipse at 50% 85%, fade(white, 15%) 0%, transparent 25%),
+        radial-gradient(ellipse at 80% 75%, fade(white, 20%) 0%, transparent 30%);
+      animation: water-shimmer 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes water-shimmer {
+    0%, 100% { opacity: 0.5; transform: translateY(0); }
+    50% { opacity: 0.8; transform: translateY(5px); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @flamingo-accent, @flamingo-primary);
+    border: 4px solid @flamingo-dark;
+    box-shadow:
+      0 0 40px fade(@flamingo-primary, 50%),
+      0 10px 40px fade(@flamingo-dark, 30%);
+    animation: elegant-sway 3s ease-in-out infinite;
+
+    &::before {
+      background: linear-gradient(135deg, @flamingo-secondary, @flamingo-dark);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@flamingo-dark, 50%));
+    }
+  }
+
+  @keyframes elegant-sway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  .online-status {
+    background: @flamingo-coral;
+    border: 2px solid @flamingo-dark;
+    box-shadow: 0 0 15px fade(@flamingo-coral, 70%);
+  }
+
+  .profile-name {
+    .text-gradient(@flamingo-dark, @flamingo-primary);
+    font-style: italic;
+  }
+
+  .profile-category {
+    color: @flamingo-secondary;
+    letter-spacing: @letter-spacing-wider;
+
+    &::after {
+      content: ' 🌴';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @flamingo-primary, @flamingo-secondary);
+    border-radius: @radius-full;
+    border: 2px solid @flamingo-dark;
+
+    &:hover {
+      background: linear-gradient(135deg, @flamingo-secondary, @flamingo-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px fade(@flamingo-primary, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @flamingo-secondary;
+    border: 2px solid @flamingo-secondary;
+    border-radius: @radius-full;
+    background: @flamingo-light;
+
+    &:hover {
+      background: @flamingo-secondary;
+      color: @flamingo-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @flamingo-light, @flamingo-accent);
+    border: 2px solid @flamingo-primary;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@flamingo-dark, @flamingo-secondary);
+    }
+  }
+
+  .section-title {
+    color: @flamingo-dark;
+    border-bottom: 3px solid @flamingo-primary;
+    font-style: italic;
+
+    &::after {
+      content: '🦩';
+      margin-left: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @flamingo-light;
+    border: 2px solid @flamingo-accent;
+    border-radius: @radius-xl;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: @flamingo-accent;
+      border-color: @flamingo-primary;
+      transform: translateY(-5px) rotate(1deg);
+      box-shadow: 0 10px 30px fade(@flamingo-primary, 25%);
+    }
+
+    .detail-icon {
+      background: fade(@flamingo-primary, 30%);
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: linear-gradient(135deg, @flamingo-accent, @flamingo-light);
+    color: @flamingo-dark;
+    border: 2px solid @flamingo-primary;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @flamingo-primary;
+      color: @flamingo-light;
+      transform: scale(1.1);
+      box-shadow: 0 5px 20px fade(@flamingo-primary, 50%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @flamingo-light, @flamingo-accent, @flamingo-primary);
+      border: 3px solid @flamingo-secondary;
+      border-radius: @radius-xl;
+    }
+
+    &:hover .gallery-placeholder {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 15px 40px fade(@flamingo-primary, 35%);
+    }
+  }
+
+  .post-card {
+    background: @flamingo-light;
+    border: 2px solid @flamingo-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @flamingo-primary;
+      box-shadow: 0 10px 40px fade(@flamingo-primary, 20%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @flamingo-primary, @flamingo-accent);
+      border-radius: @radius-full;
+    }
+  }
+
+  .friend-card {
+    background: @flamingo-light;
+    border: 2px solid @flamingo-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @flamingo-accent;
+      border-color: @flamingo-primary;
+    }
+  }
+
+  &::after {
+    content: '🌺';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.3;
+  }
+}

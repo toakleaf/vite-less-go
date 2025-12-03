@@ -1,0 +1,239 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Lobster Theme - Armored, Ocean Floor, Elegant
+@lob-primary: #c0392b;
+@lob-secondary: #e74c3c;
+@lob-accent: #fadbd8;
+@lob-dark: #922b21;
+@lob-light: #fdedec;
+@lob-shell: #d35400;
+@lob-ocean: #2980b9;
+
+.animal-lobster {
+  .profile-cover {
+    background: linear-gradient(180deg, @lob-ocean 0%, #3498db 50%, @lob-secondary 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Ocean floor rocks
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse 80px 40px at 15% 90%, fade(@lob-dark, 40%) 0%, transparent 70%),
+        radial-gradient(ellipse 60px 30px at 40% 95%, fade(@lob-dark, 35%) 0%, transparent 70%),
+        radial-gradient(ellipse 70px 35px at 70% 92%, fade(@lob-dark, 40%) 0%, transparent 70%),
+        radial-gradient(ellipse 50px 25px at 90% 88%, fade(@lob-dark, 30%) 0%, transparent 70%);
+    }
+
+    // Bubbles
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(circle 3px at 25% 50%, fade(white, 40%), transparent),
+        radial-gradient(circle 4px at 45% 40%, fade(white, 35%), transparent),
+        radial-gradient(circle 3px at 65% 55%, fade(white, 40%), transparent),
+        radial-gradient(circle 5px at 80% 45%, fade(white, 30%), transparent);
+      animation: bubble-float 8s ease-in-out infinite;
+    }
+  }
+
+  @keyframes bubble-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @lob-accent, @lob-secondary);
+    border: 4px solid @lob-dark;
+    box-shadow:
+      0 0 30px fade(@lob-primary, 50%),
+      0 10px 40px fade(@lob-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @lob-primary, @lob-shell);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@lob-dark, 60%));
+      animation: claw-wave 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes claw-wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+  }
+
+  .online-status {
+    background: @lob-shell;
+    border: 2px solid @lob-dark;
+    box-shadow: 0 0 15px fade(@lob-shell, 70%);
+  }
+
+  .profile-name {
+    .text-gradient(@lob-dark, @lob-primary);
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .profile-category {
+    color: @lob-secondary;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @lob-primary, @lob-dark);
+    border: 2px solid @lob-shell;
+    text-transform: uppercase;
+
+    &:hover {
+      background: linear-gradient(135deg, @lob-secondary, @lob-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px fade(@lob-primary, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @lob-primary;
+    border: 2px solid @lob-primary;
+    background: @lob-light;
+
+    &:hover {
+      background: @lob-primary;
+      color: @lob-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @lob-light, @lob-accent);
+    border: 2px solid @lob-secondary;
+    position: relative;
+
+    // Shell segments
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: repeating-linear-gradient(
+        90deg,
+        @lob-primary 0px,
+        @lob-primary 20px,
+        @lob-secondary 20px,
+        @lob-secondary 40px
+      );
+    }
+
+    .stat-value {
+      .text-gradient(@lob-dark, @lob-primary);
+    }
+  }
+
+  .section-title {
+    color: @lob-dark;
+    border-bottom: 3px solid @lob-primary;
+    text-transform: uppercase;
+
+    &::before {
+      content: '🦞';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @lob-light;
+    border: 2px solid @lob-accent;
+    border-left: 5px solid @lob-primary;
+
+    &:hover {
+      background: @lob-accent;
+      transform: translateX(5px);
+    }
+
+    .detail-icon {
+      background: @lob-primary;
+      color: @lob-light;
+      padding: @space-2;
+      border-radius: @radius-md;
+    }
+  }
+
+  .trait-badge {
+    background: @lob-light;
+    color: @lob-dark;
+    border: 2px solid @lob-primary;
+    text-transform: uppercase;
+
+    &:nth-child(odd) {
+      background: @lob-primary;
+      color: @lob-light;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px fade(@lob-primary, 40%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @lob-light, @lob-accent);
+      border: 3px solid @lob-secondary;
+
+      &::after {
+        content: '🌊';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: @font-size-lg;
+        opacity: 0.4;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @lob-primary;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @lob-light;
+    border: 2px solid @lob-accent;
+    border-top: 4px solid @lob-primary;
+
+    &:hover {
+      border-top-color: @lob-shell;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @lob-secondary, @lob-accent);
+      border: 2px solid @lob-dark;
+    }
+  }
+
+  .friend-card {
+    background: @lob-light;
+    border: 2px solid @lob-accent;
+
+    &:hover {
+      background: @lob-accent;
+      border-color: @lob-primary;
+    }
+  }
+
+  &::after {
+    content: '⚓';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

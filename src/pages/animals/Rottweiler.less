@@ -1,0 +1,234 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Rottweiler Theme - Powerful, Loyal, Guardian
+@rott-primary: #1a1a1a;
+@rott-secondary: #8b4513;
+@rott-accent: #c9a86c;
+@rott-dark: #0d0d0d;
+@rott-light: #f5f0e8;
+@rott-rust: #a0522d;
+@rott-mahogany: #6b3a2e;
+
+.animal-rottweiler {
+  .profile-cover {
+    background: linear-gradient(180deg, @rott-primary 0%, @rott-dark 60%, @rott-mahogany 100%);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 15% 85%, fade(@rott-rust, 40%) 0%, transparent 30%),
+        radial-gradient(circle at 85% 85%, fade(@rott-rust, 40%) 0%, transparent 30%);
+    }
+
+    &::after {
+      content: '';
+      .absolute-fill();
+      background: linear-gradient(
+        135deg,
+        transparent 40%,
+        fade(@rott-secondary, 10%) 50%,
+        transparent 60%
+      );
+      animation: guard-sweep 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes guard-sweep {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @rott-primary, @rott-dark);
+    border: 5px solid @rott-secondary;
+    box-shadow:
+      0 0 0 5px @rott-dark,
+      0 10px 50px fade(@rott-primary, 70%);
+
+    &::before {
+      background: linear-gradient(135deg, @rott-secondary, @rott-mahogany);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@rott-dark, 80%));
+    }
+  }
+
+  .online-status {
+    background: linear-gradient(135deg, @rott-secondary, @rott-rust);
+    border: 3px solid @rott-dark;
+    box-shadow: 0 0 15px fade(@rott-secondary, 70%);
+  }
+
+  .profile-name {
+    .text-gradient(@rott-secondary, @rott-rust);
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+    font-weight: @font-weight-black;
+  }
+
+  .profile-category {
+    color: @rott-secondary;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @rott-primary, @rott-dark);
+    border: 3px solid @rott-secondary;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wide;
+    font-weight: @font-weight-bold;
+
+    &:hover {
+      background: @rott-secondary;
+      border-color: @rott-accent;
+      box-shadow: 0 8px 30px fade(@rott-secondary, 50%);
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-message {
+    color: @rott-secondary;
+    border: 3px solid @rott-secondary;
+    background: transparent;
+
+    &:hover {
+      background: @rott-secondary;
+      color: @rott-light;
+    }
+  }
+
+  .profile-stats {
+    background: @rott-primary;
+    border: 3px solid @rott-secondary;
+    color: @rott-light;
+
+    .stat-value {
+      color: @rott-accent;
+      font-weight: @font-weight-black;
+    }
+
+    .stat-label {
+      color: fade(@rott-light, 70%);
+    }
+  }
+
+  .section-title {
+    color: @rott-primary;
+    border-bottom: 4px solid @rott-secondary;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wide;
+
+    &::before {
+      content: '🔒';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @rott-light;
+    border: 2px solid @rott-accent;
+    border-left: 6px solid @rott-primary;
+
+    &:hover {
+      background: fade(@rott-accent, 30%);
+      border-color: @rott-secondary;
+      transform: translateX(8px);
+    }
+
+    .detail-icon {
+      background: @rott-primary;
+      color: @rott-accent;
+      padding: @space-2;
+      border-radius: @radius-md;
+    }
+
+    .detail-label {
+      color: @rott-secondary;
+      text-transform: uppercase;
+      font-weight: @font-weight-bold;
+    }
+  }
+
+  .trait-badge {
+    background: @rott-primary;
+    color: @rott-accent;
+    border: 2px solid @rott-secondary;
+    text-transform: uppercase;
+    font-weight: @font-weight-bold;
+
+    &:nth-child(even) {
+      background: @rott-secondary;
+      color: @rott-light;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 20px fade(@rott-primary, 50%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @rott-light, fade(@rott-accent, 50%));
+      border: 3px solid @rott-primary;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: @rott-secondary;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @rott-secondary;
+      box-shadow: 0 10px 40px fade(@rott-primary, 40%);
+    }
+  }
+
+  .post-card {
+    background: @rott-light;
+    border: 2px solid @rott-accent;
+    border-left: 5px solid @rott-primary;
+
+    &:hover {
+      border-left-color: @rott-secondary;
+      box-shadow: 0 10px 40px fade(@rott-primary, 20%);
+    }
+
+    .post-avatar {
+      background: @rott-primary;
+      border: 3px solid @rott-secondary;
+    }
+  }
+
+  .friend-card {
+    background: @rott-light;
+    border: 2px solid @rott-accent;
+
+    &:hover {
+      background: fade(@rott-accent, 40%);
+      border-color: @rott-primary;
+      transform: translateY(-5px);
+    }
+  }
+
+  &::after {
+    content: '⚔️';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.15;
+  }
+}

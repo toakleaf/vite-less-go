@@ -1,0 +1,257 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Penguin Theme - Tuxedo, Antarctic, Charming
+@peng-primary: #1a1a2e;
+@peng-secondary: #2d3436;
+@peng-accent: #dfe6e9;
+@peng-dark: #0c0c14;
+@peng-light: #f5f6fa;
+@peng-white: #ffffff;
+@peng-orange: #e17055;
+@peng-ice: #74b9ff;
+
+.animal-penguin {
+  .profile-cover {
+    background: linear-gradient(180deg, @peng-ice 0%, @peng-accent 40%, @peng-white 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Ice/glacier effect
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        linear-gradient(135deg, transparent 45%, fade(@peng-white, 60%) 50%, transparent 55%),
+        linear-gradient(-135deg, transparent 45%, fade(@peng-ice, 40%) 50%, transparent 55%);
+      animation: ice-shimmer 6s ease-in-out infinite;
+    }
+
+    // Snow
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, @peng-white, transparent),
+        radial-gradient(2px 2px at 30% 40%, @peng-white, transparent),
+        radial-gradient(1px 1px at 50% 60%, @peng-white, transparent),
+        radial-gradient(2px 2px at 70% 30%, @peng-white, transparent),
+        radial-gradient(1px 1px at 90% 50%, @peng-white, transparent);
+      background-size: 150px 100px;
+      animation: snowfall 12s linear infinite;
+    }
+  }
+
+  @keyframes ice-shimmer {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes snowfall {
+    from { background-position: 0 0; }
+    to { background-position: 150px 200px; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @peng-primary 0%, @peng-primary 50%, @peng-white 50%, @peng-white 100%);
+    border: 4px solid @peng-dark;
+    box-shadow:
+      0 0 0 4px @peng-white,
+      0 10px 40px fade(@peng-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @peng-secondary, @peng-dark);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@peng-dark, 50%));
+      animation: waddle 1s ease-in-out infinite;
+    }
+  }
+
+  @keyframes waddle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  .online-status {
+    background: @peng-orange;
+    border: 3px solid @peng-dark;
+    box-shadow: 0 0 15px fade(@peng-orange, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@peng-dark, @peng-secondary);
+    font-weight: @font-weight-bold;
+  }
+
+  .profile-category {
+    color: @peng-secondary;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '🧊 ';
+    }
+  }
+
+  .btn-follow {
+    background: @peng-primary;
+    border: 3px solid @peng-white;
+    color: @peng-white;
+
+    &:hover {
+      background: @peng-white;
+      color: @peng-primary;
+      border-color: @peng-primary;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px fade(@peng-dark, 30%);
+    }
+  }
+
+  .btn-message {
+    color: @peng-primary;
+    border: 3px solid @peng-primary;
+    background: @peng-white;
+
+    &:hover {
+      background: @peng-secondary;
+      color: @peng-white;
+      border-color: @peng-secondary;
+    }
+  }
+
+  .profile-stats {
+    background: @peng-white;
+    border: 3px solid @peng-primary;
+    position: relative;
+
+    // Tuxedo effect
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: @peng-primary;
+    }
+
+    .stat-value {
+      .text-gradient(@peng-dark, @peng-secondary);
+    }
+  }
+
+  .section-title {
+    color: @peng-primary;
+    border-bottom: 3px solid @peng-ice;
+
+    &::before {
+      content: '🐧';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @peng-light;
+    border: 2px solid @peng-accent;
+    position: relative;
+
+    // Tuxedo stripe
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40%;
+      height: 100%;
+      background: @peng-primary;
+      opacity: 0.05;
+    }
+
+    &:hover {
+      background: @peng-white;
+      border-color: @peng-primary;
+      transform: translateY(-5px);
+    }
+
+    .detail-icon {
+      background: @peng-primary;
+      color: @peng-white;
+      padding: @space-2;
+      border-radius: @radius-md;
+    }
+  }
+
+  .trait-badge {
+    background: @peng-white;
+    color: @peng-primary;
+    border: 2px solid @peng-primary;
+
+    &:nth-child(odd) {
+      background: @peng-primary;
+      color: @peng-white;
+    }
+
+    &:hover {
+      transform: scale(1.1) rotate(3deg);
+      box-shadow: 0 5px 15px fade(@peng-dark, 25%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @peng-ice, @peng-white);
+      border: 3px solid @peng-primary;
+
+      &::after {
+        content: '❄️';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: @font-size-lg;
+        opacity: 0.4;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @peng-orange;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @peng-white;
+    border: 2px solid @peng-accent;
+    border-left: 5px solid @peng-primary;
+
+    &:hover {
+      border-left-color: @peng-orange;
+      box-shadow: 0 10px 35px fade(@peng-dark, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @peng-primary 50%, @peng-white 50%);
+      border: 2px solid @peng-dark;
+    }
+  }
+
+  .friend-card {
+    background: @peng-white;
+    border: 2px solid @peng-accent;
+
+    &:hover {
+      background: @peng-light;
+      border-color: @peng-primary;
+    }
+  }
+
+  &::after {
+    content: '🐟';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

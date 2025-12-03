@@ -1,0 +1,232 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Gecko Theme - Spotted, Climbing, Nocturnal
+@gecko-primary: #f4a460;
+@gecko-secondary: #daa520;
+@gecko-accent: #ffefd5;
+@gecko-dark: #8b4513;
+@gecko-light: #fffaf0;
+@gecko-spot: #654321;
+@gecko-lime: #9acd32;
+
+.animal-gecko {
+  .profile-cover {
+    background: linear-gradient(135deg, @gecko-secondary 0%, @gecko-primary 50%, @gecko-accent 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Leopard spots
+    &::before {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(ellipse 15px 12px at 15% 25%, @gecko-spot 50%, transparent 50%),
+        radial-gradient(ellipse 12px 15px at 35% 55%, @gecko-spot 50%, transparent 50%),
+        radial-gradient(ellipse 14px 11px at 55% 20%, @gecko-spot 50%, transparent 50%),
+        radial-gradient(ellipse 11px 14px at 75% 45%, @gecko-spot 50%, transparent 50%),
+        radial-gradient(ellipse 13px 10px at 85% 75%, @gecko-spot 50%, transparent 50%),
+        radial-gradient(ellipse 10px 13px at 25% 80%, @gecko-spot 50%, transparent 50%),
+        radial-gradient(ellipse 16px 12px at 65% 70%, @gecko-spot 50%, transparent 50%);
+      opacity: 0.25;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @gecko-accent, @gecko-primary);
+    border: 4px solid @gecko-dark;
+    box-shadow:
+      0 0 30px fade(@gecko-secondary, 40%),
+      0 10px 40px fade(@gecko-dark, 30%);
+    position: relative;
+
+    // Spots on avatar
+    &::before {
+      background:
+        radial-gradient(ellipse 15px 12px at 25% 35%, @gecko-spot 50%, transparent 50%),
+        radial-gradient(ellipse 12px 10px at 70% 55%, @gecko-spot 50%, transparent 50%),
+        linear-gradient(135deg, @gecko-primary, @gecko-secondary);
+      opacity: 0.5;
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@gecko-dark, 50%));
+      animation: lick 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes lick {
+    0%, 90%, 100% { transform: scale(1); }
+    95% { transform: scale(1.05) scaleX(1.1); }
+  }
+
+  .online-status {
+    background: @gecko-lime;
+    border: 2px solid @gecko-dark;
+    box-shadow: 0 0 15px fade(@gecko-lime, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@gecko-dark, @gecko-secondary);
+  }
+
+  .profile-category {
+    color: @gecko-secondary;
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @gecko-secondary, @gecko-dark);
+    border: 2px solid @gecko-spot;
+
+    &:hover {
+      background: linear-gradient(135deg, @gecko-lime, @gecko-secondary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px fade(@gecko-secondary, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @gecko-dark;
+    border: 2px solid @gecko-dark;
+    background: @gecko-light;
+
+    &:hover {
+      background: @gecko-dark;
+      color: @gecko-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @gecko-light, @gecko-accent);
+    border: 2px solid @gecko-secondary;
+    position: relative;
+
+    // Spots
+    &::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      width: 12px;
+      height: 10px;
+      border-radius: 50%;
+      background: fade(@gecko-spot, 20%);
+    }
+
+    .stat-value {
+      .text-gradient(@gecko-dark, @gecko-secondary);
+    }
+  }
+
+  .section-title {
+    color: @gecko-dark;
+    border-bottom: 3px solid @gecko-secondary;
+
+    &::before {
+      content: '🦎';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @gecko-light;
+    border: 2px solid @gecko-accent;
+    position: relative;
+
+    // Random spot
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 8px;
+      border-radius: 50%;
+      background: fade(@gecko-spot, 15%);
+    }
+
+    &:hover {
+      background: @gecko-accent;
+      transform: translateY(-5px);
+    }
+
+    .detail-icon {
+      background: @gecko-secondary;
+      color: @gecko-light;
+      padding: @space-2;
+      border-radius: @radius-lg;
+    }
+  }
+
+  .trait-badge {
+    background: @gecko-accent;
+    color: @gecko-dark;
+    border: 2px solid @gecko-secondary;
+
+    &:hover {
+      background: @gecko-secondary;
+      color: @gecko-light;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @gecko-light, @gecko-accent);
+      border: 3px solid @gecko-secondary;
+      position: relative;
+
+      // Spots
+      &::before {
+        content: '';
+        position: absolute;
+        top: 20%;
+        left: 25%;
+        width: 15px;
+        height: 12px;
+        border-radius: 50%;
+        background: fade(@gecko-spot, 20%);
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @gecko-dark;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @gecko-light;
+    border: 2px solid @gecko-accent;
+
+    &:hover {
+      border-color: @gecko-secondary;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @gecko-primary, @gecko-accent);
+      border: 2px solid @gecko-dark;
+    }
+  }
+
+  .friend-card {
+    background: @gecko-light;
+    border: 2px solid @gecko-accent;
+
+    &:hover {
+      background: @gecko-accent;
+      border-color: @gecko-secondary;
+    }
+  }
+
+  &::after {
+    content: '🪲';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

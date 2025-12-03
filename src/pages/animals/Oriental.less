@@ -1,0 +1,249 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Oriental Cat Theme - Sleek, Vocal, Dramatic
+@oriental-primary: #9c27b0;
+@oriental-secondary: #7b1fa2;
+@oriental-accent: #e1bee7;
+@oriental-dark: #4a148c;
+@oriental-light: #fce4ec;
+@oriental-ebony: #1a1a1a;
+@oriental-lilac: #ce93d8;
+
+.animal-oriental {
+  .profile-cover {
+    background: linear-gradient(135deg, @oriental-dark 0%, @oriental-primary 50%, @oriental-lilac 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Dramatic stripes
+    &::before {
+      content: '';
+      .absolute-fill();
+      background: repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 30px,
+        fade(@oriental-ebony, 15%) 30px,
+        fade(@oriental-ebony, 15%) 60px
+      );
+      animation: dramatic-sweep 15s linear infinite;
+    }
+
+    &::after {
+      content: '';
+      .absolute-fill();
+      background: radial-gradient(
+        ellipse at 30% 70%,
+        fade(@oriental-lilac, 30%) 0%,
+        transparent 50%
+      );
+    }
+  }
+
+  @keyframes dramatic-sweep {
+    from { background-position: 0 0; }
+    to { background-position: 120px 120px; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @oriental-accent, @oriental-lilac);
+    border: 3px solid @oriental-dark;
+    box-shadow:
+      0 0 40px fade(@oriental-primary, 50%),
+      0 10px 50px fade(@oriental-dark, 40%);
+    position: relative;
+
+    &::before {
+      background: linear-gradient(135deg, @oriental-primary, @oriental-dark);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 0 15px fade(@oriental-primary, 60%));
+      animation: dramatic-pose 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes dramatic-pose {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(-5deg); }
+    75% { transform: scale(1.05) rotate(3deg); }
+  }
+
+  .online-status {
+    background: linear-gradient(135deg, @oriental-lilac, @oriental-primary);
+    border: 2px solid @oriental-dark;
+    box-shadow: 0 0 20px fade(@oriental-primary, 70%);
+  }
+
+  .profile-name {
+    .text-gradient(@oriental-dark, @oriental-primary);
+    font-style: italic;
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .profile-category {
+    color: @oriental-secondary;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @oriental-primary, @oriental-secondary);
+    border: 2px solid @oriental-dark;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wide;
+
+    &:hover {
+      background: linear-gradient(135deg, @oriental-secondary, @oriental-dark);
+      box-shadow: 0 0 30px fade(@oriental-primary, 50%);
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-message {
+    color: @oriental-primary;
+    border: 2px solid @oriental-primary;
+    background: fade(@oriental-light, 90%);
+
+    &:hover {
+      background: @oriental-primary;
+      color: @oriental-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @oriental-light, @oriental-accent);
+    border: 2px solid @oriental-lilac;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, @oriental-dark, @oriental-primary, @oriental-lilac, @oriental-primary, @oriental-dark);
+    }
+
+    .stat-value {
+      .text-gradient(@oriental-dark, @oriental-primary);
+    }
+  }
+
+  .section-title {
+    color: @oriental-dark;
+    border-bottom: 2px solid @oriental-primary;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '💜';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @oriental-light;
+    border: 1px solid @oriental-accent;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, @oriental-primary, @oriental-lilac);
+    }
+
+    &:hover {
+      background: fade(@oriental-accent, 60%);
+      transform: translateX(5px);
+      box-shadow: 0 5px 20px fade(@oriental-primary, 20%);
+    }
+
+    .detail-icon {
+      background: @oriental-primary;
+      color: @oriental-light;
+      padding: @space-2;
+      border-radius: @radius-sm;
+    }
+  }
+
+  .trait-badge {
+    background: transparent;
+    color: @oriental-dark;
+    border: 2px solid @oriental-primary;
+    font-style: italic;
+
+    &:hover {
+      background: @oriental-primary;
+      color: @oriental-light;
+      transform: scale(1.1) rotate(-2deg);
+      box-shadow: 0 0 20px fade(@oriental-primary, 40%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @oriental-light, @oriental-accent);
+      border: 2px solid @oriental-lilac;
+
+      &::before {
+        content: '';
+        .absolute-fill();
+        background: linear-gradient(
+          135deg,
+          transparent,
+          fade(@oriental-primary, 20%),
+          transparent
+        );
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @oriental-primary;
+      box-shadow: 0 10px 40px fade(@oriental-primary, 30%);
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @oriental-light;
+    border: 1px solid @oriental-accent;
+    border-left: 4px solid @oriental-primary;
+
+    &:hover {
+      border-left-color: @oriental-dark;
+      box-shadow: 0 10px 40px fade(@oriental-primary, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @oriental-lilac, @oriental-accent);
+      border: 2px solid @oriental-primary;
+    }
+  }
+
+  .friend-card {
+    background: @oriental-light;
+    border: 1px solid @oriental-accent;
+
+    &:hover {
+      background: fade(@oriental-accent, 60%);
+      border-color: @oriental-primary;
+    }
+  }
+
+  &::after {
+    content: '🎭';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

@@ -1,0 +1,274 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Savannah Cat Theme - Wild, Spotted, Tall
+@sav-primary: #daa520;
+@sav-secondary: #b8860b;
+@sav-accent: #f5e6d3;
+@sav-dark: #5d4037;
+@sav-light: #fdf8f0;
+@sav-spot: #2d2d2d;
+@sav-grass: #9acd32;
+
+.animal-savannah {
+  .profile-cover {
+    background: linear-gradient(180deg, @sav-secondary 0%, @sav-primary 50%, @sav-grass 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Savannah grass effect
+    &::before {
+      content: '';
+      .absolute-fill();
+      background: linear-gradient(
+        to top,
+        fade(@sav-grass, 50%) 0%,
+        transparent 30%
+      );
+    }
+
+    // Spots pattern
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(ellipse 12px 16px at 15% 25%, @sav-spot 50%, transparent 50%),
+        radial-gradient(ellipse 10px 14px at 35% 45%, @sav-spot 50%, transparent 50%),
+        radial-gradient(ellipse 14px 12px at 55% 20%, @sav-spot 50%, transparent 50%),
+        radial-gradient(ellipse 11px 15px at 75% 55%, @sav-spot 50%, transparent 50%),
+        radial-gradient(ellipse 13px 11px at 90% 30%, @sav-spot 50%, transparent 50%),
+        radial-gradient(ellipse 10px 13px at 25% 70%, @sav-spot 50%, transparent 50%),
+        radial-gradient(ellipse 15px 11px at 65% 75%, @sav-spot 50%, transparent 50%);
+      opacity: 0.2;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @sav-accent, @sav-primary);
+    border: 4px solid @sav-dark;
+    box-shadow:
+      0 0 0 4px fade(@sav-primary, 40%),
+      0 10px 50px fade(@sav-dark, 40%);
+    position: relative;
+
+    // Spots on avatar
+    &::before {
+      background:
+        radial-gradient(ellipse 8px 10px at 30% 40%, @sav-spot 50%, transparent 50%),
+        radial-gradient(ellipse 6px 8px at 70% 60%, @sav-spot 50%, transparent 50%),
+        linear-gradient(135deg, @sav-primary, @sav-secondary);
+      opacity: 0.8;
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@sav-dark, 50%));
+      animation: stalk 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes stalk {
+    0%, 100% { transform: translateX(0) scale(1); }
+    25% { transform: translateX(-5px) scale(1.02); }
+    75% { transform: translateX(5px) scale(1.02); }
+  }
+
+  .online-status {
+    background: @sav-grass;
+    border: 3px solid @sav-dark;
+    box-shadow: 0 0 15px fade(@sav-grass, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@sav-dark, @sav-secondary);
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wide;
+  }
+
+  .profile-category {
+    color: @sav-secondary;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+
+    &::before {
+      content: '🌍 ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @sav-primary, @sav-secondary);
+    border: 3px solid @sav-dark;
+    text-transform: uppercase;
+    font-weight: @font-weight-bold;
+
+    &:hover {
+      background: linear-gradient(135deg, @sav-secondary, @sav-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px fade(@sav-primary, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @sav-dark;
+    border: 3px solid @sav-dark;
+    background: @sav-light;
+
+    &:hover {
+      background: @sav-dark;
+      color: @sav-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @sav-light, @sav-accent);
+    border: 3px solid @sav-secondary;
+    position: relative;
+
+    // Spots on stats
+    &::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      width: 15px;
+      height: 20px;
+      border-radius: 50%;
+      background: fade(@sav-spot, 20%);
+    }
+
+    .stat-value {
+      .text-gradient(@sav-dark, @sav-secondary);
+      font-weight: @font-weight-black;
+    }
+  }
+
+  .section-title {
+    color: @sav-dark;
+    border-bottom: 4px solid @sav-secondary;
+    text-transform: uppercase;
+
+    &::before {
+      content: '🐾';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @sav-light;
+    border: 2px solid @sav-accent;
+    border-left: 5px solid @sav-secondary;
+    position: relative;
+
+    // Random spot
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 12px;
+      border-radius: 50%;
+      background: fade(@sav-spot, 15%);
+    }
+
+    &:hover {
+      background: @sav-accent;
+      transform: translateX(8px);
+      box-shadow: 0 5px 20px fade(@sav-secondary, 20%);
+    }
+
+    .detail-icon {
+      background: @sav-secondary;
+      color: @sav-light;
+      padding: @space-2;
+      border-radius: @radius-md;
+    }
+  }
+
+  .trait-badge {
+    background: @sav-light;
+    color: @sav-dark;
+    border: 2px solid @sav-secondary;
+    text-transform: uppercase;
+
+    &:nth-child(odd) {
+      background: @sav-secondary;
+      color: @sav-light;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px fade(@sav-secondary, 40%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @sav-light, @sav-accent);
+      border: 3px solid @sav-secondary;
+      position: relative;
+
+      // Spot overlay
+      &::before {
+        content: '';
+        position: absolute;
+        top: 20%;
+        left: 30%;
+        width: 15px;
+        height: 20px;
+        border-radius: 50%;
+        background: fade(@sav-spot, 20%);
+      }
+
+      &::after {
+        content: '🌾';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: @font-size-lg;
+        opacity: 0.4;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @sav-dark;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @sav-light;
+    border: 2px solid @sav-accent;
+    border-top: 5px solid @sav-secondary;
+
+    &:hover {
+      border-top-color: @sav-dark;
+      box-shadow: 0 10px 40px fade(@sav-secondary, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @sav-primary, @sav-accent);
+      border: 3px solid @sav-dark;
+    }
+  }
+
+  .friend-card {
+    background: @sav-light;
+    border: 2px solid @sav-accent;
+
+    &:hover {
+      background: @sav-accent;
+      border-color: @sav-secondary;
+      transform: translateY(-5px);
+    }
+  }
+
+  &::after {
+    content: '🦁';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.15;
+  }
+}

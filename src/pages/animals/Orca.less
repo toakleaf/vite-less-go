@@ -1,0 +1,250 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Orca Theme - Powerful, Majestic, Apex
+@orca-primary: #1a1a1a;
+@orca-secondary: #2d2d2d;
+@orca-accent: #e0e0e0;
+@orca-dark: #0a0a0a;
+@orca-light: #ffffff;
+@orca-patch: #f5f5f5;
+@orca-ocean: #1565c0;
+
+.animal-orca {
+  .profile-cover {
+    background: linear-gradient(180deg, @orca-ocean 0%, #42a5f5 50%, @orca-accent 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Classic orca pattern
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 70%, @orca-primary 0%, transparent 60%);
+    }
+
+    // Splash effect
+    &::after {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 30% 30%, fade(@orca-light, 30%) 0%, transparent 20%),
+        radial-gradient(circle at 70% 40%, fade(@orca-light, 25%) 0%, transparent 15%);
+      animation: splash 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes splash {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @orca-primary 50%, @orca-light 50%);
+    border: 5px solid @orca-dark;
+    box-shadow:
+      0 0 0 5px @orca-light,
+      0 10px 50px fade(@orca-dark, 50%);
+    position: relative;
+
+    // Eye patch
+    &::before {
+      background: @orca-patch;
+      width: 30%;
+      height: 20%;
+      top: 25%;
+      left: 55%;
+      border-radius: 50%;
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@orca-dark, 60%));
+    }
+  }
+
+  .online-status {
+    background: @orca-ocean;
+    border: 3px solid @orca-dark;
+    box-shadow: 0 0 20px fade(@orca-ocean, 70%);
+  }
+
+  .profile-name {
+    .text-gradient(@orca-dark, @orca-secondary);
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+    font-weight: @font-weight-bold;
+  }
+
+  .profile-category {
+    color: @orca-ocean;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: @orca-primary;
+    border: 3px solid @orca-light;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wide;
+
+    &:hover {
+      background: @orca-light;
+      color: @orca-primary;
+      border-color: @orca-primary;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px fade(@orca-dark, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @orca-primary;
+    border: 3px solid @orca-primary;
+    background: @orca-light;
+
+    &:hover {
+      background: @orca-secondary;
+      color: @orca-light;
+      border-color: @orca-secondary;
+    }
+  }
+
+  .profile-stats {
+    background: @orca-light;
+    border: 3px solid @orca-primary;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: @orca-primary;
+      opacity: 0.05;
+    }
+
+    .stat-value {
+      .text-gradient(@orca-dark, @orca-secondary);
+      font-weight: @font-weight-black;
+    }
+  }
+
+  .section-title {
+    color: @orca-primary;
+    border-bottom: 4px solid @orca-dark;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '🐋';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @orca-light;
+    border: 2px solid @orca-accent;
+    position: relative;
+
+    // Black stripe
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: @orca-primary;
+    }
+
+    &:hover {
+      background: @orca-accent;
+      transform: translateX(8px);
+    }
+
+    .detail-icon {
+      background: @orca-primary;
+      color: @orca-light;
+      padding: @space-2;
+      border-radius: @radius-md;
+    }
+  }
+
+  .trait-badge {
+    background: @orca-light;
+    color: @orca-primary;
+    border: 2px solid @orca-primary;
+    text-transform: uppercase;
+
+    &:nth-child(odd) {
+      background: @orca-primary;
+      color: @orca-light;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 20px fade(@orca-dark, 30%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @orca-light 50%, @orca-accent 50%);
+      border: 3px solid @orca-primary;
+
+      // Eye patch decoration
+      &::before {
+        content: '';
+        position: absolute;
+        top: 20%;
+        right: 20%;
+        width: 20px;
+        height: 15px;
+        border-radius: 50%;
+        background: @orca-primary;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @orca-ocean;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @orca-light;
+    border: 2px solid @orca-accent;
+    border-left: 6px solid @orca-primary;
+
+    &:hover {
+      border-left-color: @orca-ocean;
+      box-shadow: 0 10px 35px fade(@orca-dark, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @orca-primary 50%, @orca-light 50%);
+      border: 2px solid @orca-dark;
+    }
+  }
+
+  .friend-card {
+    background: @orca-light;
+    border: 2px solid @orca-accent;
+
+    &:hover {
+      background: @orca-accent;
+      border-color: @orca-primary;
+    }
+  }
+
+  &::after {
+    content: '🌊';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

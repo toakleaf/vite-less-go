@@ -1,0 +1,221 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Sugar Glider Theme - Adorable, Nocturnal, Gliding
+@sg-primary: #6b5b5b;
+@sg-secondary: #8d7b7b;
+@sg-accent: #e8e0dc;
+@sg-dark: #3d3232;
+@sg-light: #faf8f7;
+@sg-cream: #f5ebe0;
+@sg-pink: #ffb4a2;
+
+.animal-sugar-glider {
+  .profile-cover {
+    background: linear-gradient(180deg, @sg-dark 0%, @sg-primary 50%, @sg-secondary 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Tree branches silhouette
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        linear-gradient(30deg, transparent 40%, fade(@sg-dark, 30%) 42%, fade(@sg-dark, 30%) 43%, transparent 45%),
+        linear-gradient(-30deg, transparent 50%, fade(@sg-dark, 25%) 52%, fade(@sg-dark, 25%) 53%, transparent 55%),
+        linear-gradient(60deg, transparent 60%, fade(@sg-dark, 20%) 62%, fade(@sg-dark, 20%) 63%, transparent 65%);
+    }
+
+    // Gliding effect
+    &::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 10%;
+      width: 60px;
+      height: 30px;
+      background: fade(@sg-cream, 30%);
+      border-radius: 50% 50% 0 0;
+      animation: glide 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes glide {
+    0% { transform: translateX(0) translateY(0); opacity: 0.3; }
+    50% { transform: translateX(100px) translateY(50px); opacity: 0.6; }
+    100% { transform: translateX(200px) translateY(100px); opacity: 0; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @sg-cream, @sg-accent);
+    border: 4px solid @sg-dark;
+    box-shadow:
+      0 0 30px fade(@sg-primary, 40%),
+      0 10px 40px fade(@sg-dark, 30%);
+    position: relative;
+
+    // Dark stripe pattern
+    &::before {
+      background: linear-gradient(
+        90deg,
+        transparent 40%,
+        @sg-dark 45%,
+        @sg-dark 55%,
+        transparent 60%
+      );
+      opacity: 0.3;
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@sg-dark, 50%));
+      animation: peek 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes peek {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .online-status {
+    background: @sg-pink;
+    border: 2px solid @sg-dark;
+    box-shadow: 0 0 15px fade(@sg-pink, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@sg-dark, @sg-primary);
+  }
+
+  .profile-category {
+    color: @sg-secondary;
+    letter-spacing: @letter-spacing-wider;
+
+    &::after {
+      content: ' 🌙';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @sg-primary, @sg-dark);
+    border: 2px solid @sg-cream;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: linear-gradient(135deg, @sg-pink, @sg-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px fade(@sg-primary, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @sg-primary;
+    border: 2px solid @sg-primary;
+    border-radius: @radius-full;
+    background: @sg-light;
+
+    &:hover {
+      background: @sg-primary;
+      color: @sg-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @sg-light, @sg-cream);
+    border: 2px solid @sg-accent;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@sg-dark, @sg-primary);
+    }
+  }
+
+  .section-title {
+    color: @sg-dark;
+    border-bottom: 2px solid @sg-secondary;
+
+    &::before {
+      content: '🌳';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @sg-light;
+    border: 2px solid @sg-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @sg-cream;
+      border-color: @sg-primary;
+      transform: translateY(-5px);
+    }
+
+    .detail-icon {
+      background: fade(@sg-primary, 20%);
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: @sg-cream;
+    color: @sg-dark;
+    border: 2px solid @sg-secondary;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @sg-primary;
+      color: @sg-cream;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @sg-light, @sg-cream);
+      border: 3px solid @sg-accent;
+      border-radius: @radius-xl;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @sg-primary;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @sg-light;
+    border: 2px solid @sg-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @sg-primary;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @sg-cream, @sg-accent);
+      border: 2px solid @sg-primary;
+    }
+  }
+
+  .friend-card {
+    background: @sg-light;
+    border: 2px solid @sg-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @sg-cream;
+      border-color: @sg-primary;
+    }
+  }
+
+  &::after {
+    content: '🍬';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

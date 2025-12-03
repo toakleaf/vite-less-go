@@ -1,0 +1,232 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Doberman Theme - Elegant, Sleek, Powerful
+@dobie-primary: #1a1a2e;
+@dobie-secondary: #c19a6b;
+@dobie-accent: #e6d5b8;
+@dobie-dark: #0f0f1a;
+@dobie-light: #f8f4ef;
+@dobie-rust: #b8860b;
+@dobie-blue: #16213e;
+
+.animal-doberman {
+  .profile-cover {
+    background: linear-gradient(135deg, @dobie-primary 0%, @dobie-blue 50%, @dobie-dark 100%);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        linear-gradient(135deg, transparent 45%, fade(@dobie-secondary, 20%) 50%, transparent 55%),
+        linear-gradient(-135deg, transparent 45%, fade(@dobie-rust, 15%) 50%, transparent 55%);
+      animation: sleek-shine 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes sleek-shine {
+    0%, 100% { opacity: 0.5; transform: translateX(-50%); }
+    50% { opacity: 1; transform: translateX(50%); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @dobie-primary, @dobie-dark);
+    border: 3px solid @dobie-secondary;
+    box-shadow:
+      0 0 0 3px @dobie-dark,
+      0 0 40px fade(@dobie-secondary, 40%),
+      0 10px 50px fade(@dobie-dark, 60%);
+
+    &::before {
+      background: linear-gradient(135deg, @dobie-secondary, @dobie-rust);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 15px fade(@dobie-dark, 70%));
+    }
+  }
+
+  .online-status {
+    background: linear-gradient(135deg, @dobie-rust, @dobie-secondary);
+    border: 2px solid @dobie-dark;
+    box-shadow: 0 0 20px fade(@dobie-rust, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@dobie-secondary, @dobie-rust);
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+    font-weight: @font-weight-light;
+  }
+
+  .profile-category {
+    color: @dobie-secondary;
+    letter-spacing: @letter-spacing-widest;
+    font-weight: @font-weight-light;
+  }
+
+  .btn-follow {
+    background: transparent;
+    border: 2px solid @dobie-secondary;
+    color: @dobie-secondary;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+    font-weight: @font-weight-light;
+    transition: all 0.4s ease;
+
+    &:hover {
+      background: @dobie-secondary;
+      color: @dobie-dark;
+      box-shadow: 0 0 30px fade(@dobie-secondary, 50%);
+      transform: translateY(-2px);
+    }
+  }
+
+  .btn-message {
+    color: fade(@dobie-secondary, 80%);
+    border: 1px solid fade(@dobie-secondary, 40%);
+    background: transparent;
+
+    &:hover {
+      border-color: @dobie-secondary;
+      color: @dobie-secondary;
+    }
+  }
+
+  .profile-stats {
+    background: fade(@dobie-dark, 90%);
+    border: 1px solid fade(@dobie-secondary, 30%);
+    backdrop-filter: blur(10px);
+
+    .stat-value {
+      color: @dobie-secondary;
+      font-weight: @font-weight-light;
+      letter-spacing: @letter-spacing-wider;
+    }
+
+    .stat-label {
+      color: fade(@dobie-accent, 60%);
+      letter-spacing: @letter-spacing-widest;
+      text-transform: uppercase;
+      font-size: @font-size-xs;
+    }
+  }
+
+  .section-title {
+    color: @dobie-primary;
+    border-bottom: 1px solid @dobie-secondary;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+    font-weight: @font-weight-light;
+
+    &::before {
+      content: '◆';
+      margin-right: @space-2;
+      color: @dobie-secondary;
+    }
+  }
+
+  .detail-item {
+    background: @dobie-light;
+    border: 1px solid fade(@dobie-secondary, 30%);
+    transition: all 0.4s ease;
+
+    &:hover {
+      border-color: @dobie-secondary;
+      box-shadow: 0 5px 25px fade(@dobie-primary, 15%);
+    }
+
+    .detail-icon {
+      background: @dobie-primary;
+      color: @dobie-secondary;
+      padding: @space-2;
+      border-radius: @radius-sm;
+    }
+
+    .detail-label {
+      color: fade(@dobie-primary, 60%);
+      text-transform: uppercase;
+      letter-spacing: @letter-spacing-wider;
+      font-size: @font-size-xs;
+    }
+
+    .detail-value {
+      color: @dobie-primary;
+      font-weight: @font-weight-medium;
+    }
+  }
+
+  .trait-badge {
+    background: transparent;
+    color: @dobie-primary;
+    border: 1px solid @dobie-secondary;
+    font-weight: @font-weight-light;
+    letter-spacing: @letter-spacing-wider;
+
+    &:hover {
+      background: @dobie-secondary;
+      color: @dobie-dark;
+      transform: translateY(-2px);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @dobie-light, @dobie-accent);
+      border: 1px solid fade(@dobie-secondary, 40%);
+
+      &::before {
+        content: '';
+        .absolute-fill();
+        background: linear-gradient(
+          135deg,
+          transparent 40%,
+          fade(@dobie-secondary, 20%) 50%,
+          transparent 60%
+        );
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @dobie-secondary;
+      box-shadow: 0 10px 40px fade(@dobie-primary, 20%);
+    }
+  }
+
+  .post-card {
+    background: @dobie-light;
+    border: 1px solid fade(@dobie-secondary, 30%);
+
+    &:hover {
+      border-color: @dobie-secondary;
+      box-shadow: 0 10px 40px fade(@dobie-primary, 15%);
+    }
+
+    .post-avatar {
+      background: @dobie-primary;
+      border: 2px solid @dobie-secondary;
+    }
+  }
+
+  .friend-card {
+    background: @dobie-light;
+    border: 1px solid fade(@dobie-secondary, 30%);
+
+    &:hover {
+      border-color: @dobie-secondary;
+      background: fade(@dobie-accent, 50%);
+    }
+  }
+
+  &::after {
+    content: '♦';
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    font-size: 30px;
+    color: @dobie-secondary;
+    opacity: 0.2;
+  }
+}

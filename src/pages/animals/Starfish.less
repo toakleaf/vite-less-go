@@ -1,0 +1,222 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Starfish Theme - Star-shaped, Colorful, Coastal
+@star-primary: #ff6b6b;
+@star-secondary: #ee5a5a;
+@star-accent: #ffc8c8;
+@star-dark: #c92a2a;
+@star-light: #fff5f5;
+@star-orange: #fd7e14;
+@star-sand: #f5e6d3;
+
+.animal-starfish {
+  .profile-cover {
+    background: linear-gradient(180deg, #87ceeb 0%, #b0e0e6 50%, @star-sand 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Beach waves
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse 200% 30% at 50% 100%, fade(white, 40%) 0%, transparent 50%);
+      animation: tide 4s ease-in-out infinite;
+    }
+
+    // Shells decoration
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(4px 4px at 20% 80%, fade(@star-sand, 80%), transparent),
+        radial-gradient(3px 3px at 40% 85%, fade(@star-sand, 60%), transparent),
+        radial-gradient(5px 5px at 60% 82%, fade(@star-sand, 70%), transparent),
+        radial-gradient(4px 4px at 80% 88%, fade(@star-sand, 80%), transparent);
+    }
+  }
+
+  @keyframes tide {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(-10px); opacity: 0.6; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @star-accent, @star-primary);
+    border: 4px solid @star-dark;
+    box-shadow:
+      0 0 30px fade(@star-primary, 50%),
+      0 10px 40px fade(@star-dark, 30%);
+    position: relative;
+
+    // Star points visual effect
+    &::before {
+      background: linear-gradient(135deg, @star-secondary, @star-orange);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 0 10px fade(@star-primary, 60%));
+    }
+  }
+
+  .online-status {
+    background: @star-orange;
+    border: 2px solid @star-dark;
+    box-shadow: 0 0 15px fade(@star-orange, 70%);
+  }
+
+  .profile-name {
+    .text-gradient(@star-dark, @star-primary);
+
+    &::after {
+      content: ' ⭐';
+    }
+  }
+
+  .profile-category {
+    color: @star-secondary;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '🏖️ ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @star-primary, @star-secondary);
+    border: 2px solid @star-dark;
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: linear-gradient(135deg, @star-orange, @star-primary);
+      transform: translateY(-3px) rotate(5deg);
+      box-shadow: 0 8px 25px fade(@star-primary, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @star-primary;
+    border: 2px solid @star-primary;
+    border-radius: @radius-lg;
+    background: @star-light;
+
+    &:hover {
+      background: @star-primary;
+      color: @star-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @star-light, @star-accent);
+    border: 2px solid @star-primary;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@star-dark, @star-primary);
+    }
+  }
+
+  .section-title {
+    color: @star-dark;
+    border-bottom: 3px solid @star-primary;
+
+    &::before {
+      content: '⭐';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @star-light;
+    border: 2px solid @star-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @star-accent;
+      border-color: @star-primary;
+      transform: translateY(-5px) rotate(2deg);
+    }
+
+    .detail-icon {
+      background: @star-primary;
+      color: @star-light;
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: @star-light;
+    color: @star-dark;
+    border: 2px solid @star-primary;
+    border-radius: @radius-full;
+
+    &:nth-child(odd) {
+      background: @star-primary;
+      color: @star-light;
+    }
+
+    &:hover {
+      transform: scale(1.1) rotate(-5deg);
+      box-shadow: 0 5px 15px fade(@star-primary, 40%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @star-light, @star-accent);
+      border: 3px solid @star-primary;
+      border-radius: @radius-xl;
+
+      &::after {
+        content: '🐚';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: @font-size-lg;
+        opacity: 0.5;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @star-orange;
+      transform: scale(1.05) rotate(3deg);
+    }
+  }
+
+  .post-card {
+    background: @star-light;
+    border: 2px solid @star-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @star-primary;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @star-primary, @star-accent);
+      border-radius: @radius-full;
+    }
+  }
+
+  .friend-card {
+    background: @star-light;
+    border: 2px solid @star-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @star-accent;
+      border-color: @star-primary;
+    }
+  }
+
+  &::after {
+    content: '🌊';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.25;
+  }
+}

@@ -27,6 +27,31 @@ const animalCategories = [
     name: 'Aquatic',
     emoji: '🐠',
     animals: ['goldfish', 'betta', 'koi', 'clownfish', 'seahorse', 'jellyfish', 'axolotl', 'hermit-crab']
+  },
+  {
+    name: 'More Dogs',
+    emoji: '🦮',
+    animals: ['german-shepherd', 'labrador', 'rottweiler', 'boxer', 'doberman', 'shiba-inu', 'akita', 'border-collie']
+  },
+  {
+    name: 'More Cats',
+    emoji: '🐱',
+    animals: ['abyssinian', 'burmese', 'russian-blue', 'norwegian-forest', 'chartreux', 'somali', 'oriental', 'savannah']
+  },
+  {
+    name: 'More Birds',
+    emoji: '🦚',
+    animals: ['peacock', 'flamingo', 'owl', 'toucan', 'hummingbird', 'penguin', 'pelican', 'crane']
+  },
+  {
+    name: 'More Exotic',
+    emoji: '🕷️',
+    animals: ['sugar-glider', 'gecko', 'chameleon', 'tarantula', 'snake', 'gerbil', 'capybara', 'mouse']
+  },
+  {
+    name: 'More Aquatic',
+    emoji: '🐬',
+    animals: ['dolphin', 'octopus', 'orca', 'shark', 'stingray', 'pufferfish', 'starfish', 'lobster']
   }
 ]
 

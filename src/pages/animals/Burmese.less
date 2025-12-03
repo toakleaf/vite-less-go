@@ -1,0 +1,192 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Burmese Theme - Silky, Sweet, Social
+@burm-primary: #4a3c31;
+@burm-secondary: #6b5344;
+@burm-accent: #c9b896;
+@burm-dark: #2d241c;
+@burm-light: #f7f4ef;
+@burm-sable: #8b7355;
+@burm-champagne: #f5e6d3;
+
+.animal-burmese {
+  .profile-cover {
+    background: linear-gradient(180deg, @burm-sable 0%, @burm-primary 60%, @burm-dark 100%);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 20% 30%, fade(@burm-champagne, 30%) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, fade(@burm-champagne, 20%) 0%, transparent 35%);
+      animation: silky-shimmer 5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes silky-shimmer {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @burm-champagne, @burm-accent);
+    border: 4px solid @burm-primary;
+    box-shadow:
+      0 0 0 4px fade(@burm-sable, 40%),
+      0 10px 40px fade(@burm-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @burm-primary, @burm-sable);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@burm-dark, 50%));
+    }
+  }
+
+  .online-status {
+    background: linear-gradient(135deg, #ffd54f, #ffb300);
+    border: 2px solid @burm-primary;
+    box-shadow: 0 0 15px fade(#ffd54f, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@burm-primary, @burm-sable);
+    font-weight: @font-weight-medium;
+  }
+
+  .profile-category {
+    color: @burm-secondary;
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @burm-primary, @burm-secondary);
+    border: 2px solid @burm-sable;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: linear-gradient(135deg, @burm-sable, @burm-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px fade(@burm-primary, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @burm-primary;
+    border: 2px solid @burm-primary;
+    border-radius: @radius-full;
+    background: @burm-champagne;
+
+    &:hover {
+      background: @burm-primary;
+      color: @burm-champagne;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @burm-champagne, @burm-light);
+    border: 2px solid @burm-accent;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@burm-primary, @burm-secondary);
+      font-weight: @font-weight-bold;
+    }
+  }
+
+  .section-title {
+    color: @burm-primary;
+    border-bottom: 2px solid @burm-sable;
+
+    &::after {
+      content: '💎';
+      margin-left: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @burm-light;
+    border: 2px solid fade(@burm-accent, 60%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @burm-champagne;
+      border-color: @burm-sable;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px fade(@burm-primary, 15%);
+    }
+
+    .detail-icon {
+      background: fade(@burm-sable, 20%);
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: linear-gradient(135deg, @burm-champagne, @burm-light);
+    color: @burm-primary;
+    border: 2px solid @burm-accent;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @burm-sable;
+      color: @burm-champagne;
+      border-color: @burm-sable;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @burm-light, @burm-champagne);
+      border: 3px solid @burm-accent;
+      border-radius: @radius-xl;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @burm-sable;
+      box-shadow: 0 15px 40px fade(@burm-primary, 20%);
+    }
+  }
+
+  .post-card {
+    background: @burm-light;
+    border: 2px solid fade(@burm-accent, 50%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @burm-sable;
+      box-shadow: 0 10px 35px fade(@burm-primary, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @burm-accent, @burm-champagne);
+      border: 2px solid @burm-sable;
+    }
+  }
+
+  .friend-card {
+    background: @burm-light;
+    border: 2px solid fade(@burm-accent, 50%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @burm-champagne;
+      border-color: @burm-sable;
+    }
+  }
+
+  &::after {
+    content: '✨';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

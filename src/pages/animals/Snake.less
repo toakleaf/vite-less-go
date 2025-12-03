@@ -1,0 +1,267 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Snake Theme - Sleek, Scaly, Hypnotic
+@snake-primary: #2e7d32;
+@snake-secondary: #1b5e20;
+@snake-accent: #a5d6a7;
+@snake-dark: #0d2f0f;
+@snake-light: #e8f5e9;
+@snake-yellow: #ffd600;
+@snake-red: #d32f2f;
+
+.animal-snake {
+  .profile-cover {
+    background: linear-gradient(135deg, @snake-dark 0%, @snake-secondary 50%, @snake-primary 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Scale pattern
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse 25px 15px at 0% 0%, fade(@snake-accent, 20%) 50%, transparent 50%),
+        radial-gradient(ellipse 25px 15px at 50% 0%, fade(@snake-accent, 20%) 50%, transparent 50%),
+        radial-gradient(ellipse 25px 15px at 100% 0%, fade(@snake-accent, 20%) 50%, transparent 50%),
+        radial-gradient(ellipse 25px 15px at 25% 50%, fade(@snake-accent, 20%) 50%, transparent 50%),
+        radial-gradient(ellipse 25px 15px at 75% 50%, fade(@snake-accent, 20%) 50%, transparent 50%);
+      background-size: 50px 30px;
+      opacity: 0.5;
+    }
+
+    // Slithering effect
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      background: linear-gradient(
+        to right,
+        @snake-dark,
+        @snake-secondary,
+        @snake-primary,
+        @snake-secondary,
+        @snake-dark
+      );
+      animation: slither 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes slither {
+    0%, 100% { transform: translateX(-20px) scaleY(1); }
+    25% { transform: translateX(0) scaleY(0.9); }
+    50% { transform: translateX(20px) scaleY(1); }
+    75% { transform: translateX(0) scaleY(0.9); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @snake-accent, @snake-primary);
+    border: 4px solid @snake-dark;
+    box-shadow:
+      0 0 30px fade(@snake-primary, 50%),
+      0 10px 40px fade(@snake-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @snake-primary, @snake-secondary);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@snake-dark, 60%));
+      animation: tongue-flick 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes tongue-flick {
+    0%, 90%, 100% { transform: scale(1); }
+    93%, 97% { transform: scale(1.02) scaleX(1.05); }
+    95% { transform: scale(1); }
+  }
+
+  .online-status {
+    background: @snake-yellow;
+    border: 2px solid @snake-dark;
+    box-shadow: 0 0 15px fade(@snake-yellow, 70%);
+    animation: hypnotic 2s ease-in-out infinite;
+  }
+
+  @keyframes hypnotic {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  .profile-name {
+    .text-gradient(@snake-dark, @snake-primary);
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .profile-category {
+    color: @snake-primary;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @snake-primary, @snake-secondary);
+    border: 2px solid @snake-dark;
+
+    &:hover {
+      background: linear-gradient(135deg, @snake-secondary, @snake-dark);
+      box-shadow: 0 8px 25px fade(@snake-primary, 50%);
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-message {
+    color: @snake-primary;
+    border: 2px solid @snake-primary;
+    background: @snake-light;
+
+    &:hover {
+      background: @snake-primary;
+      color: @snake-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @snake-light, @snake-accent);
+    border: 2px solid @snake-primary;
+    position: relative;
+
+    // Scale pattern
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: repeating-linear-gradient(
+        90deg,
+        @snake-dark 0px,
+        @snake-dark 20px,
+        @snake-primary 20px,
+        @snake-primary 40px
+      );
+    }
+
+    .stat-value {
+      .text-gradient(@snake-dark, @snake-primary);
+    }
+  }
+
+  .section-title {
+    color: @snake-dark;
+    border-bottom: 3px solid @snake-primary;
+
+    &::before {
+      content: '🐍';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @snake-light;
+    border: 2px solid @snake-accent;
+    position: relative;
+
+    // Scale border
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: repeating-linear-gradient(
+        90deg,
+        @snake-primary 0px,
+        @snake-primary 10px,
+        @snake-accent 10px,
+        @snake-accent 20px
+      );
+    }
+
+    &:hover {
+      background: @snake-accent;
+      transform: translateX(5px);
+    }
+
+    .detail-icon {
+      background: @snake-primary;
+      color: @snake-light;
+      padding: @space-2;
+      border-radius: @radius-md;
+    }
+  }
+
+  .trait-badge {
+    background: @snake-accent;
+    color: @snake-dark;
+    border: 2px solid @snake-primary;
+
+    &:nth-child(odd) {
+      background: @snake-primary;
+      color: @snake-light;
+    }
+
+    &:hover {
+      transform: scale(1.1) rotate(-3deg);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @snake-light, @snake-accent);
+      border: 3px solid @snake-primary;
+
+      // Scale pattern
+      &::before {
+        content: '';
+        .absolute-fill();
+        background:
+          radial-gradient(ellipse 15px 10px at 25% 30%, fade(@snake-primary, 15%) 50%, transparent 50%),
+          radial-gradient(ellipse 15px 10px at 75% 70%, fade(@snake-primary, 15%) 50%, transparent 50%);
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @snake-dark;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @snake-light;
+    border: 2px solid @snake-accent;
+
+    &:hover {
+      border-color: @snake-primary;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @snake-primary, @snake-accent);
+      border: 2px solid @snake-dark;
+    }
+  }
+
+  .friend-card {
+    background: @snake-light;
+    border: 2px solid @snake-accent;
+
+    &:hover {
+      background: @snake-accent;
+      border-color: @snake-primary;
+    }
+  }
+
+  &::after {
+    content: '🌿';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

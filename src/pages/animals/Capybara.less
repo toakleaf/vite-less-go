@@ -1,0 +1,227 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Capybara Theme - Chill, Friendly, Tropical
+@capy-primary: #8b7355;
+@capy-secondary: #a08060;
+@capy-accent: #d4c4a8;
+@capy-dark: #5d4e37;
+@capy-light: #f9f5ef;
+@capy-water: #87ceeb;
+@capy-orange: #ff8c42;
+
+.animal-capybara {
+  .profile-cover {
+    background: linear-gradient(180deg, @capy-water 0%, #b0e0e6 40%, @capy-secondary 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Water ripples
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse 100% 20% at 50% 35%, fade(white, 20%) 0%, transparent 100%);
+      animation: ripple 4s ease-in-out infinite;
+    }
+
+    // Orange slice
+    &::after {
+      content: '🍊';
+      position: absolute;
+      top: 20%;
+      right: 15%;
+      font-size: 30px;
+      opacity: 0.4;
+      animation: float-orange 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes ripple {
+    0%, 100% { transform: scaleX(1); opacity: 0.2; }
+    50% { transform: scaleX(1.1); opacity: 0.4; }
+  }
+
+  @keyframes float-orange {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(15deg); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @capy-accent, @capy-primary);
+    border: 4px solid @capy-dark;
+    box-shadow:
+      0 0 30px fade(@capy-water, 40%),
+      0 10px 40px fade(@capy-dark, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @capy-secondary, @capy-dark);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@capy-dark, 50%));
+      animation: zen-vibe 5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes zen-vibe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  .online-status {
+    background: @capy-orange;
+    border: 2px solid @capy-dark;
+    box-shadow: 0 0 15px fade(@capy-orange, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@capy-dark, @capy-primary);
+
+    &::after {
+      content: ' 😌';
+    }
+  }
+
+  .profile-category {
+    color: @capy-secondary;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '🌴 ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @capy-primary, @capy-dark);
+    border: 2px solid @capy-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: linear-gradient(135deg, @capy-orange, @capy-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px fade(@capy-primary, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @capy-dark;
+    border: 2px solid @capy-dark;
+    border-radius: @radius-xl;
+    background: @capy-light;
+
+    &:hover {
+      background: @capy-dark;
+      color: @capy-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @capy-light, @capy-accent);
+    border: 2px solid @capy-secondary;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@capy-dark, @capy-primary);
+    }
+  }
+
+  .section-title {
+    color: @capy-dark;
+    border-bottom: 2px solid @capy-water;
+
+    &::after {
+      content: '💤';
+      margin-left: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @capy-light;
+    border: 2px solid @capy-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@capy-water, 20%);
+      border-color: @capy-water;
+      transform: translateY(-5px);
+    }
+
+    .detail-icon {
+      background: fade(@capy-water, 30%);
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: @capy-light;
+    color: @capy-dark;
+    border: 2px solid @capy-secondary;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @capy-orange;
+      color: white;
+      border-color: @capy-orange;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @capy-light, fade(@capy-water, 30%));
+      border: 3px solid @capy-secondary;
+      border-radius: @radius-xl;
+
+      &::after {
+        content: '🧡';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: @font-size-base;
+        opacity: 0.5;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @capy-water;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @capy-light;
+    border: 2px solid @capy-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @capy-water;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @capy-primary, @capy-accent);
+      border-radius: @radius-full;
+    }
+  }
+
+  .friend-card {
+    background: @capy-light;
+    border: 2px solid @capy-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@capy-water, 20%);
+      border-color: @capy-water;
+    }
+  }
+
+  &::after {
+    content: '♨️';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.25;
+  }
+}

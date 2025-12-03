@@ -1,0 +1,264 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Shiba Inu Theme - Spirited, Alert, Cute (Much Wow)
+@shiba-primary: #ff8c00;
+@shiba-secondary: #ff6347;
+@shiba-accent: #ffe4c4;
+@shiba-dark: #cd853f;
+@shiba-light: #fffaf0;
+@shiba-cream: #fdf5e6;
+@shiba-red: #e25822;
+
+.animal-shiba-inu {
+  .profile-cover {
+    background: linear-gradient(135deg, @shiba-primary 0%, @shiba-red 50%, @shiba-dark 100%);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 30% 70%, fade(@shiba-cream, 40%) 0%, transparent 40%),
+        radial-gradient(circle at 70% 30%, fade(@shiba-cream, 30%) 0%, transparent 35%);
+    }
+
+    &::after {
+      content: 'WOW';
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      font-size: 24px;
+      font-weight: @font-weight-bold;
+      color: fade(@shiba-cream, 30%);
+      animation: doge-text 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes doge-text {
+    0%, 100% { opacity: 0.3; transform: rotate(-5deg); }
+    50% { opacity: 0.5; transform: rotate(5deg); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @shiba-cream, @shiba-accent);
+    border: 4px solid @shiba-primary;
+    box-shadow:
+      0 0 0 4px @shiba-cream,
+      0 0 30px fade(@shiba-primary, 50%);
+    animation: shiba-tilt 2s ease-in-out infinite;
+
+    &::before {
+      background: linear-gradient(135deg, @shiba-primary, @shiba-red);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@shiba-dark, 40%));
+    }
+  }
+
+  @keyframes shiba-tilt {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+  }
+
+  .online-status {
+    background: linear-gradient(135deg, #ff4500, #ff6347);
+    box-shadow: 0 0 15px fade(#ff4500, 70%);
+  }
+
+  .profile-name {
+    .text-gradient(@shiba-primary, @shiba-red);
+
+    &::after {
+      content: ' ✨';
+    }
+  }
+
+  .profile-category {
+    color: @shiba-secondary;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '🇯🇵 ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @shiba-primary, @shiba-secondary);
+    border-radius: @radius-full;
+    text-transform: uppercase;
+    font-weight: @font-weight-bold;
+
+    &:hover {
+      background: linear-gradient(135deg, @shiba-secondary, @shiba-red);
+      transform: translateY(-3px) rotate(2deg);
+      box-shadow: 0 8px 25px fade(@shiba-primary, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @shiba-primary;
+    border: 3px solid @shiba-primary;
+    border-radius: @radius-full;
+    background: @shiba-cream;
+
+    &:hover {
+      background: @shiba-primary;
+      color: @shiba-cream;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @shiba-cream, @shiba-accent);
+    border: 3px solid @shiba-primary;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@shiba-primary, @shiba-red);
+      font-weight: @font-weight-black;
+    }
+
+    .stat-label {
+      color: @shiba-dark;
+    }
+  }
+
+  .section-title {
+    color: @shiba-dark;
+    border-bottom: 3px dashed @shiba-primary;
+
+    &::after {
+      content: ' 🐕';
+    }
+  }
+
+  .detail-item {
+    background: @shiba-cream;
+    border: 2px solid @shiba-accent;
+    border-radius: @radius-xl;
+    position: relative;
+
+    &:nth-child(odd)::after {
+      content: 'much';
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      font-size: @font-size-xs;
+      color: @shiba-primary;
+      font-weight: @font-weight-bold;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:nth-child(even)::after {
+      content: 'very';
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      font-size: @font-size-xs;
+      color: @shiba-secondary;
+      font-weight: @font-weight-bold;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:hover {
+      transform: translateY(-5px) rotate(1deg);
+      box-shadow: 0 10px 30px fade(@shiba-primary, 20%);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    .detail-icon {
+      background: fade(@shiba-primary, 20%);
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: linear-gradient(135deg, @shiba-accent, @shiba-cream);
+    color: @shiba-dark;
+    border: 2px solid @shiba-primary;
+    border-radius: @radius-full;
+    font-weight: @font-weight-semibold;
+
+    &:hover {
+      background: @shiba-primary;
+      color: @shiba-cream;
+      transform: scale(1.1) rotate(-5deg);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @shiba-cream, @shiba-accent);
+      border: 3px solid @shiba-primary;
+      border-radius: @radius-xl;
+
+      &::after {
+        content: 'so pic';
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: @font-size-xs;
+        color: @shiba-primary;
+        font-weight: @font-weight-bold;
+        opacity: 0.5;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      transform: scale(1.05) rotate(-2deg);
+      box-shadow: 0 15px 40px fade(@shiba-primary, 30%);
+    }
+  }
+
+  .post-card {
+    background: @shiba-cream;
+    border: 2px solid @shiba-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @shiba-primary;
+      transform: translateY(-5px);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @shiba-primary, @shiba-accent);
+      border-radius: @radius-full;
+    }
+  }
+
+  .friend-card {
+    background: @shiba-cream;
+    border: 2px solid @shiba-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @shiba-accent;
+      border-color: @shiba-primary;
+      transform: translateY(-5px) rotate(2deg);
+    }
+  }
+
+  &::after {
+    content: '🌸';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.3;
+    animation: sakura 3s ease-in-out infinite;
+  }
+
+  @keyframes sakura {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(180deg); }
+  }
+}
