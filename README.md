@@ -60,10 +60,19 @@ export default defineConfig({
       modifyVars: {              // Modify variables (override after parsing)
         logoHeight: '8em',
       },
+      plugins: [                 // LESS plugins
+        'clean-css',             // String shorthand
+        { name: 'autoprefix', options: 'browsers: last 2 versions' },
+      ],
     }),
     react(),
   ],
 })
+```
+
+Note: LESS plugins are npm packages. Install them separately:
+```bash
+npm install -D less-plugin-clean-css less-plugin-autoprefix
 ```
 
 ## Project Structure

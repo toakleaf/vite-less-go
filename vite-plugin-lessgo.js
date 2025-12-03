@@ -13,6 +13,7 @@ import path from 'path';
  * @param {string[]} [options.paths] - Additional include paths for @import resolution
  * @param {Object} [options.globalVars] - Global variables to inject
  * @param {Object} [options.modifyVars] - Variables to modify
+ * @param {Array} [options.plugins] - LESS plugins to load (e.g., ['clean-css'] or [{ name: 'clean-css', options: '...' }])
  */
 export default function lessgoPlugin(options = {}) {
   // Use .css extension in virtual module ID so Vite treats it as CSS
@@ -92,6 +93,7 @@ export default function lessgoPlugin(options = {}) {
             compress: options.compress,
             globalVars: options.globalVars,
             modifyVars: options.modifyVars,
+            plugins: options.plugins,
           });
 
           // Return compiled CSS for Vite to process
