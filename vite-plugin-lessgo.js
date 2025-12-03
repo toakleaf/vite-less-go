@@ -19,6 +19,10 @@ export default function lessgoPlugin(options = {}) {
   const VIRTUAL_PREFIX = '\0lessgo-compiled:';
   const VIRTUAL_SUFFIX = '.css';
 
+  // Regex patterns for hook filters
+  const LESS_FILE_REGEX = /\.less$/;
+  const VIRTUAL_ID_REGEX = /^\0lessgo-compiled:/;
+
   // Map virtual IDs back to original .less file paths
   const virtualToLess = new Map();
 
@@ -26,9 +30,17 @@ export default function lessgoPlugin(options = {}) {
     name: 'vite-plugin-lessgo',
     enforce: 'pre', // Run before Vite's built-in CSS handling
 
-    resolveId(source, importer) {
-      // Handle .less imports
-      if (source.endsWith('.less')) {
+    // Use hook filter to only trigger for .less imports
+    resolveId: {
+      filter: {
+        id: LESS_FILE_REGEX,
+      },
+      handler(source, importer) {
+        // Backward compatibility: also check inside handler
+        if (!source.endsWith('.less')) {
+          return null;
+        }
+
         // Resolve the actual file path
         let resolvedPath;
         if (path.isAbsolute(source)) {
@@ -44,48 +56,53 @@ export default function lessgoPlugin(options = {}) {
         virtualToLess.set(virtualId, resolvedPath);
 
         return virtualId;
-      }
-      return null;
+      },
     },
 
-    async load(id) {
-      // Handle our virtual modules
-      if (!id.startsWith(VIRTUAL_PREFIX)) {
-        return null;
-      }
-
-      const lessPath = virtualToLess.get(id);
-      if (!lessPath) {
-        return null;
-      }
-
-      if (!fs.existsSync(lessPath)) {
-        throw new Error(`[lessgo] LESS file not found: ${lessPath}`);
-      }
-
-      try {
-        // Build include paths - always include the file's directory
-        const includePaths = [path.dirname(lessPath)];
-        if (options.paths) {
-          includePaths.push(...options.paths);
+    // Use hook filter to only trigger for our virtual modules
+    load: {
+      filter: {
+        id: VIRTUAL_ID_REGEX,
+      },
+      async handler(id) {
+        // Backward compatibility: also check inside handler
+        if (!id.startsWith(VIRTUAL_PREFIX)) {
+          return null;
         }
 
-        // Compile using lessgo Node.js API
-        const result = await compile(lessPath, {
-          paths: includePaths,
-          compress: options.compress,
-          globalVars: options.globalVars,
-          modifyVars: options.modifyVars,
-        });
+        const lessPath = virtualToLess.get(id);
+        if (!lessPath) {
+          return null;
+        }
 
-        // Return compiled CSS for Vite to process
-        return {
-          code: result.css,
-          map: null,
-        };
-      } catch (error) {
-        throw new Error(`[lessgo] Failed to compile ${lessPath}: ${error.message}`);
-      }
+        if (!fs.existsSync(lessPath)) {
+          throw new Error(`[lessgo] LESS file not found: ${lessPath}`);
+        }
+
+        try {
+          // Build include paths - always include the file's directory
+          const includePaths = [path.dirname(lessPath)];
+          if (options.paths) {
+            includePaths.push(...options.paths);
+          }
+
+          // Compile using lessgo Node.js API
+          const result = await compile(lessPath, {
+            paths: includePaths,
+            compress: options.compress,
+            globalVars: options.globalVars,
+            modifyVars: options.modifyVars,
+          });
+
+          // Return compiled CSS for Vite to process
+          return {
+            code: result.css,
+            map: null,
+          };
+        } catch (error) {
+          throw new Error(`[lessgo] Failed to compile ${lessPath}: ${error.message}`);
+        }
+      },
     },
   };
 }
