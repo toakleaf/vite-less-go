@@ -1,0 +1,241 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Norwegian Forest Cat Theme - Majestic, Wild, Nordic
+@nfc-primary: #2e5a3a;
+@nfc-secondary: #4a7c59;
+@nfc-accent: #a8c4a5;
+@nfc-dark: #1a3320;
+@nfc-light: #f2f7f2;
+@nfc-bark: #5d4037;
+@nfc-snow: #f5f5f5;
+@nfc-amber: #ffbf00;
+
+.animal-norwegian-forest {
+  .profile-cover {
+    background: linear-gradient(180deg, @nfc-dark 0%, @nfc-primary 50%, @nfc-secondary 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Forest trees silhouette
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        linear-gradient(to bottom, transparent 60%, fade(@nfc-dark, 40%) 100%),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          transparent 30px,
+          fade(@nfc-dark, 20%) 30px,
+          fade(@nfc-dark, 20%) 32px,
+          transparent 32px,
+          transparent 60px
+        );
+    }
+
+    // Snow particles
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(2px 2px at 10% 20%, @nfc-snow, transparent),
+        radial-gradient(1px 1px at 30% 50%, @nfc-snow, transparent),
+        radial-gradient(2px 2px at 50% 30%, @nfc-snow, transparent),
+        radial-gradient(1px 1px at 70% 70%, @nfc-snow, transparent),
+        radial-gradient(2px 2px at 90% 40%, @nfc-snow, transparent);
+      background-size: 200px 150px;
+      animation: forest-snow 15s linear infinite;
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes forest-snow {
+    from { background-position: 0 0; }
+    to { background-position: 200px 300px; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @nfc-snow, @nfc-accent);
+    border: 4px solid @nfc-bark;
+    box-shadow:
+      0 0 0 4px fade(@nfc-primary, 40%),
+      0 10px 50px fade(@nfc-dark, 50%);
+
+    &::before {
+      background: linear-gradient(135deg, @nfc-primary, @nfc-dark);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@nfc-dark, 60%));
+    }
+  }
+
+  .online-status {
+    background: @nfc-amber;
+    border: 2px solid @nfc-bark;
+    box-shadow: 0 0 15px fade(@nfc-amber, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@nfc-dark, @nfc-primary);
+    font-weight: @font-weight-bold;
+  }
+
+  .profile-category {
+    color: @nfc-secondary;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '🌲 ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @nfc-primary, @nfc-dark);
+    border: 2px solid @nfc-bark;
+
+    &:hover {
+      background: linear-gradient(135deg, @nfc-secondary, @nfc-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px fade(@nfc-dark, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @nfc-primary;
+    border: 2px solid @nfc-primary;
+    background: @nfc-snow;
+
+    &:hover {
+      background: @nfc-primary;
+      color: @nfc-snow;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @nfc-light, @nfc-accent);
+    border: 2px solid @nfc-bark;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: repeating-linear-gradient(
+        90deg,
+        @nfc-bark 0px,
+        @nfc-bark 4px,
+        transparent 4px,
+        transparent 8px
+      );
+    }
+
+    .stat-value {
+      .text-gradient(@nfc-dark, @nfc-primary);
+    }
+  }
+
+  .section-title {
+    color: @nfc-dark;
+    border-bottom: 3px solid @nfc-bark;
+
+    &::before {
+      content: '🍂';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @nfc-light;
+    border: 2px solid @nfc-accent;
+    border-left: 5px solid @nfc-bark;
+
+    &:hover {
+      background: fade(@nfc-accent, 50%);
+      transform: translateX(5px);
+      box-shadow: 0 5px 20px fade(@nfc-dark, 15%);
+    }
+
+    .detail-icon {
+      background: @nfc-primary;
+      color: @nfc-snow;
+      padding: @space-2;
+      border-radius: @radius-md;
+    }
+  }
+
+  .trait-badge {
+    background: @nfc-light;
+    color: @nfc-dark;
+    border: 2px solid @nfc-primary;
+
+    &:nth-child(odd) {
+      background: @nfc-primary;
+      color: @nfc-snow;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px fade(@nfc-dark, 25%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @nfc-light, @nfc-accent);
+      border: 3px solid @nfc-bark;
+
+      &::after {
+        content: '🌿';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: @font-size-lg;
+        opacity: 0.4;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @nfc-primary;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @nfc-light;
+    border: 2px solid @nfc-accent;
+    border-left: 5px solid @nfc-bark;
+
+    &:hover {
+      box-shadow: 0 10px 35px fade(@nfc-dark, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @nfc-accent, @nfc-snow);
+      border: 2px solid @nfc-bark;
+    }
+  }
+
+  .friend-card {
+    background: @nfc-light;
+    border: 2px solid @nfc-accent;
+
+    &:hover {
+      background: fade(@nfc-accent, 60%);
+      border-color: @nfc-bark;
+    }
+  }
+
+  &::after {
+    content: '🦌';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.15;
+  }
+}

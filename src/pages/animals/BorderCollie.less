@@ -1,0 +1,259 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Border Collie Theme - Intelligent, Energetic, Herding
+@bc-primary: #1c1c1c;
+@bc-secondary: #4a4a4a;
+@bc-accent: #e8e8e8;
+@bc-dark: #0a0a0a;
+@bc-light: #f9f9f9;
+@bc-white: #ffffff;
+@bc-brown: #8b4513;
+
+.animal-border-collie {
+  .profile-cover {
+    background: linear-gradient(135deg, @bc-primary 0%, @bc-secondary 50%, @bc-accent 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Grass field pattern
+    &::before {
+      content: '';
+      .absolute-fill();
+      background: linear-gradient(
+        to top,
+        fade(#228b22, 30%) 0%,
+        transparent 50%
+      );
+    }
+
+    // Running dots animation (sheep)
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, @bc-white, transparent),
+        radial-gradient(2px 2px at 50px 50px, @bc-white, transparent),
+        radial-gradient(2px 2px at 80px 40px, @bc-white, transparent),
+        radial-gradient(2px 2px at 110px 60px, @bc-white, transparent);
+      background-size: 150px 80px;
+      animation: herd-sheep 8s linear infinite;
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes herd-sheep {
+    from { background-position: 0 0; }
+    to { background-position: 150px 0; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @bc-white, @bc-accent);
+    border: 4px solid @bc-primary;
+    box-shadow:
+      0 0 0 4px @bc-white,
+      0 10px 40px fade(@bc-dark, 40%);
+    position: relative;
+
+    // Split face pattern
+    &::before {
+      background: linear-gradient(90deg, @bc-primary 50%, transparent 50%);
+      border-radius: inherit;
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@bc-dark, 50%));
+      animation: alert-look 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes alert-look {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+  }
+
+  .online-status {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    box-shadow: 0 0 20px fade(#4caf50, 70%);
+  }
+
+  .profile-name {
+    .text-gradient(@bc-primary, @bc-secondary);
+  }
+
+  .profile-category {
+    color: @bc-secondary;
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .btn-follow {
+    background: @bc-primary;
+    border: 3px solid @bc-accent;
+
+    &:hover {
+      background: @bc-white;
+      color: @bc-primary;
+      border-color: @bc-primary;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px fade(@bc-dark, 30%);
+    }
+  }
+
+  .btn-message {
+    color: @bc-primary;
+    border: 3px solid @bc-primary;
+    background: @bc-white;
+
+    &:hover {
+      background: @bc-secondary;
+      color: @bc-white;
+      border-color: @bc-secondary;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @bc-light, @bc-accent);
+    border: 3px solid @bc-primary;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: fade(@bc-primary, 5%);
+    }
+
+    .stat-value {
+      .text-gradient(@bc-primary, @bc-secondary);
+      font-weight: @font-weight-black;
+    }
+  }
+
+  .section-title {
+    color: @bc-primary;
+    border-bottom: 3px solid @bc-primary;
+
+    &::before {
+      content: '🧠';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @bc-light;
+    border: 2px solid @bc-accent;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: @bc-primary;
+    }
+
+    &:hover {
+      background: @bc-accent;
+      transform: translateX(5px);
+    }
+
+    .detail-icon {
+      background: @bc-primary;
+      color: @bc-white;
+      padding: @space-2;
+      border-radius: @radius-md;
+    }
+  }
+
+  .trait-badge {
+    background: @bc-light;
+    color: @bc-primary;
+    border: 2px solid @bc-primary;
+    position: relative;
+
+    &:nth-child(odd) {
+      background: @bc-primary;
+      color: @bc-white;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px fade(@bc-primary, 30%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @bc-light, @bc-accent);
+      border: 3px solid @bc-primary;
+      position: relative;
+
+      // Black and white split
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: fade(@bc-primary, 10%);
+      }
+
+      &::after {
+        content: '🐑';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: @font-size-base;
+        opacity: 0.4;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @bc-secondary;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @bc-light;
+    border: 2px solid @bc-accent;
+    border-left: 5px solid @bc-primary;
+
+    &:hover {
+      box-shadow: 0 10px 35px fade(@bc-primary, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(90deg, @bc-primary 50%, @bc-white 50%);
+      border: 2px solid @bc-primary;
+    }
+  }
+
+  .friend-card {
+    background: @bc-light;
+    border: 2px solid @bc-accent;
+
+    &:hover {
+      background: @bc-accent;
+      border-color: @bc-primary;
+    }
+  }
+
+  &::after {
+    content: '🐑';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

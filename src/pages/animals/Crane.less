@@ -1,0 +1,245 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Crane Theme - Graceful, Traditional, Japanese
+@crane-primary: #ffffff;
+@crane-secondary: #c0c0c0;
+@crane-accent: #e8e8e8;
+@crane-dark: #2d2d2d;
+@crane-light: #fafafa;
+@crane-red: #c41e3a;
+@crane-gold: #d4af37;
+@crane-ink: #1a1a2e;
+
+.animal-crane {
+  .profile-cover {
+    background: linear-gradient(180deg, @crane-ink 0%, #2d3e50 50%, @crane-accent 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Japanese brush stroke effect
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        linear-gradient(135deg, transparent 45%, fade(@crane-primary, 10%) 50%, transparent 55%);
+    }
+
+    // Sakura petals
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(4px 6px at 20% 30%, fade(#ffb7c5, 60%), transparent),
+        radial-gradient(3px 5px at 40% 60%, fade(#ffb7c5, 50%), transparent),
+        radial-gradient(4px 6px at 60% 20%, fade(#ffb7c5, 55%), transparent),
+        radial-gradient(3px 5px at 80% 50%, fade(#ffb7c5, 45%), transparent);
+      animation: sakura-fall 10s linear infinite;
+    }
+  }
+
+  @keyframes sakura-fall {
+    from { background-position: 0 0, 20px 0, 40px 0, 60px 0; }
+    to { background-position: 100px 200px, 120px 200px, 140px 200px, 160px 200px; }
+  }
+
+  .profile-avatar {
+    background: @crane-primary;
+    border: 3px solid @crane-dark;
+    box-shadow:
+      0 0 0 3px @crane-red,
+      0 10px 50px fade(@crane-ink, 40%);
+    position: relative;
+
+    &::before {
+      background: linear-gradient(135deg, @crane-red, #8b0000);
+      width: 40%;
+      height: 20%;
+      top: 10%;
+      left: 30%;
+      border-radius: 50%;
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@crane-dark, 40%));
+    }
+  }
+
+  .online-status {
+    background: @crane-red;
+    border: 2px solid @crane-dark;
+    box-shadow: 0 0 15px fade(@crane-red, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@crane-ink, @crane-dark);
+    font-weight: @font-weight-light;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .profile-category {
+    color: @crane-red;
+    letter-spacing: @letter-spacing-widest;
+
+    &::before {
+      content: '🎋 ';
+    }
+  }
+
+  .btn-follow {
+    background: @crane-red;
+    border: 2px solid @crane-dark;
+    letter-spacing: @letter-spacing-wider;
+
+    &:hover {
+      background: @crane-ink;
+      box-shadow: 0 8px 25px fade(@crane-ink, 40%);
+      transform: translateY(-2px);
+    }
+  }
+
+  .btn-message {
+    color: @crane-ink;
+    border: 2px solid @crane-ink;
+    background: transparent;
+
+    &:hover {
+      background: @crane-ink;
+      color: @crane-primary;
+    }
+  }
+
+  .profile-stats {
+    background: @crane-light;
+    border: 2px solid @crane-secondary;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, @crane-red, transparent);
+    }
+
+    .stat-value {
+      .text-gradient(@crane-ink, @crane-dark);
+    }
+  }
+
+  .section-title {
+    color: @crane-ink;
+    border-bottom: 1px solid @crane-red;
+    font-weight: @font-weight-light;
+    letter-spacing: @letter-spacing-widest;
+
+    &::before {
+      content: '鶴';
+      margin-right: @space-2;
+      color: @crane-red;
+    }
+  }
+
+  .detail-item {
+    background: @crane-light;
+    border: 1px solid @crane-secondary;
+    border-radius: 0;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: @crane-red;
+    }
+
+    &:hover {
+      background: fade(@crane-accent, 70%);
+      box-shadow: 0 5px 20px fade(@crane-ink, 10%);
+    }
+
+    .detail-icon {
+      background: @crane-ink;
+      color: @crane-primary;
+      padding: @space-2;
+      border-radius: 0;
+    }
+  }
+
+  .trait-badge {
+    background: transparent;
+    color: @crane-ink;
+    border: 1px solid @crane-red;
+    border-radius: 0;
+    font-weight: @font-weight-light;
+    letter-spacing: @letter-spacing-wider;
+
+    &:hover {
+      background: @crane-red;
+      color: @crane-primary;
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: @crane-light;
+      border: 2px solid @crane-secondary;
+      border-radius: 0;
+
+      &::after {
+        content: '🌸';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: @font-size-lg;
+        opacity: 0.4;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @crane-red;
+      box-shadow: 0 10px 30px fade(@crane-ink, 15%);
+    }
+  }
+
+  .post-card {
+    background: @crane-light;
+    border: 1px solid @crane-secondary;
+    border-radius: 0;
+
+    &:hover {
+      border-color: @crane-red;
+    }
+
+    .post-avatar {
+      background: @crane-primary;
+      border: 2px solid @crane-ink;
+      border-radius: 0;
+    }
+  }
+
+  .friend-card {
+    background: @crane-light;
+    border: 1px solid @crane-secondary;
+    border-radius: 0;
+
+    &:hover {
+      background: fade(@crane-accent, 70%);
+      border-color: @crane-red;
+    }
+  }
+
+  &::after {
+    content: '🗻';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.15;
+  }
+}

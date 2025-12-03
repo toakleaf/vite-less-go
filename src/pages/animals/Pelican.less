@@ -1,0 +1,217 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Pelican Theme - Coastal, Patient, Pouch
+@pel-primary: #f5f5f5;
+@pel-secondary: #90a4ae;
+@pel-accent: #ffcc80;
+@pel-dark: #37474f;
+@pel-light: #fafafa;
+@pel-ocean: #0288d1;
+@pel-coral: #ff7043;
+@pel-sand: #ffe0b2;
+
+.animal-pelican {
+  .profile-cover {
+    background: linear-gradient(180deg, @pel-ocean 0%, #29b6f6 50%, @pel-sand 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Ocean waves
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse 200% 50% at 50% 100%, @pel-sand 0%, transparent 50%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 40%;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        fade(@pel-primary, 40%),
+        transparent,
+        fade(@pel-primary, 30%),
+        transparent
+      );
+      animation: wave 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: translateX(-50px); }
+    50% { transform: translateX(50px); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @pel-primary, @pel-secondary);
+    border: 4px solid @pel-dark;
+    box-shadow:
+      0 0 30px fade(@pel-ocean, 30%),
+      0 10px 40px fade(@pel-dark, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @pel-accent, @pel-coral);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@pel-dark, 50%));
+    }
+  }
+
+  .online-status {
+    background: @pel-ocean;
+    border: 2px solid @pel-dark;
+    box-shadow: 0 0 15px fade(@pel-ocean, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@pel-dark, @pel-secondary);
+  }
+
+  .profile-category {
+    color: @pel-ocean;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '🌊 ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @pel-ocean, #0277bd);
+    border: 2px solid @pel-dark;
+
+    &:hover {
+      background: linear-gradient(135deg, #0277bd, @pel-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px fade(@pel-ocean, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @pel-ocean;
+    border: 2px solid @pel-ocean;
+    background: @pel-light;
+
+    &:hover {
+      background: @pel-ocean;
+      color: @pel-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @pel-light, @pel-sand);
+    border: 2px solid @pel-secondary;
+
+    .stat-value {
+      .text-gradient(@pel-dark, @pel-ocean);
+    }
+  }
+
+  .section-title {
+    color: @pel-dark;
+    border-bottom: 3px solid @pel-ocean;
+
+    &::after {
+      content: '🐟';
+      margin-left: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @pel-light;
+    border: 2px solid @pel-sand;
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: @pel-sand;
+      border-color: @pel-accent;
+      transform: translateY(-5px);
+    }
+
+    .detail-icon {
+      background: @pel-ocean;
+      color: @pel-light;
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: @pel-light;
+    color: @pel-dark;
+    border: 2px solid @pel-secondary;
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: @pel-ocean;
+      color: @pel-light;
+      border-color: @pel-ocean;
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @pel-light, @pel-sand);
+      border: 3px solid @pel-secondary;
+      border-radius: @radius-lg;
+
+      &::after {
+        content: '🏖️';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: @font-size-lg;
+        opacity: 0.4;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @pel-ocean;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @pel-light;
+    border: 2px solid @pel-sand;
+    border-radius: @radius-lg;
+
+    &:hover {
+      border-color: @pel-ocean;
+      box-shadow: 0 10px 35px fade(@pel-ocean, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @pel-primary, @pel-secondary);
+      border: 2px solid @pel-dark;
+    }
+  }
+
+  .friend-card {
+    background: @pel-light;
+    border: 2px solid @pel-sand;
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: @pel-sand;
+      border-color: @pel-ocean;
+    }
+  }
+
+  &::after {
+    content: '🦀';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

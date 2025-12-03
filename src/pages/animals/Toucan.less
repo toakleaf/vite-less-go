@@ -1,0 +1,233 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Toucan Theme - Tropical, Colorful, Playful
+@toucan-primary: #ff6b35;
+@toucan-secondary: #004e89;
+@toucan-accent: #ffd447;
+@toucan-dark: #1a1a2e;
+@toucan-light: #f0fff0;
+@toucan-green: #2e8b57;
+@toucan-red: #ff0054;
+
+.animal-toucan {
+  .profile-cover {
+    background: linear-gradient(135deg, @toucan-green 0%, @toucan-secondary 50%, @toucan-dark 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Tropical leaves
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse 100px 60px at 10% 20%, fade(@toucan-green, 50%) 0%, transparent 70%),
+        radial-gradient(ellipse 80px 50px at 85% 30%, fade(@toucan-green, 40%) 0%, transparent 70%),
+        radial-gradient(ellipse 90px 55px at 30% 80%, fade(@toucan-green, 45%) 0%, transparent 70%);
+    }
+
+    &::after {
+      content: '';
+      .absolute-fill();
+      background: linear-gradient(
+        180deg,
+        transparent 60%,
+        fade(@toucan-dark, 50%) 100%
+      );
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @toucan-dark, @toucan-secondary);
+    border: 4px solid @toucan-primary;
+    box-shadow:
+      0 0 0 4px @toucan-accent,
+      0 10px 50px fade(@toucan-dark, 50%);
+
+    &::before {
+      background: linear-gradient(135deg, @toucan-primary, @toucan-accent);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@toucan-dark, 60%));
+      animation: beak-bob 2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes beak-bob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(-5deg); }
+    75% { transform: translateY(-3px) rotate(5deg); }
+  }
+
+  .online-status {
+    background: @toucan-accent;
+    border: 3px solid @toucan-primary;
+    box-shadow: 0 0 15px fade(@toucan-accent, 80%);
+  }
+
+  .profile-name {
+    background: linear-gradient(90deg, @toucan-primary, @toucan-accent, @toucan-green, @toucan-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: @font-weight-bold;
+  }
+
+  .profile-category {
+    color: @toucan-green;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '🌴 ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @toucan-primary, @toucan-red);
+    border: 2px solid @toucan-accent;
+
+    &:hover {
+      background: linear-gradient(135deg, @toucan-accent, @toucan-primary);
+      transform: translateY(-4px) rotate(2deg);
+      box-shadow: 0 10px 30px fade(@toucan-primary, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @toucan-secondary;
+    border: 2px solid @toucan-secondary;
+    background: @toucan-light;
+
+    &:hover {
+      background: @toucan-secondary;
+      color: @toucan-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @toucan-light, fade(@toucan-green, 20%));
+    border: 3px solid @toucan-green;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, @toucan-primary, @toucan-accent, @toucan-green, @toucan-secondary);
+    }
+
+    .stat-value {
+      .text-gradient(@toucan-secondary, @toucan-green);
+    }
+  }
+
+  .section-title {
+    color: @toucan-dark;
+    border-bottom: 4px solid @toucan-primary;
+
+    &::before {
+      content: '🌺';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @toucan-light;
+    border: 2px solid fade(@toucan-green, 40%);
+    transition: all 0.3s ease;
+
+    &:nth-child(1) { border-left: 5px solid @toucan-primary; }
+    &:nth-child(2) { border-left: 5px solid @toucan-accent; }
+    &:nth-child(3) { border-left: 5px solid @toucan-green; }
+    &:nth-child(4) { border-left: 5px solid @toucan-secondary; }
+    &:nth-child(5) { border-left: 5px solid @toucan-red; }
+
+    &:hover {
+      transform: translateX(8px) rotate(1deg);
+      box-shadow: 0 8px 25px fade(@toucan-green, 20%);
+    }
+
+    .detail-icon {
+      background: @toucan-green;
+      color: @toucan-light;
+      padding: @space-2;
+      border-radius: @radius-lg;
+    }
+  }
+
+  .trait-badge {
+    color: @toucan-dark;
+    border: 2px solid;
+    font-weight: @font-weight-semibold;
+
+    &:nth-child(1) { background: fade(@toucan-primary, 30%); border-color: @toucan-primary; }
+    &:nth-child(2) { background: fade(@toucan-accent, 30%); border-color: @toucan-accent; }
+    &:nth-child(3) { background: fade(@toucan-green, 30%); border-color: @toucan-green; }
+    &:nth-child(4) { background: fade(@toucan-secondary, 30%); border-color: @toucan-secondary; }
+
+    &:hover {
+      transform: scale(1.15) rotate(-5deg);
+      box-shadow: 0 5px 15px fade(@toucan-dark, 30%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @toucan-light, fade(@toucan-green, 30%));
+      border: 3px solid @toucan-green;
+
+      &::after {
+        content: '🍎';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: @font-size-lg;
+        opacity: 0.5;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @toucan-primary;
+      transform: scale(1.08) rotate(2deg);
+    }
+  }
+
+  .post-card {
+    background: @toucan-light;
+    border: 2px solid fade(@toucan-green, 40%);
+    border-top: 5px solid @toucan-primary;
+
+    &:hover {
+      border-top-color: @toucan-accent;
+      box-shadow: 0 10px 35px fade(@toucan-green, 20%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @toucan-primary, @toucan-accent);
+      border: 2px solid @toucan-dark;
+    }
+  }
+
+  .friend-card {
+    background: @toucan-light;
+    border: 2px solid fade(@toucan-green, 40%);
+
+    &:hover {
+      background: fade(@toucan-green, 20%);
+      border-color: @toucan-green;
+    }
+  }
+
+  &::after {
+    content: '🥭';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.25;
+  }
+}

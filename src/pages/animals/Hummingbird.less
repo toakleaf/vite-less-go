@@ -1,0 +1,264 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Hummingbird Theme - Tiny, Iridescent, Energetic
+@hum-primary: #00bcd4;
+@hum-secondary: #e91e63;
+@hum-accent: #9c27b0;
+@hum-dark: #1a237e;
+@hum-light: #e1f5fe;
+@hum-emerald: #2ecc71;
+@hum-ruby: #e74c3c;
+
+.animal-hummingbird {
+  .profile-cover {
+    background: linear-gradient(135deg, @hum-dark 0%, @hum-accent 30%, @hum-secondary 60%, @hum-primary 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Flower garden effect
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 15% 70%, fade(@hum-secondary, 40%) 0%, transparent 15%),
+        radial-gradient(circle at 30% 85%, fade(@hum-accent, 35%) 0%, transparent 12%),
+        radial-gradient(circle at 50% 75%, fade(@hum-ruby, 40%) 0%, transparent 15%),
+        radial-gradient(circle at 70% 90%, fade(@hum-secondary, 35%) 0%, transparent 12%),
+        radial-gradient(circle at 85% 80%, fade(@hum-accent, 40%) 0%, transparent 15%);
+    }
+
+    &::after {
+      content: '';
+      .absolute-fill();
+      background: linear-gradient(
+        45deg,
+        transparent,
+        fade(@hum-primary, 20%),
+        fade(@hum-emerald, 20%),
+        transparent
+      );
+      animation: iridescence 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes iridescence {
+    0%, 100% { filter: hue-rotate(0deg); opacity: 0.5; }
+    50% { filter: hue-rotate(60deg); opacity: 0.8; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @hum-emerald, @hum-primary, @hum-accent);
+    border: 3px solid @hum-dark;
+    box-shadow:
+      0 0 30px fade(@hum-primary, 50%),
+      0 0 60px fade(@hum-secondary, 30%);
+    animation: hover-flight 0.3s ease-in-out infinite;
+
+    &::before {
+      background: linear-gradient(135deg, @hum-secondary, @hum-ruby);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 0 10px fade(@hum-emerald, 70%));
+    }
+  }
+
+  @keyframes hover-flight {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  .online-status {
+    background: @hum-ruby;
+    border: 2px solid @hum-dark;
+    box-shadow: 0 0 15px fade(@hum-ruby, 80%);
+    animation: heartbeat 0.5s ease-in-out infinite;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .profile-name {
+    background: linear-gradient(90deg, @hum-emerald, @hum-primary, @hum-accent, @hum-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-text 4s ease-in-out infinite;
+  }
+
+  @keyframes shimmer-text {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .profile-category {
+    color: @hum-accent;
+    letter-spacing: @letter-spacing-wider;
+
+    &::after {
+      content: ' 🌸';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @hum-secondary, @hum-accent);
+    border: 2px solid @hum-dark;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, fade(white, 30%), transparent);
+      transform: translateX(-100%);
+      animation: shine-btn 2s ease-in-out infinite;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, @hum-accent, @hum-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px fade(@hum-secondary, 50%);
+    }
+  }
+
+  @keyframes shine-btn {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .btn-message {
+    color: @hum-secondary;
+    border: 2px solid @hum-secondary;
+    background: @hum-light;
+
+    &:hover {
+      background: @hum-secondary;
+      color: @hum-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @hum-light, fade(@hum-primary, 20%));
+    border: 2px solid @hum-primary;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, @hum-emerald, @hum-primary, @hum-accent, @hum-secondary, @hum-ruby);
+      background-size: 200% 100%;
+      animation: rainbow-bar 3s linear infinite;
+    }
+
+    .stat-value {
+      .text-gradient(@hum-dark, @hum-accent);
+    }
+  }
+
+  @keyframes rainbow-bar {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+
+  .section-title {
+    color: @hum-dark;
+    border-bottom: 2px solid @hum-secondary;
+
+    &::before {
+      content: '🌺';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @hum-light;
+    border: 2px solid fade(@hum-primary, 40%);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: fade(@hum-primary, 15%);
+      border-color: @hum-primary;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px fade(@hum-primary, 25%);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @hum-primary, @hum-accent);
+      color: white;
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: @hum-light;
+    border: 2px solid;
+    transition: all 0.2s ease;
+
+    &:nth-child(1) { border-color: @hum-emerald; color: @hum-emerald; }
+    &:nth-child(2) { border-color: @hum-primary; color: @hum-primary; }
+    &:nth-child(3) { border-color: @hum-accent; color: @hum-accent; }
+    &:nth-child(4) { border-color: @hum-secondary; color: @hum-secondary; }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px fade(@hum-dark, 20%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @hum-light, fade(@hum-primary, 30%), fade(@hum-accent, 20%));
+      border: 2px solid @hum-primary;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @hum-secondary;
+      transform: scale(1.08);
+      box-shadow: 0 15px 40px fade(@hum-accent, 30%);
+    }
+  }
+
+  .post-card {
+    background: @hum-light;
+    border: 2px solid fade(@hum-primary, 30%);
+
+    &:hover {
+      border-color: @hum-secondary;
+      box-shadow: 0 10px 35px fade(@hum-accent, 20%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @hum-emerald, @hum-primary);
+      border: 2px solid @hum-dark;
+    }
+  }
+
+  .friend-card {
+    background: @hum-light;
+    border: 2px solid fade(@hum-primary, 30%);
+
+    &:hover {
+      background: fade(@hum-primary, 15%);
+      border-color: @hum-primary;
+    }
+  }
+
+  &::after {
+    content: '🌷';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.25;
+  }
+}

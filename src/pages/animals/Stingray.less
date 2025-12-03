@@ -1,0 +1,202 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Stingray Theme - Graceful, Flat, Gliding
+@ray-primary: #5d6d7e;
+@ray-secondary: #85929e;
+@ray-accent: #d5dbdb;
+@ray-dark: #2c3e50;
+@ray-light: #f4f6f7;
+@ray-sand: #f5e6d3;
+@ray-spots: #34495e;
+
+.animal-stingray {
+  .profile-cover {
+    background: linear-gradient(180deg, @ray-dark 0%, @ray-primary 50%, @ray-sand 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Sandy ocean floor
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse 200% 40% at 50% 100%, @ray-sand 0%, transparent 60%);
+    }
+
+    // Gliding motion
+    &::after {
+      content: '';
+      position: absolute;
+      top: 40%;
+      left: 0;
+      width: 100px;
+      height: 60px;
+      background: fade(@ray-secondary, 30%);
+      border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+      animation: glide 6s ease-in-out infinite;
+    }
+  }
+
+  @keyframes glide {
+    0% { transform: translateX(-100px) rotate(-5deg); opacity: 0; }
+    50% { transform: translateX(50vw) rotate(5deg); opacity: 0.3; }
+    100% { transform: translateX(100vw) rotate(-5deg); opacity: 0; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @ray-accent, @ray-secondary);
+    border: 4px solid @ray-dark;
+    box-shadow:
+      0 0 30px fade(@ray-primary, 40%),
+      0 10px 40px fade(@ray-dark, 30%);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+
+    &::before {
+      background: linear-gradient(135deg, @ray-primary, @ray-spots);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@ray-dark, 50%));
+    }
+  }
+
+  .online-status {
+    background: @ray-sand;
+    border: 2px solid @ray-dark;
+    box-shadow: 0 0 15px fade(@ray-sand, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@ray-dark, @ray-primary);
+  }
+
+  .profile-category {
+    color: @ray-secondary;
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @ray-primary, @ray-dark);
+    border: 2px solid @ray-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: linear-gradient(135deg, @ray-secondary, @ray-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px fade(@ray-primary, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @ray-primary;
+    border: 2px solid @ray-primary;
+    border-radius: @radius-xl;
+    background: @ray-light;
+
+    &:hover {
+      background: @ray-primary;
+      color: @ray-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @ray-light, @ray-accent);
+    border: 2px solid @ray-secondary;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@ray-dark, @ray-primary);
+    }
+  }
+
+  .section-title {
+    color: @ray-dark;
+    border-bottom: 2px solid @ray-secondary;
+
+    &::after {
+      content: '🏝️';
+      margin-left: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @ray-light;
+    border: 2px solid @ray-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @ray-sand;
+      border-color: @ray-secondary;
+      transform: translateY(-5px);
+    }
+
+    .detail-icon {
+      background: @ray-primary;
+      color: @ray-light;
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: @ray-light;
+    color: @ray-dark;
+    border: 2px solid @ray-secondary;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @ray-secondary;
+      color: @ray-light;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @ray-light, @ray-sand);
+      border: 3px solid @ray-secondary;
+      border-radius: @radius-xl;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @ray-primary;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @ray-light;
+    border: 2px solid @ray-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @ray-secondary;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @ray-secondary, @ray-accent);
+      border: 2px solid @ray-dark;
+    }
+  }
+
+  .friend-card {
+    background: @ray-light;
+    border: 2px solid @ray-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @ray-sand;
+      border-color: @ray-secondary;
+    }
+  }
+
+  &::after {
+    content: '🐚';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

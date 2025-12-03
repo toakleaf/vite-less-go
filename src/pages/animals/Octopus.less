@@ -1,0 +1,245 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Octopus Theme - Intelligent, Mysterious, Deep Sea
+@octo-primary: #6a0572;
+@octo-secondary: #ab4e92;
+@octo-accent: #d8a7ca;
+@octo-dark: #2d0a31;
+@octo-light: #faf0f7;
+@octo-ink: #1a0a1e;
+@octo-coral: #ff6f61;
+
+.animal-octopus {
+  .profile-cover {
+    background: linear-gradient(180deg, @octo-dark 0%, @octo-primary 50%, @octo-secondary 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Tentacle pattern
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse 30% 100% at 10% 100%, fade(@octo-secondary, 40%) 0%, transparent 70%),
+        radial-gradient(ellipse 25% 100% at 30% 100%, fade(@octo-primary, 35%) 0%, transparent 60%),
+        radial-gradient(ellipse 28% 100% at 50% 100%, fade(@octo-secondary, 40%) 0%, transparent 70%),
+        radial-gradient(ellipse 22% 100% at 70% 100%, fade(@octo-primary, 35%) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 100% at 90% 100%, fade(@octo-secondary, 40%) 0%, transparent 70%);
+      animation: tentacle-wave 4s ease-in-out infinite;
+    }
+
+    // Ink clouds
+    &::after {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 20% 30%, fade(@octo-ink, 30%) 0%, transparent 40%),
+        radial-gradient(circle at 80% 60%, fade(@octo-ink, 25%) 0%, transparent 35%);
+      animation: ink-drift 10s ease-in-out infinite;
+    }
+  }
+
+  @keyframes tentacle-wave {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(1.1); }
+  }
+
+  @keyframes ink-drift {
+    0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+    50% { transform: translate(20px, -10px); opacity: 0.3; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @octo-accent, @octo-secondary);
+    border: 4px solid @octo-dark;
+    box-shadow:
+      0 0 40px fade(@octo-primary, 50%),
+      0 10px 50px fade(@octo-dark, 40%);
+    animation: color-pulse 5s ease-in-out infinite;
+
+    &::before {
+      background: linear-gradient(135deg, @octo-primary, @octo-ink);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 0 15px fade(@octo-coral, 50%));
+    }
+  }
+
+  @keyframes color-pulse {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(20deg); }
+  }
+
+  .online-status {
+    background: @octo-coral;
+    border: 2px solid @octo-dark;
+    box-shadow: 0 0 20px fade(@octo-coral, 70%);
+  }
+
+  .profile-name {
+    .text-gradient(@octo-secondary, @octo-dark);
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .profile-category {
+    color: @octo-secondary;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @octo-primary, @octo-dark);
+    border: 2px solid @octo-secondary;
+
+    &:hover {
+      background: linear-gradient(135deg, @octo-secondary, @octo-primary);
+      box-shadow: 0 0 30px fade(@octo-primary, 50%);
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-message {
+    color: @octo-primary;
+    border: 2px solid @octo-primary;
+    background: @octo-light;
+
+    &:hover {
+      background: @octo-primary;
+      color: @octo-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @octo-light, @octo-accent);
+    border: 2px solid @octo-secondary;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, @octo-dark, @octo-primary, @octo-secondary, @octo-coral);
+    }
+
+    .stat-value {
+      .text-gradient(@octo-dark, @octo-primary);
+    }
+  }
+
+  .section-title {
+    color: @octo-dark;
+    border-bottom: 3px solid @octo-primary;
+
+    &::before {
+      content: '🐙';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @octo-light;
+    border: 2px solid @octo-accent;
+    position: relative;
+
+    // Sucker pattern
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid fade(@octo-primary, 30%);
+    }
+
+    &:hover {
+      background: @octo-accent;
+      border-color: @octo-primary;
+      transform: translateX(5px);
+    }
+
+    .detail-icon {
+      background: @octo-primary;
+      color: @octo-light;
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: @octo-light;
+    color: @octo-dark;
+    border: 2px solid @octo-secondary;
+
+    &:hover {
+      background: @octo-primary;
+      color: @octo-light;
+      border-color: @octo-primary;
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @octo-light, @octo-accent);
+      border: 3px solid @octo-secondary;
+
+      // Sucker pattern
+      &::before {
+        content: '';
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 2px solid fade(@octo-primary, 25%);
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @octo-primary;
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px fade(@octo-primary, 25%);
+    }
+  }
+
+  .post-card {
+    background: @octo-light;
+    border: 2px solid @octo-accent;
+
+    &:hover {
+      border-color: @octo-primary;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @octo-secondary, @octo-accent);
+      border: 2px solid @octo-dark;
+    }
+  }
+
+  .friend-card {
+    background: @octo-light;
+    border: 2px solid @octo-accent;
+
+    &:hover {
+      background: @octo-accent;
+      border-color: @octo-primary;
+    }
+  }
+
+  &::after {
+    content: '🦑';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

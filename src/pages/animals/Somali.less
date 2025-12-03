@@ -1,0 +1,246 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Somali Theme - Fox-like, Fluffy, Vibrant
+@somali-primary: #e25822;
+@somali-secondary: #cc4125;
+@somali-accent: #ffd9c0;
+@somali-dark: #8b2500;
+@somali-light: #fff5ee;
+@somali-ruddy: #cd5c5c;
+@somali-ticked: #d2691e;
+
+.animal-somali {
+  .profile-cover {
+    background: linear-gradient(135deg, @somali-secondary 0%, @somali-primary 50%, @somali-ticked 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Ticked fur effect
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 5px,
+          fade(@somali-dark, 10%) 5px,
+          fade(@somali-dark, 10%) 10px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 5px,
+          fade(@somali-ruddy, 10%) 5px,
+          fade(@somali-ruddy, 10%) 10px
+        );
+    }
+
+    &::after {
+      content: '';
+      .absolute-fill();
+      background: radial-gradient(
+        ellipse at center bottom,
+        fade(@somali-accent, 30%) 0%,
+        transparent 50%
+      );
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @somali-accent, @somali-ticked);
+    border: 4px solid @somali-dark;
+    box-shadow:
+      0 0 30px fade(@somali-primary, 50%),
+      0 10px 40px fade(@somali-dark, 30%);
+    animation: fox-alert 3s ease-in-out infinite;
+
+    &::before {
+      background: linear-gradient(135deg, @somali-primary, @somali-secondary);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@somali-dark, 50%));
+    }
+  }
+
+  @keyframes fox-alert {
+    0%, 100% { transform: rotate(0deg); }
+    15% { transform: rotate(-5deg); }
+    30% { transform: rotate(5deg); }
+    45% { transform: rotate(0deg); }
+  }
+
+  .online-status {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+    box-shadow: 0 0 20px fade(#ff9800, 70%);
+  }
+
+  .profile-name {
+    .text-gradient(@somali-dark, @somali-primary);
+
+    &::after {
+      content: ' 🦊';
+    }
+  }
+
+  .profile-category {
+    color: @somali-secondary;
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @somali-primary, @somali-secondary);
+    border: 2px solid @somali-dark;
+
+    &:hover {
+      background: linear-gradient(135deg, @somali-secondary, @somali-dark);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 30px fade(@somali-primary, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @somali-primary;
+    border: 2px solid @somali-primary;
+    background: @somali-light;
+
+    &:hover {
+      background: @somali-primary;
+      color: @somali-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @somali-light, @somali-accent);
+    border: 3px solid @somali-ticked;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        fade(@somali-primary, 10%),
+        transparent
+      );
+      animation: flame-sweep 3s ease-in-out infinite;
+    }
+
+    .stat-value {
+      .text-gradient(@somali-dark, @somali-primary);
+    }
+  }
+
+  @keyframes flame-sweep {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+  }
+
+  .section-title {
+    color: @somali-dark;
+    border-bottom: 3px solid @somali-ticked;
+
+    &::before {
+      content: '🔥';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @somali-light;
+    border: 2px solid @somali-accent;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: @somali-accent;
+      border-color: @somali-primary;
+      transform: translateY(-5px) rotate(1deg);
+      box-shadow: 0 10px 30px fade(@somali-primary, 20%);
+    }
+
+    .detail-icon {
+      background: fade(@somali-primary, 20%);
+      padding: @space-2;
+      border-radius: @radius-lg;
+    }
+  }
+
+  .trait-badge {
+    background: linear-gradient(135deg, @somali-accent, @somali-light);
+    color: @somali-dark;
+    border: 2px solid @somali-ticked;
+
+    &:nth-child(odd) {
+      background: linear-gradient(135deg, @somali-primary, @somali-ruddy);
+      color: @somali-light;
+    }
+
+    &:hover {
+      transform: scale(1.1) rotate(-3deg);
+      box-shadow: 0 5px 20px fade(@somali-primary, 40%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @somali-light, @somali-accent);
+      border: 3px solid @somali-ticked;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @somali-primary;
+      transform: scale(1.08);
+      box-shadow: 0 15px 40px fade(@somali-primary, 25%);
+    }
+  }
+
+  .post-card {
+    background: @somali-light;
+    border: 2px solid @somali-accent;
+    border-top: 4px solid @somali-ticked;
+
+    &:hover {
+      border-top-color: @somali-primary;
+      box-shadow: 0 10px 40px fade(@somali-primary, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @somali-ticked, @somali-accent);
+      border: 2px solid @somali-primary;
+    }
+  }
+
+  .friend-card {
+    background: @somali-light;
+    border: 2px solid @somali-accent;
+
+    &:hover {
+      background: @somali-accent;
+      border-color: @somali-ticked;
+      transform: translateY(-5px);
+    }
+  }
+
+  &::after {
+    content: '🍁';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+    animation: leaf-fall 4s ease-in-out infinite;
+  }
+
+  @keyframes leaf-fall {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(15deg); }
+  }
+}

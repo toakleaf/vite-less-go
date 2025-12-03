@@ -1,0 +1,230 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Abyssinian Theme - Ancient, Elegant, Agile
+@aby-primary: #cd853f;
+@aby-secondary: #d2691e;
+@aby-accent: #f5deb3;
+@aby-dark: #8b4513;
+@aby-light: #faf0e6;
+@aby-ticked: #b87333;
+@aby-sand: #f4a460;
+
+.animal-abyssinian {
+  .profile-cover {
+    background: linear-gradient(135deg, @aby-ticked 0%, @aby-primary 50%, @aby-sand 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Egyptian pyramid pattern
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        linear-gradient(135deg, transparent 25%, fade(@aby-dark, 10%) 25%, fade(@aby-dark, 10%) 50%, transparent 50%),
+        linear-gradient(-135deg, transparent 25%, fade(@aby-dark, 10%) 25%, fade(@aby-dark, 10%) 50%, transparent 50%);
+      background-size: 60px 60px;
+      animation: ancient-shift 20s linear infinite;
+    }
+
+    &::after {
+      content: '';
+      .absolute-fill();
+      background: radial-gradient(
+        ellipse at center bottom,
+        fade(@aby-sand, 40%) 0%,
+        transparent 60%
+      );
+    }
+  }
+
+  @keyframes ancient-shift {
+    from { background-position: 0 0; }
+    to { background-position: 60px 60px; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @aby-accent, @aby-sand);
+    border: 4px solid @aby-dark;
+    box-shadow:
+      0 0 30px fade(@aby-primary, 50%),
+      0 10px 40px fade(@aby-dark, 30%);
+    position: relative;
+
+    &::before {
+      background: linear-gradient(135deg, @aby-primary, @aby-ticked);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@aby-dark, 50%));
+      animation: regal-pose 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes regal-pose {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(3deg) scale(1.05); }
+  }
+
+  .online-status {
+    background: linear-gradient(135deg, #ffd700, #daa520);
+    border: 2px solid @aby-dark;
+    box-shadow: 0 0 15px fade(#ffd700, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@aby-dark, @aby-primary);
+    font-style: italic;
+    letter-spacing: @letter-spacing-wider;
+  }
+
+  .profile-category {
+    color: @aby-secondary;
+    letter-spacing: @letter-spacing-widest;
+
+    &::before {
+      content: '☥ ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @aby-primary, @aby-secondary);
+    border: 2px solid @aby-dark;
+
+    &:hover {
+      background: linear-gradient(135deg, @aby-secondary, @aby-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px fade(@aby-primary, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @aby-dark;
+    border: 2px solid @aby-primary;
+    background: @aby-light;
+
+    &:hover {
+      background: @aby-primary;
+      color: @aby-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @aby-light, @aby-accent);
+    border: 2px solid @aby-primary;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 20%;
+      right: 20%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, @aby-dark, transparent);
+    }
+
+    .stat-value {
+      .text-gradient(@aby-dark, @aby-primary);
+    }
+  }
+
+  .section-title {
+    color: @aby-dark;
+    border-bottom: 2px solid @aby-primary;
+    font-style: italic;
+
+    &::before {
+      content: '🏺';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @aby-light;
+    border: 2px solid fade(@aby-primary, 40%);
+    transition: all 0.4s ease;
+
+    &:hover {
+      background: @aby-accent;
+      border-color: @aby-primary;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px fade(@aby-primary, 20%);
+    }
+
+    .detail-icon {
+      background: fade(@aby-primary, 30%);
+      padding: @space-2;
+      border-radius: @radius-lg;
+    }
+  }
+
+  .trait-badge {
+    background: linear-gradient(135deg, @aby-accent, @aby-light);
+    color: @aby-dark;
+    border: 2px solid @aby-primary;
+    font-style: italic;
+
+    &:hover {
+      background: @aby-primary;
+      color: @aby-light;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @aby-light, @aby-accent, @aby-sand);
+      border: 3px solid @aby-primary;
+
+      &::after {
+        content: '☥';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: @font-size-xl;
+        color: @aby-dark;
+        opacity: 0.3;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @aby-dark;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @aby-light;
+    border: 2px solid fade(@aby-primary, 30%);
+
+    &:hover {
+      border-color: @aby-primary;
+      box-shadow: 0 10px 40px fade(@aby-primary, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @aby-sand, @aby-accent);
+      border: 2px solid @aby-primary;
+    }
+  }
+
+  .friend-card {
+    background: @aby-light;
+    border: 2px solid fade(@aby-primary, 30%);
+
+    &:hover {
+      background: @aby-accent;
+      border-color: @aby-primary;
+    }
+  }
+
+  &::after {
+    content: '🐪';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.15;
+  }
+}

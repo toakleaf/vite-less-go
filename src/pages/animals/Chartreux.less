@@ -1,0 +1,194 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Chartreux Theme - French, Woolly, Smiling
+@char-primary: #6082b6;
+@char-secondary: #4f6d8f;
+@char-accent: #b0c4de;
+@char-dark: #36454f;
+@char-light: #f5f8fa;
+@char-wool: #7393b3;
+@char-copper: #b87333;
+
+.animal-chartreux {
+  .profile-cover {
+    background: linear-gradient(135deg, @char-secondary 0%, @char-primary 50%, @char-wool 100%);
+    position: relative;
+    overflow: hidden;
+
+    // Woolly texture pattern
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 10% 20%, fade(@char-light, 15%) 0%, transparent 8%),
+        radial-gradient(circle at 30% 40%, fade(@char-light, 12%) 0%, transparent 6%),
+        radial-gradient(circle at 50% 15%, fade(@char-light, 18%) 0%, transparent 10%),
+        radial-gradient(circle at 70% 35%, fade(@char-light, 10%) 0%, transparent 7%),
+        radial-gradient(circle at 90% 60%, fade(@char-light, 15%) 0%, transparent 9%),
+        radial-gradient(circle at 20% 70%, fade(@char-light, 12%) 0%, transparent 8%),
+        radial-gradient(circle at 60% 80%, fade(@char-light, 16%) 0%, transparent 11%),
+        radial-gradient(circle at 80% 90%, fade(@char-light, 14%) 0%, transparent 8%);
+      background-size: 80px 80px;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @char-accent, @char-wool);
+    border: 4px solid @char-dark;
+    box-shadow:
+      0 0 30px fade(@char-primary, 40%),
+      0 10px 40px fade(@char-dark, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @char-primary, @char-secondary);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@char-dark, 50%));
+    }
+  }
+
+  .online-status {
+    background: @char-copper;
+    border: 2px solid @char-dark;
+    box-shadow: 0 0 15px fade(@char-copper, 60%);
+  }
+
+  .profile-name {
+    .text-gradient(@char-dark, @char-primary);
+    font-style: italic;
+  }
+
+  .profile-category {
+    color: @char-secondary;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '🇫🇷 ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @char-primary, @char-secondary);
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: linear-gradient(135deg, @char-secondary, @char-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px fade(@char-primary, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @char-primary;
+    border: 2px solid @char-primary;
+    border-radius: @radius-lg;
+    background: @char-light;
+
+    &:hover {
+      background: @char-primary;
+      color: @char-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @char-light, @char-accent);
+    border: 2px solid @char-wool;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@char-dark, @char-primary);
+    }
+  }
+
+  .section-title {
+    color: @char-dark;
+    border-bottom: 2px solid @char-wool;
+    font-style: italic;
+
+    &::before {
+      content: '😊';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @char-light;
+    border: 2px solid fade(@char-wool, 60%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@char-accent, 50%);
+      border-color: @char-primary;
+      transform: translateY(-5px);
+    }
+
+    .detail-icon {
+      background: fade(@char-primary, 20%);
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: @char-light;
+    color: @char-dark;
+    border: 2px solid @char-wool;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @char-primary;
+      color: @char-light;
+      border-color: @char-primary;
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @char-light, @char-accent);
+      border: 3px solid @char-wool;
+      border-radius: @radius-xl;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @char-primary;
+      box-shadow: 0 10px 35px fade(@char-primary, 20%);
+    }
+  }
+
+  .post-card {
+    background: @char-light;
+    border: 2px solid fade(@char-wool, 50%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @char-primary;
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @char-wool, @char-accent);
+      border: 2px solid @char-primary;
+    }
+  }
+
+  .friend-card {
+    background: @char-light;
+    border: 2px solid fade(@char-wool, 50%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@char-accent, 50%);
+      border-color: @char-primary;
+    }
+  }
+
+  &::after {
+    content: '🥐';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

@@ -1,0 +1,266 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Chameleon Theme - Color-changing, Unique, Magical
+@cham-primary: #00bfa5;
+@cham-secondary: #7c4dff;
+@cham-accent: #ffab40;
+@cham-dark: #1a1a2e;
+@cham-light: #e0f7fa;
+@cham-pink: #f48fb1;
+@cham-lime: #c6ff00;
+
+.animal-chameleon {
+  .profile-cover {
+    background: linear-gradient(135deg, @cham-primary 0%, @cham-secondary 50%, @cham-pink 100%);
+    position: relative;
+    overflow: hidden;
+    animation: color-shift 10s ease-in-out infinite;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 20% 30%, fade(@cham-lime, 30%) 0%, transparent 30%),
+        radial-gradient(circle at 80% 60%, fade(@cham-accent, 25%) 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, fade(@cham-pink, 30%) 0%, transparent 30%);
+    }
+  }
+
+  @keyframes color-shift {
+    0%, 100% { filter: hue-rotate(0deg); }
+    25% { filter: hue-rotate(60deg); }
+    50% { filter: hue-rotate(120deg); }
+    75% { filter: hue-rotate(180deg); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @cham-primary, @cham-secondary, @cham-accent);
+    background-size: 200% 200%;
+    border: 4px solid @cham-dark;
+    box-shadow:
+      0 0 40px fade(@cham-primary, 50%),
+      0 10px 50px fade(@cham-dark, 30%);
+    animation: gradient-shift 5s ease-in-out infinite;
+
+    &::before {
+      background: linear-gradient(135deg, @cham-accent, @cham-pink);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 0 15px fade(@cham-lime, 60%));
+      animation: eye-rotate 6s ease-in-out infinite;
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes eye-rotate {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+  }
+
+  .online-status {
+    background: @cham-lime;
+    border: 2px solid @cham-dark;
+    box-shadow: 0 0 20px fade(@cham-lime, 80%);
+    animation: status-color 3s ease-in-out infinite;
+  }
+
+  @keyframes status-color {
+    0%, 100% { background: @cham-lime; }
+    33% { background: @cham-accent; }
+    66% { background: @cham-pink; }
+  }
+
+  .profile-name {
+    background: linear-gradient(90deg, @cham-primary, @cham-secondary, @cham-accent, @cham-pink);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: text-shift 4s ease-in-out infinite;
+  }
+
+  @keyframes text-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .profile-category {
+    color: @cham-secondary;
+    letter-spacing: @letter-spacing-wider;
+
+    &::before {
+      content: '🎨 ';
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @cham-primary, @cham-secondary);
+    border: 2px solid @cham-dark;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, @cham-secondary, @cham-accent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px fade(@cham-secondary, 50%);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  .btn-message {
+    color: @cham-secondary;
+    border: 2px solid @cham-secondary;
+    background: @cham-light;
+
+    &:hover {
+      background: @cham-secondary;
+      color: @cham-light;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @cham-light, fade(@cham-primary, 20%));
+    border: 2px solid @cham-primary;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, @cham-primary, @cham-secondary, @cham-accent, @cham-pink, @cham-lime);
+      background-size: 200% 100%;
+      animation: rainbow-bar 3s linear infinite;
+    }
+
+    .stat-value {
+      .text-gradient(@cham-dark, @cham-secondary);
+    }
+  }
+
+  @keyframes rainbow-bar {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+
+  .section-title {
+    color: @cham-dark;
+    border-bottom: 3px solid @cham-secondary;
+
+    &::before {
+      content: '🌈';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @cham-light;
+    border: 2px solid;
+    transition: all 0.5s ease;
+
+    &:nth-child(1) { border-color: @cham-primary; }
+    &:nth-child(2) { border-color: @cham-secondary; }
+    &:nth-child(3) { border-color: @cham-accent; }
+    &:nth-child(4) { border-color: @cham-pink; }
+    &:nth-child(5) { border-color: @cham-lime; }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px fade(@cham-secondary, 25%);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @cham-primary, @cham-secondary);
+      color: white;
+      padding: @space-2;
+      border-radius: @radius-full;
+    }
+  }
+
+  .trait-badge {
+    background: @cham-light;
+    color: @cham-dark;
+    border: 2px solid;
+    transition: all 0.3s ease;
+
+    &:nth-child(1) { border-color: @cham-primary; }
+    &:nth-child(2) { border-color: @cham-secondary; }
+    &:nth-child(3) { border-color: @cham-accent; }
+    &:nth-child(4) { border-color: @cham-pink; }
+
+    &:hover {
+      background: @cham-secondary;
+      color: white;
+      border-color: @cham-secondary;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @cham-light, fade(@cham-primary, 30%), fade(@cham-secondary, 20%));
+      border: 3px solid @cham-primary;
+      transition: all 0.5s ease;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @cham-accent;
+      transform: scale(1.08);
+      box-shadow: 0 15px 40px fade(@cham-secondary, 30%);
+    }
+  }
+
+  .post-card {
+    background: @cham-light;
+    border: 2px solid fade(@cham-primary, 40%);
+
+    &:hover {
+      border-color: @cham-secondary;
+      box-shadow: 0 10px 35px fade(@cham-secondary, 20%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @cham-primary, @cham-accent);
+      border: 2px solid @cham-dark;
+    }
+  }
+
+  .friend-card {
+    background: @cham-light;
+    border: 2px solid fade(@cham-primary, 40%);
+
+    &:hover {
+      background: fade(@cham-primary, 15%);
+      border-color: @cham-primary;
+    }
+  }
+
+  &::after {
+    content: '🍃';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.25;
+  }
+}
