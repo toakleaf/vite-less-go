@@ -1,0 +1,238 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Clownfish Theme - Nemo, Orange/White, Reef
+@clown-orange: #ff5722;
+@clown-white: #ffffff;
+@clown-black: #212121;
+@clown-coral: #ff7043;
+@clown-reef: #00bcd4;
+@clown-deep: #006064;
+@clown-anemone: #e91e63;
+
+.animal-clownfish {
+  .profile-cover {
+    background: linear-gradient(180deg, @clown-reef 0%, @clown-deep 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      // Anemone tentacles
+      background:
+        radial-gradient(ellipse 15px 80px at 20% 100%, fade(@clown-anemone, 50%) 50%, transparent 50%),
+        radial-gradient(ellipse 12px 70px at 30% 100%, fade(@clown-anemone, 45%) 50%, transparent 50%),
+        radial-gradient(ellipse 18px 90px at 45% 100%, fade(@clown-anemone, 55%) 50%, transparent 50%),
+        radial-gradient(ellipse 14px 75px at 60% 100%, fade(@clown-anemone, 48%) 50%, transparent 50%),
+        radial-gradient(ellipse 16px 85px at 75% 100%, fade(@clown-anemone, 52%) 50%, transparent 50%),
+        radial-gradient(ellipse 13px 65px at 85% 100%, fade(@clown-anemone, 42%) 50%, transparent 50%);
+      animation: sway 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: skewX(0deg); }
+    25% { transform: skewX(3deg); }
+    75% { transform: skewX(-3deg); }
+  }
+
+  .profile-avatar {
+    background: repeating-linear-gradient(
+      90deg,
+      @clown-orange 0px,
+      @clown-orange 25px,
+      @clown-white 25px,
+      @clown-white 35px,
+      @clown-black 35px,
+      @clown-black 38px,
+      @clown-white 38px,
+      @clown-white 48px,
+      @clown-orange 48px
+    );
+    border: 4px solid @clown-reef;
+    box-shadow:
+      0 0 25px fade(@clown-orange, 50%),
+      0 10px 40px fade(@clown-deep, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @clown-orange, @clown-coral);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@clown-deep, 50%));
+      animation: wiggle-swim 1s ease-in-out infinite;
+    }
+  }
+
+  @keyframes wiggle-swim {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  .online-status {
+    background: @clown-orange;
+    border: 3px solid @clown-white;
+  }
+
+  .profile-name {
+    .text-gradient(@clown-orange, @clown-coral);
+    font-weight: @font-weight-bold;
+
+    &::after {
+      content: ' 🐡';
+    }
+  }
+
+  .profile-category {
+    color: @clown-reef;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @clown-orange, @clown-coral);
+    border: 3px solid @clown-white;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @clown-reef;
+      transform: translateY(-3px) rotate(-2deg);
+    }
+  }
+
+  .btn-message {
+    color: @clown-orange;
+    border: 3px solid @clown-orange;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @clown-orange;
+      color: @clown-white;
+    }
+  }
+
+  .profile-stats {
+    background: @clown-white;
+    border: 3px solid @clown-reef;
+    border-radius: @radius-2xl;
+    position: relative;
+    overflow: hidden;
+
+    // Stripe pattern
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: repeating-linear-gradient(
+        90deg,
+        @clown-orange 0px,
+        @clown-orange 20px,
+        @clown-white 20px,
+        @clown-white 30px
+      );
+    }
+
+    .stat-value {
+      .text-gradient(@clown-orange, @clown-coral);
+    }
+  }
+
+  .section-title {
+    color: @clown-deep;
+    border-bottom: 4px solid @clown-orange;
+
+    &::before {
+      content: '🐠';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @clown-white;
+    border: 2px solid @clown-reef;
+    border-left: 5px solid @clown-orange;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@clown-reef, 10%);
+      transform: translateX(5px);
+    }
+
+    .detail-icon {
+      background: @clown-orange;
+      color: @clown-white;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+  }
+
+  .trait-badge {
+    border-radius: @radius-full;
+
+    &:nth-child(odd) {
+      background: @clown-orange;
+      color: @clown-white;
+    }
+
+    &:nth-child(even) {
+      background: @clown-white;
+      color: @clown-orange;
+      border: 2px solid @clown-orange;
+    }
+
+    &:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @clown-reef 0%, @clown-deep 100%);
+      border: 3px solid @clown-orange;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @clown-anemone;
+    }
+  }
+
+  .post-card {
+    background: @clown-white;
+    border: 2px solid @clown-reef;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @clown-orange;
+    }
+
+    .post-avatar {
+      background: @clown-orange;
+      border: 3px solid @clown-white;
+    }
+  }
+
+  .friend-card {
+    background: @clown-white;
+    border: 2px solid @clown-reef;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@clown-orange, 10%);
+      border-color: @clown-orange;
+    }
+  }
+
+  // Reef decoration
+  &::after {
+    content: '🪸';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

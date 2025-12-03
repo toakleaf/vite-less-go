@@ -1,0 +1,231 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Cockatiel Theme - Friendly, Gray/Yellow, Whistling
+@cockatiel-gray: #78909c;
+@cockatiel-yellow: #fdd835;
+@cockatiel-orange: #ff7043;
+@cockatiel-white: #fafafa;
+@cockatiel-dark: #455a64;
+@cockatiel-light: #eceff1;
+@cockatiel-cheek: #ef5350;
+
+.animal-cockatiel {
+  .profile-cover {
+    background: linear-gradient(135deg, @cockatiel-gray 0%, @cockatiel-dark 50%, @cockatiel-gray 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 30%, fade(@cockatiel-yellow, 40%) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 70%, fade(@cockatiel-orange, 30%) 0%, transparent 50%);
+    }
+
+    // Crest pattern
+    &::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 50px solid @cockatiel-yellow;
+      opacity: 0.7;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @cockatiel-yellow 0%, @cockatiel-white 30%, @cockatiel-gray 100%);
+    border: 4px solid @cockatiel-yellow;
+    box-shadow:
+      0 0 0 4px @cockatiel-gray,
+      0 10px 40px fade(@cockatiel-dark, 30%);
+    position: relative;
+
+    &::before {
+      background: linear-gradient(135deg, @cockatiel-yellow, @cockatiel-orange);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@cockatiel-dark, 40%));
+    }
+
+    // Cheek patches
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 35%;
+      left: 15%;
+      width: 15px;
+      height: 15px;
+      background: @cockatiel-cheek;
+      border-radius: 50%;
+      box-shadow: 55px 0 0 0 @cockatiel-cheek;
+    }
+  }
+
+  .online-status {
+    background: @cockatiel-yellow;
+    border: 3px solid @cockatiel-white;
+    box-shadow: 0 0 10px @cockatiel-yellow;
+  }
+
+  .profile-name {
+    .text-gradient(@cockatiel-dark, @cockatiel-gray);
+    font-weight: @font-weight-semibold;
+
+    &::after {
+      content: ' 🎤';
+    }
+  }
+
+  .profile-category {
+    color: @cockatiel-orange;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @cockatiel-yellow, @cockatiel-orange);
+    color: @cockatiel-dark;
+    border: 2px solid @cockatiel-white;
+
+    &:hover {
+      background: linear-gradient(135deg, @cockatiel-orange, @cockatiel-cheek);
+      color: white;
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-message {
+    color: @cockatiel-dark;
+    border: 2px solid @cockatiel-dark;
+
+    &:hover {
+      background: @cockatiel-dark;
+      color: @cockatiel-yellow;
+    }
+  }
+
+  .profile-stats {
+    background: @cockatiel-light;
+    border: 2px solid @cockatiel-gray;
+    border-top: 5px solid @cockatiel-yellow;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@cockatiel-dark, @cockatiel-gray);
+    }
+  }
+
+  .section-title {
+    color: @cockatiel-dark;
+    border-bottom: 3px solid @cockatiel-yellow;
+
+    &::before {
+      content: '🎼';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @cockatiel-white;
+    border: 2px solid @cockatiel-light;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @cockatiel-light;
+      border-color: @cockatiel-yellow;
+      transform: translateY(-3px);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @cockatiel-gray, @cockatiel-dark);
+      color: @cockatiel-yellow;
+      border-radius: @radius-lg;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @cockatiel-gray;
+    }
+  }
+
+  .trait-badge {
+    background: @cockatiel-light;
+    color: @cockatiel-dark;
+    border: 2px solid @cockatiel-gray;
+    border-radius: @radius-xl;
+
+    &:nth-child(odd) {
+      background: @cockatiel-yellow;
+      border-color: @cockatiel-orange;
+    }
+
+    &:hover {
+      transform: scale(1.05) rotate(-2deg);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @cockatiel-yellow 10%, @cockatiel-white 30%, @cockatiel-gray 100%);
+      border: 2px solid @cockatiel-gray;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @cockatiel-yellow;
+    }
+  }
+
+  .post-card {
+    background: @cockatiel-white;
+    border: 2px solid @cockatiel-light;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @cockatiel-yellow;
+      box-shadow: 0 8px 30px fade(@cockatiel-yellow, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @cockatiel-yellow, @cockatiel-gray);
+      border: 2px solid @cockatiel-yellow;
+    }
+  }
+
+  .friend-card {
+    background: @cockatiel-white;
+    border: 2px solid @cockatiel-light;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @cockatiel-light;
+      border-color: @cockatiel-yellow;
+    }
+  }
+
+  // Whistle notes decoration
+  &::after {
+    content: '♪♫';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 30px;
+    opacity: 0.2;
+    animation: whistle 1.5s ease-in-out infinite;
+  }
+
+  @keyframes whistle {
+    0%, 100% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-10px) scale(1.1); }
+    50% { transform: translateY(-5px) scale(1); }
+    75% { transform: translateY(-15px) scale(1.1); }
+  }
+}

@@ -1,0 +1,226 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Chinchilla Theme - Ultra Soft, Gray, Bouncy
+@chinchilla-gray: #9e9e9e;
+@chinchilla-silver: #bdbdbd;
+@chinchilla-white: #fafafa;
+@chinchilla-dark: #616161;
+@chinchilla-light: #eeeeee;
+@chinchilla-pink: #f8bbd9;
+@chinchilla-purple: #ce93d8;
+
+.animal-chinchilla {
+  .profile-cover {
+    background: linear-gradient(180deg, @chinchilla-white 0%, @chinchilla-silver 50%, @chinchilla-gray 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 30%, fade(@chinchilla-purple, 20%) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 70%, fade(@chinchilla-pink, 25%) 0%, transparent 50%);
+    }
+
+    // Soft fur effect
+    &::after {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle 3px at 10% 20%, fade(@chinchilla-white, 60%) 100%, transparent 100%),
+        radial-gradient(circle 2px at 30% 40%, fade(@chinchilla-white, 50%) 100%, transparent 100%),
+        radial-gradient(circle 3px at 50% 30%, fade(@chinchilla-white, 55%) 100%, transparent 100%),
+        radial-gradient(circle 2px at 70% 50%, fade(@chinchilla-white, 45%) 100%, transparent 100%),
+        radial-gradient(circle 3px at 90% 35%, fade(@chinchilla-white, 60%) 100%, transparent 100%);
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @chinchilla-white 0%, @chinchilla-silver 50%, @chinchilla-gray 100%);
+    border: 4px solid @chinchilla-purple;
+    box-shadow:
+      0 0 30px fade(@chinchilla-silver, 50%),
+      0 15px 45px fade(@chinchilla-dark, 25%);
+
+    &::before {
+      background: linear-gradient(135deg, @chinchilla-purple, @chinchilla-pink);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@chinchilla-dark, 30%));
+      animation: bounce-soft 1s ease-in-out infinite;
+    }
+  }
+
+  @keyframes bounce-soft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .online-status {
+    background: @chinchilla-purple;
+    border: 3px solid @chinchilla-white;
+    box-shadow: 0 0 15px fade(@chinchilla-purple, 50%);
+  }
+
+  .profile-name {
+    .text-gradient(@chinchilla-gray, @chinchilla-dark);
+    font-weight: @font-weight-medium;
+
+    &::after {
+      content: ' ✨';
+    }
+  }
+
+  .profile-category {
+    color: @chinchilla-purple;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @chinchilla-purple, @chinchilla-pink);
+    border-radius: @radius-full;
+    box-shadow: 0 4px 20px fade(@chinchilla-purple, 40%);
+
+    &:hover {
+      background: linear-gradient(135deg, @chinchilla-pink, @chinchilla-purple);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px fade(@chinchilla-purple, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @chinchilla-purple;
+    border: 2px solid @chinchilla-purple;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @chinchilla-purple;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: @chinchilla-white;
+    border: 2px solid @chinchilla-silver;
+    border-radius: @radius-3xl;
+    box-shadow: 0 4px 25px fade(@chinchilla-silver, 30%);
+
+    .stat-value {
+      .text-gradient(@chinchilla-dark, @chinchilla-purple);
+    }
+  }
+
+  .section-title {
+    color: @chinchilla-dark;
+    border-bottom: 3px solid @chinchilla-purple;
+
+    &::before {
+      content: '🧸';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @chinchilla-white;
+    border: 2px solid @chinchilla-light;
+    border-radius: @radius-2xl;
+    box-shadow: 0 2px 15px fade(@chinchilla-silver, 20%);
+
+    &:hover {
+      background: @chinchilla-light;
+      border-color: @chinchilla-purple;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px fade(@chinchilla-purple, 20%);
+    }
+
+    .detail-icon {
+      background: @chinchilla-purple;
+      color: white;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @chinchilla-gray;
+    }
+  }
+
+  .trait-badge {
+    background: @chinchilla-light;
+    color: @chinchilla-dark;
+    border: 2px solid @chinchilla-silver;
+    border-radius: @radius-full;
+
+    &:nth-child(odd) {
+      background: fade(@chinchilla-purple, 15%);
+      border-color: @chinchilla-purple;
+    }
+
+    &:hover {
+      background: @chinchilla-purple;
+      color: white;
+      border-color: @chinchilla-purple;
+      transform: translateY(-3px);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-2xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @chinchilla-white 0%, @chinchilla-silver 100%);
+      border: 2px solid @chinchilla-silver;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @chinchilla-purple;
+      box-shadow: 0 10px 40px fade(@chinchilla-purple, 20%);
+    }
+  }
+
+  .post-card {
+    background: @chinchilla-white;
+    border: 2px solid @chinchilla-light;
+    border-radius: @radius-2xl;
+
+    &:hover {
+      border-color: @chinchilla-purple;
+      box-shadow: 0 8px 30px fade(@chinchilla-purple, 15%);
+    }
+
+    .post-avatar {
+      background: @chinchilla-silver;
+      border: 2px solid @chinchilla-purple;
+    }
+  }
+
+  .friend-card {
+    background: @chinchilla-white;
+    border: 2px solid @chinchilla-light;
+    border-radius: @radius-2xl;
+
+    &:hover {
+      background: @chinchilla-light;
+      border-color: @chinchilla-purple;
+      transform: translateY(-5px);
+    }
+  }
+
+  // Dust bath decoration
+  &::after {
+    content: '💨';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.15;
+    animation: dust 2s ease-in-out infinite;
+  }
+
+  @keyframes dust {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+  }
+}

@@ -1,0 +1,262 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Sphynx Theme - Alien, Purple, Mysterious
+@sphynx-primary: #9c27b0;
+@sphynx-secondary: #7b1fa2;
+@sphynx-accent: #e1bee7;
+@sphynx-dark: #4a148c;
+@sphynx-light: #f3e5f5;
+@sphynx-skin: #e8d5c4;
+@sphynx-glow: #ea80fc;
+
+.animal-sphynx {
+  .profile-cover {
+    background: linear-gradient(135deg, @sphynx-dark 0%, @sphynx-secondary 50%, @sphynx-primary 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 20% 30%, @sphynx-glow 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, fade(@sphynx-primary, 50%) 0%, transparent 40%);
+      animation: glow-pulse 4s ease-in-out infinite;
+    }
+
+    // Alien grid pattern
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        linear-gradient(fade(@sphynx-glow, 10%) 1px, transparent 1px),
+        linear-gradient(90deg, fade(@sphynx-glow, 10%) 1px, transparent 1px);
+      background-size: 30px 30px;
+      animation: grid-move 20s linear infinite;
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes grid-move {
+    from { background-position: 0 0; }
+    to { background-position: 30px 30px; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @sphynx-skin, @sphynx-light);
+    border: 4px solid @sphynx-glow;
+    box-shadow:
+      0 0 30px @sphynx-glow,
+      0 0 60px fade(@sphynx-primary, 50%);
+
+    &::before {
+      background: linear-gradient(135deg, @sphynx-glow, @sphynx-primary);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 0 15px @sphynx-glow);
+    }
+  }
+
+  .online-status {
+    background: @sphynx-glow;
+    border: 3px solid @sphynx-dark;
+    box-shadow:
+      0 0 10px @sphynx-glow,
+      0 0 20px @sphynx-glow;
+    animation: alien-pulse 1s ease-in-out infinite;
+  }
+
+  @keyframes alien-pulse {
+    0%, 100% { box-shadow: 0 0 10px @sphynx-glow, 0 0 20px @sphynx-glow; }
+    50% { box-shadow: 0 0 20px @sphynx-glow, 0 0 40px @sphynx-glow, 0 0 60px fade(@sphynx-glow, 50%); }
+  }
+
+  .profile-name {
+    .text-gradient(@sphynx-glow, @sphynx-primary);
+    text-shadow: 0 0 20px fade(@sphynx-glow, 50%);
+    letter-spacing: @letter-spacing-wide;
+
+    &::before {
+      content: '👽 ';
+    }
+  }
+
+  .profile-category {
+    color: @sphynx-glow;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+    text-shadow: 0 0 10px @sphynx-glow;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @sphynx-primary, @sphynx-dark);
+    border: 2px solid @sphynx-glow;
+    box-shadow: 0 0 20px fade(@sphynx-glow, 50%);
+
+    &:hover {
+      background: @sphynx-glow;
+      color: @sphynx-dark;
+      box-shadow: 0 0 40px @sphynx-glow;
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-message {
+    color: @sphynx-glow;
+    border: 2px solid @sphynx-glow;
+    background: fade(@sphynx-dark, 50%);
+
+    &:hover {
+      background: @sphynx-glow;
+      color: @sphynx-dark;
+    }
+  }
+
+  .profile-stats {
+    background: fade(@sphynx-dark, 80%);
+    border: 2px solid @sphynx-glow;
+    border-radius: @radius-xl;
+    box-shadow: inset 0 0 30px fade(@sphynx-glow, 20%);
+
+    .stat-value {
+      color: @sphynx-glow;
+      text-shadow: 0 0 10px @sphynx-glow;
+    }
+
+    .stat-label {
+      color: @sphynx-accent;
+    }
+  }
+
+  .section-title {
+    color: @sphynx-glow;
+    border-bottom: 2px solid @sphynx-glow;
+    text-shadow: 0 0 10px fade(@sphynx-glow, 50%);
+
+    &::before {
+      content: '🔮';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: fade(@sphynx-dark, 60%);
+    border: 1px solid fade(@sphynx-glow, 30%);
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: fade(@sphynx-secondary, 60%);
+      border-color: @sphynx-glow;
+      box-shadow: 0 0 20px fade(@sphynx-glow, 30%);
+    }
+
+    .detail-icon {
+      background: @sphynx-glow;
+      color: @sphynx-dark;
+      border-radius: @radius-md;
+      padding: @space-2;
+      box-shadow: 0 0 10px @sphynx-glow;
+    }
+
+    .detail-label {
+      color: @sphynx-accent;
+    }
+
+    .detail-value {
+      color: @sphynx-light;
+    }
+  }
+
+  .trait-badge {
+    background: fade(@sphynx-dark, 80%);
+    color: @sphynx-glow;
+    border: 1px solid @sphynx-glow;
+    text-shadow: 0 0 5px @sphynx-glow;
+
+    &:hover {
+      background: @sphynx-glow;
+      color: @sphynx-dark;
+      box-shadow: 0 0 20px @sphynx-glow;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-lg;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, fade(@sphynx-dark, 80%), fade(@sphynx-secondary, 60%));
+      border: 2px solid fade(@sphynx-glow, 30%);
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @sphynx-glow;
+      box-shadow: 0 0 30px fade(@sphynx-glow, 30%);
+    }
+  }
+
+  .post-card {
+    background: fade(@sphynx-dark, 80%);
+    border: 1px solid fade(@sphynx-glow, 20%);
+    border-radius: @radius-lg;
+
+    &:hover {
+      border-color: @sphynx-glow;
+      box-shadow: 0 0 20px fade(@sphynx-glow, 20%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @sphynx-skin, @sphynx-light);
+      border: 2px solid @sphynx-glow;
+      box-shadow: 0 0 10px @sphynx-glow;
+    }
+
+    .post-text {
+      color: @sphynx-light;
+    }
+
+    .post-meta {
+      color: @sphynx-accent;
+    }
+  }
+
+  .friend-card {
+    background: fade(@sphynx-dark, 80%);
+    border: 1px solid fade(@sphynx-glow, 20%);
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: fade(@sphynx-secondary, 60%);
+      border-color: @sphynx-glow;
+      box-shadow: 0 0 20px fade(@sphynx-glow, 30%);
+    }
+
+    .friend-name {
+      color: @sphynx-light;
+    }
+  }
+
+  // UFO decoration
+  &::before {
+    content: '🛸';
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.3;
+    animation: ufo-float 5s ease-in-out infinite;
+  }
+
+  @keyframes ufo-float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-20px) translateX(10px); }
+    50% { transform: translateY(-10px) translateX(20px); }
+    75% { transform: translateY(-25px) translateX(5px); }
+  }
+}

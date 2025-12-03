@@ -1,0 +1,241 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Persian Cat Theme - Elegant, Cream, Luxurious
+@persian-primary: #f5f5dc;
+@persian-secondary: #deb887;
+@persian-accent: #fffef0;
+@persian-dark: #8b7355;
+@persian-light: #fffaf0;
+@persian-gold: #c9a959;
+@persian-copper: #b87333;
+
+.animal-persian {
+  .profile-cover {
+    background: linear-gradient(135deg, @persian-secondary 0%, @persian-primary 50%, @persian-accent 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 30%, fade(@persian-gold, 40%) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 70%, fade(@persian-copper, 20%) 0%, transparent 40%);
+    }
+
+    // Silk texture
+    &::after {
+      content: '';
+      .absolute-fill();
+      background:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 2px,
+          fade(@persian-light, 10%) 2px,
+          fade(@persian-light, 10%) 4px
+        );
+      opacity: 0.5;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @persian-accent, @persian-primary);
+    border: 5px solid @persian-gold;
+    box-shadow:
+      0 0 0 5px fade(@persian-secondary, 40%),
+      0 15px 50px fade(@persian-dark, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @persian-gold, @persian-copper);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@persian-dark, 30%));
+    }
+
+    // Fluffy effect
+    &::after {
+      content: '';
+      .absolute-fill();
+      border-radius: inherit;
+      box-shadow: inset 0 0 30px fade(@persian-primary, 50%);
+    }
+  }
+
+  .online-status {
+    background: linear-gradient(135deg, @persian-gold, @persian-copper);
+    border: 3px solid @persian-accent;
+    box-shadow: 0 0 15px fade(@persian-gold, 50%);
+  }
+
+  .profile-name {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    .text-gradient(@persian-dark, @persian-copper);
+    font-style: italic;
+    letter-spacing: @letter-spacing-wide;
+  }
+
+  .profile-category {
+    color: @persian-gold;
+    font-family: 'Georgia', serif;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @persian-gold, @persian-copper);
+    border: 2px solid fade(@persian-accent, 50%);
+    box-shadow: 0 4px 20px fade(@persian-gold, 40%);
+
+    &:hover {
+      background: linear-gradient(135deg, @persian-copper, @persian-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px fade(@persian-gold, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @persian-gold;
+    border: 2px solid @persian-gold;
+    background: fade(@persian-accent, 80%);
+
+    &:hover {
+      background: @persian-gold;
+      color: @persian-accent;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @persian-accent, @persian-primary);
+    border: 2px solid @persian-gold;
+    border-radius: @radius-3xl;
+    position: relative;
+
+    &::before {
+      content: '👑';
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: @font-size-2xl;
+    }
+
+    .stat-value {
+      font-family: 'Georgia', serif;
+      .text-gradient(@persian-dark, @persian-gold);
+    }
+  }
+
+  .section-title {
+    color: @persian-dark;
+    border-bottom: 2px solid @persian-gold;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+
+    &::before {
+      content: '✨';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @persian-accent;
+    border: 1px solid fade(@persian-gold, 40%);
+    border-radius: @radius-2xl;
+
+    &:hover {
+      background: @persian-primary;
+      border-color: @persian-gold;
+      box-shadow:
+        0 8px 30px fade(@persian-gold, 15%),
+        inset 0 0 20px fade(@persian-accent, 50%);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @persian-gold, @persian-secondary);
+      color: @persian-accent;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @persian-gold;
+      font-family: 'Georgia', serif;
+    }
+  }
+
+  .trait-badge {
+    background: linear-gradient(135deg, @persian-accent, @persian-primary);
+    color: @persian-dark;
+    border: 1px solid @persian-gold;
+    border-radius: @radius-full;
+    font-family: 'Georgia', serif;
+
+    &:hover {
+      background: @persian-gold;
+      color: @persian-accent;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px fade(@persian-gold, 30%);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-2xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @persian-accent, @persian-primary, @persian-secondary);
+      border: 2px solid @persian-gold;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      box-shadow: 0 10px 40px fade(@persian-gold, 30%);
+    }
+  }
+
+  .post-card {
+    background: @persian-accent;
+    border: 1px solid fade(@persian-gold, 30%);
+    border-radius: @radius-2xl;
+
+    &:hover {
+      border-color: @persian-gold;
+      box-shadow: 0 10px 40px fade(@persian-gold, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @persian-primary, @persian-secondary);
+      border: 2px solid @persian-gold;
+    }
+  }
+
+  .friend-card {
+    background: linear-gradient(135deg, @persian-accent, @persian-primary);
+    border: 1px solid fade(@persian-gold, 30%);
+    border-radius: @radius-2xl;
+
+    &:hover {
+      background: @persian-primary;
+      border-color: @persian-gold;
+      box-shadow: 0 8px 30px fade(@persian-gold, 20%);
+    }
+  }
+
+  // Feather decoration
+  &::after {
+    content: '🪶';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.15;
+    animation: float-feather 4s ease-in-out infinite;
+  }
+
+  @keyframes float-feather {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(5deg); }
+    50% { transform: translateY(-15px) rotate(0deg); }
+    75% { transform: translateY(-5px) rotate(-5deg); }
+  }
+}

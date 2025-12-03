@@ -1,0 +1,215 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Guinea Pig Theme - Fluffy, Multicolor, Squeaky
+@guinea-brown: #795548;
+@guinea-white: #fafafa;
+@guinea-orange: #ff7043;
+@guinea-black: #3e2723;
+@guinea-cream: #fff8e1;
+@guinea-light: #efebe9;
+@guinea-hay: #c9a74b;
+
+.animal-guinea-pig {
+  .profile-cover {
+    background: linear-gradient(135deg, @guinea-brown 0%, @guinea-orange 30%, @guinea-white 60%, @guinea-black 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 20% 40%, fade(@guinea-cream, 50%) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 60%, fade(@guinea-hay, 40%) 0%, transparent 50%);
+    }
+
+    // Hay texture
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 2px,
+          fade(@guinea-hay, 10%) 2px,
+          fade(@guinea-hay, 10%) 4px
+        );
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @guinea-white 0%, @guinea-orange 40%, @guinea-brown 70%, @guinea-black 100%);
+    border: 4px solid @guinea-hay;
+    box-shadow:
+      0 0 20px fade(@guinea-orange, 40%),
+      0 10px 35px fade(@guinea-black, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @guinea-orange, @guinea-brown);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@guinea-black, 40%));
+      animation: wheek 0.3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes wheek {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+
+  .online-status {
+    background: @guinea-orange;
+    border: 3px solid @guinea-cream;
+  }
+
+  .profile-name {
+    .text-gradient(@guinea-brown, @guinea-black);
+    font-weight: @font-weight-semibold;
+
+    &::after {
+      content: ' 🌾';
+    }
+  }
+
+  .profile-category {
+    color: @guinea-orange;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @guinea-orange, @guinea-brown);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: linear-gradient(135deg, @guinea-brown, @guinea-black);
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-message {
+    color: @guinea-brown;
+    border: 2px solid @guinea-brown;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @guinea-brown;
+      color: @guinea-cream;
+    }
+  }
+
+  .profile-stats {
+    background: @guinea-cream;
+    border: 2px solid @guinea-hay;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@guinea-brown, @guinea-orange);
+    }
+  }
+
+  .section-title {
+    color: @guinea-black;
+    border-bottom: 3px solid @guinea-hay;
+
+    &::before {
+      content: '🥬';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @guinea-cream;
+    border: 2px solid @guinea-light;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @guinea-light;
+      border-color: @guinea-orange;
+      transform: translateY(-3px);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @guinea-orange, @guinea-brown);
+      color: white;
+      border-radius: @radius-lg;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @guinea-brown;
+    }
+  }
+
+  .trait-badge {
+    border-radius: @radius-xl;
+
+    &:nth-child(1) { background: @guinea-white; color: @guinea-black; border: 2px solid @guinea-brown; }
+    &:nth-child(2) { background: @guinea-orange; color: white; }
+    &:nth-child(3) { background: @guinea-brown; color: white; }
+    &:nth-child(4) { background: @guinea-hay; color: @guinea-black; }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @guinea-cream, @guinea-orange, @guinea-brown);
+      border: 2px solid @guinea-hay;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @guinea-orange;
+    }
+  }
+
+  .post-card {
+    background: @guinea-cream;
+    border: 2px solid @guinea-light;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @guinea-orange;
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @guinea-white, @guinea-orange);
+      border: 2px solid @guinea-hay;
+    }
+  }
+
+  .friend-card {
+    background: @guinea-cream;
+    border: 2px solid @guinea-light;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @guinea-light;
+      border-color: @guinea-orange;
+    }
+  }
+
+  // Popcorn decoration
+  &::after {
+    content: '🍿';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.15;
+    animation: popcorn 0.5s ease-in-out infinite;
+  }
+
+  @keyframes popcorn {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(-10deg); }
+    50% { transform: translateY(-15px) rotate(0deg); }
+    75% { transform: translateY(-8px) rotate(10deg); }
+  }
+}

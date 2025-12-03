@@ -1,0 +1,237 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Parrot Theme - Colorful, Tropical, Smart
+@parrot-red: #f44336;
+@parrot-green: #4caf50;
+@parrot-blue: #2196f3;
+@parrot-yellow: #ffeb3b;
+@parrot-orange: #ff9800;
+@parrot-dark: #1a237e;
+@parrot-gray: #78909c;
+
+.animal-parrot {
+  .profile-cover {
+    background: linear-gradient(135deg, @parrot-red 0%, @parrot-orange 25%, @parrot-yellow 50%, @parrot-green 75%, @parrot-blue 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 20% 30%, fade(white, 30%) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 70%, fade(@parrot-dark, 30%) 0%, transparent 50%);
+    }
+
+    // Feather pattern
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        linear-gradient(45deg, fade(white, 5%) 25%, transparent 25%),
+        linear-gradient(-45deg, fade(white, 5%) 25%, transparent 25%);
+      background-size: 40px 40px;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @parrot-red 0%, @parrot-green 50%, @parrot-blue 100%);
+    border: 4px solid @parrot-yellow;
+    box-shadow:
+      0 0 20px @parrot-yellow,
+      0 10px 40px fade(@parrot-dark, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @parrot-orange, @parrot-red);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@parrot-dark, 40%));
+      animation: talk 0.5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes talk {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05) rotate(2deg); }
+  }
+
+  .online-status {
+    background: @parrot-green;
+    border: 3px solid @parrot-yellow;
+    box-shadow: 0 0 15px @parrot-green;
+  }
+
+  .profile-name {
+    .text-gradient(@parrot-red, @parrot-blue);
+    font-weight: @font-weight-bold;
+
+    &::after {
+      content: ' 🗣️';
+    }
+  }
+
+  .profile-category {
+    color: @parrot-green;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @parrot-red, @parrot-orange);
+    border: 2px solid @parrot-yellow;
+
+    &:hover {
+      background: linear-gradient(135deg, @parrot-green, @parrot-blue);
+      transform: translateY(-3px) rotate(-2deg);
+      box-shadow: 0 8px 30px fade(@parrot-yellow, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @parrot-green;
+    border: 2px solid @parrot-green;
+
+    &:hover {
+      background: @parrot-green;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(90deg, fade(@parrot-red, 10%), fade(@parrot-yellow, 10%), fade(@parrot-green, 10%), fade(@parrot-blue, 10%));
+    border: 2px solid @parrot-yellow;
+    border-radius: @radius-2xl;
+
+    .stat-item:nth-child(1) .stat-value { color: @parrot-red; }
+    .stat-item:nth-child(2) .stat-value { color: @parrot-green; }
+    .stat-item:nth-child(3) .stat-value { color: @parrot-blue; }
+  }
+
+  .section-title {
+    color: @parrot-dark;
+    border-bottom: 4px solid transparent;
+    border-image: linear-gradient(90deg, @parrot-red, @parrot-orange, @parrot-yellow, @parrot-green, @parrot-blue) 1;
+
+    &::before {
+      content: '🌴';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: white;
+    border: 2px solid transparent;
+    border-radius: @radius-xl;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(180deg, @parrot-red, @parrot-yellow, @parrot-green, @parrot-blue);
+    }
+
+    &:nth-child(1) { border-color: @parrot-red; }
+    &:nth-child(2) { border-color: @parrot-orange; }
+    &:nth-child(3) { border-color: @parrot-yellow; }
+    &:nth-child(4) { border-color: @parrot-green; }
+    &:nth-child(5) { border-color: @parrot-blue; }
+
+    &:hover {
+      transform: translateX(8px);
+      box-shadow: 0 5px 20px fade(@parrot-dark, 15%);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @parrot-red, @parrot-orange);
+      color: white;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+  }
+
+  .trait-badge {
+    color: white;
+    font-weight: @font-weight-semibold;
+    border: none;
+
+    &:nth-child(1) { background: @parrot-red; }
+    &:nth-child(2) { background: @parrot-orange; }
+    &:nth-child(3) { background: @parrot-green; }
+    &:nth-child(4) { background: @parrot-blue; }
+
+    &:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 4px 15px currentColor;
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, fade(@parrot-red, 20%), fade(@parrot-yellow, 20%), fade(@parrot-green, 20%));
+      border: 3px solid @parrot-yellow;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @parrot-green;
+      background: linear-gradient(135deg, fade(@parrot-green, 20%), fade(@parrot-blue, 20%), fade(@parrot-red, 20%));
+    }
+  }
+
+  .post-card {
+    background: white;
+    border: 2px solid @parrot-yellow;
+    border-left: 5px solid @parrot-red;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-left-color: @parrot-green;
+      box-shadow: 0 8px 30px fade(@parrot-yellow, 20%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @parrot-red, @parrot-green);
+      border: 2px solid @parrot-yellow;
+    }
+  }
+
+  .friend-card {
+    background: white;
+    border-radius: @radius-xl;
+
+    &:nth-child(1) { border: 2px solid @parrot-red; }
+    &:nth-child(2) { border: 2px solid @parrot-orange; }
+    &:nth-child(3) { border: 2px solid @parrot-yellow; }
+    &:nth-child(4) { border: 2px solid @parrot-green; }
+    &:nth-child(5) { border: 2px solid @parrot-blue; }
+    &:nth-child(6) { border: 2px solid @parrot-red; }
+
+    &:hover {
+      transform: translateY(-5px) rotate(2deg);
+    }
+  }
+
+  // Tropical decoration
+  &::after {
+    content: '🌺';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.2;
+    animation: sway 3s ease-in-out infinite;
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+  }
+}

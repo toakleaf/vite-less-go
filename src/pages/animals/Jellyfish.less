@@ -1,0 +1,242 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Jellyfish Theme - Ethereal, Translucent, Glowing
+@jelly-blue: #2196f3;
+@jelly-pink: #e91e63;
+@jelly-purple: #9c27b0;
+@jelly-glow: #64ffda;
+@jelly-deep: #0d47a1;
+@jelly-light: #e3f2fd;
+@jelly-trans: rgba(255, 255, 255, 0.3);
+
+.animal-jellyfish {
+  .profile-cover {
+    background: linear-gradient(180deg, @jelly-light 0%, @jelly-blue 40%, @jelly-deep 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 20% 30%, fade(@jelly-glow, 40%) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 60%, fade(@jelly-pink, 30%) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, fade(@jelly-purple, 35%) 0%, transparent 50%);
+      animation: glow-shift 8s ease-in-out infinite;
+    }
+  }
+
+  @keyframes glow-shift {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(30deg); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, fade(@jelly-trans, 80%), fade(@jelly-blue, 60%), fade(@jelly-purple, 70%));
+    border: 3px solid @jelly-glow;
+    box-shadow:
+      0 0 40px @jelly-glow,
+      0 0 80px fade(@jelly-purple, 50%),
+      inset 0 0 30px fade(@jelly-glow, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @jelly-glow, @jelly-blue);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 0 20px @jelly-glow);
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { filter: drop-shadow(0 0 15px @jelly-glow); }
+    50% { filter: drop-shadow(0 0 30px @jelly-glow) drop-shadow(0 0 40px @jelly-pink); }
+  }
+
+  .online-status {
+    background: @jelly-glow;
+    border: 2px solid @jelly-light;
+    box-shadow:
+      0 0 15px @jelly-glow,
+      0 0 30px @jelly-glow;
+    animation: status-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes status-pulse {
+    0%, 100% { box-shadow: 0 0 10px @jelly-glow, 0 0 20px @jelly-glow; }
+    50% { box-shadow: 0 0 20px @jelly-glow, 0 0 40px @jelly-glow, 0 0 60px fade(@jelly-pink, 50%); }
+  }
+
+  .profile-name {
+    .text-gradient(@jelly-glow, @jelly-blue);
+    text-shadow: 0 0 20px fade(@jelly-glow, 50%);
+    letter-spacing: @letter-spacing-wide;
+  }
+
+  .profile-category {
+    color: @jelly-glow;
+    text-shadow: 0 0 10px @jelly-glow;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, fade(@jelly-blue, 80%), fade(@jelly-purple, 80%));
+    border: 2px solid @jelly-glow;
+    box-shadow: 0 0 20px fade(@jelly-glow, 50%);
+
+    &:hover {
+      background: @jelly-glow;
+      color: @jelly-deep;
+      box-shadow: 0 0 40px @jelly-glow;
+    }
+  }
+
+  .btn-message {
+    color: @jelly-glow;
+    border: 2px solid @jelly-glow;
+    background: fade(@jelly-deep, 50%);
+
+    &:hover {
+      background: @jelly-glow;
+      color: @jelly-deep;
+    }
+  }
+
+  .profile-stats {
+    background: fade(@jelly-deep, 70%);
+    border: 2px solid @jelly-glow;
+    border-radius: @radius-2xl;
+    box-shadow: inset 0 0 30px fade(@jelly-glow, 20%);
+
+    .stat-value {
+      color: @jelly-glow;
+      text-shadow: 0 0 10px @jelly-glow;
+    }
+
+    .stat-label {
+      color: @jelly-light;
+    }
+  }
+
+  .section-title {
+    color: @jelly-glow;
+    border-bottom: 2px solid @jelly-glow;
+    text-shadow: 0 0 10px fade(@jelly-glow, 50%);
+
+    &::before {
+      content: '🌌';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: fade(@jelly-deep, 60%);
+    border: 1px solid fade(@jelly-glow, 30%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@jelly-blue, 40%);
+      border-color: @jelly-glow;
+      box-shadow: 0 0 20px fade(@jelly-glow, 30%);
+    }
+
+    .detail-icon {
+      background: @jelly-glow;
+      color: @jelly-deep;
+      border-radius: @radius-full;
+      padding: @space-2;
+      box-shadow: 0 0 10px @jelly-glow;
+    }
+
+    .detail-label {
+      color: @jelly-light;
+    }
+
+    .detail-value {
+      color: white;
+    }
+  }
+
+  .trait-badge {
+    background: fade(@jelly-deep, 70%);
+    color: @jelly-glow;
+    border: 1px solid @jelly-glow;
+    text-shadow: 0 0 5px @jelly-glow;
+
+    &:hover {
+      background: @jelly-glow;
+      color: @jelly-deep;
+      box-shadow: 0 0 20px @jelly-glow;
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, fade(@jelly-light, 30%), fade(@jelly-blue, 50%), fade(@jelly-deep, 70%));
+      border: 2px solid fade(@jelly-glow, 30%);
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @jelly-glow;
+      box-shadow: 0 0 30px fade(@jelly-glow, 40%);
+    }
+  }
+
+  .post-card {
+    background: fade(@jelly-deep, 70%);
+    border: 1px solid fade(@jelly-glow, 20%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @jelly-glow;
+      box-shadow: 0 0 20px fade(@jelly-glow, 20%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, fade(@jelly-glow, 60%), fade(@jelly-blue, 60%));
+      border: 2px solid @jelly-glow;
+      box-shadow: 0 0 10px @jelly-glow;
+    }
+
+    .post-text {
+      color: @jelly-light;
+    }
+  }
+
+  .friend-card {
+    background: fade(@jelly-deep, 70%);
+    border: 1px solid fade(@jelly-glow, 20%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@jelly-blue, 40%);
+      border-color: @jelly-glow;
+      box-shadow: 0 0 20px fade(@jelly-glow, 30%);
+    }
+
+    .friend-name {
+      color: @jelly-light;
+    }
+  }
+
+  // Bioluminescence decoration
+  &::after {
+    content: '✨';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.3;
+    animation: biolum 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px @jelly-glow);
+  }
+
+  @keyframes biolum {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+  }
+}

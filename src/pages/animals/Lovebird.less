@@ -1,0 +1,209 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Lovebird Theme - Romantic, Green/Red, Cuddly
+@lovebird-green: #4caf50;
+@lovebird-red: #e91e63;
+@lovebird-peach: #ffab91;
+@lovebird-yellow: #fff176;
+@lovebird-dark: #2e7d32;
+@lovebird-light: #e8f5e9;
+@lovebird-pink: #f8bbd9;
+
+.animal-lovebird {
+  .profile-cover {
+    background: linear-gradient(135deg, @lovebird-green 0%, @lovebird-dark 50%, @lovebird-green 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 20% 50%, fade(@lovebird-peach, 50%) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 50%, fade(@lovebird-red, 30%) 0%, transparent 40%);
+    }
+
+    // Heart pattern
+    &::after {
+      content: '💕';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      opacity: 0.5;
+      animation: heart-beat 1s ease-in-out infinite;
+    }
+  }
+
+  @keyframes heart-beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @lovebird-peach 0%, @lovebird-green 50%, @lovebird-dark 100%);
+    border: 4px solid @lovebird-red;
+    box-shadow:
+      0 0 0 3px @lovebird-pink,
+      0 10px 30px fade(@lovebird-red, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @lovebird-red, @lovebird-green);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@lovebird-dark, 40%));
+    }
+  }
+
+  .online-status {
+    background: @lovebird-red;
+    border: 3px solid @lovebird-pink;
+    animation: love-pulse 1s ease-in-out infinite;
+  }
+
+  @keyframes love-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 fade(@lovebird-red, 70%); }
+    50% { box-shadow: 0 0 0 10px fade(@lovebird-red, 0%); }
+  }
+
+  .profile-name {
+    .text-gradient(@lovebird-green, @lovebird-red);
+    font-weight: @font-weight-bold;
+
+    &::after {
+      content: ' 💝';
+    }
+  }
+
+  .profile-category {
+    color: @lovebird-red;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @lovebird-red, @lovebird-pink);
+    border: 2px solid @lovebird-green;
+
+    &:hover {
+      background: linear-gradient(135deg, @lovebird-green, @lovebird-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px fade(@lovebird-red, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @lovebird-red;
+    border: 2px solid @lovebird-red;
+
+    &:hover {
+      background: @lovebird-red;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @lovebird-light, @lovebird-pink);
+    border: 2px solid @lovebird-red;
+    border-radius: @radius-2xl;
+
+    .stat-value {
+      .text-gradient(@lovebird-red, @lovebird-green);
+    }
+  }
+
+  .section-title {
+    color: @lovebird-dark;
+    border-bottom: 3px solid @lovebird-red;
+
+    &::before {
+      content: '💕';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @lovebird-light;
+    border: 2px solid fade(@lovebird-green, 30%);
+    border-radius: @radius-xl;
+
+    &:nth-child(odd) {
+      background: @lovebird-pink;
+      border-color: fade(@lovebird-red, 30%);
+    }
+
+    &:hover {
+      border-color: @lovebird-red;
+      transform: translateY(-3px);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @lovebird-green, @lovebird-red);
+      color: white;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+  }
+
+  .trait-badge {
+    border-radius: @radius-full;
+
+    &:nth-child(1) { background: @lovebird-green; color: white; }
+    &:nth-child(2) { background: @lovebird-red; color: white; }
+    &:nth-child(3) { background: @lovebird-peach; color: @lovebird-dark; }
+    &:nth-child(4) { background: @lovebird-pink; color: @lovebird-dark; }
+
+    &:hover {
+      transform: scale(1.1) rotate(-5deg);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @lovebird-peach 0%, @lovebird-green 100%);
+      border: 2px solid @lovebird-red;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      box-shadow: 0 0 20px fade(@lovebird-red, 30%);
+    }
+  }
+
+  .post-card {
+    background: white;
+    border: 2px solid @lovebird-pink;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @lovebird-red;
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @lovebird-peach, @lovebird-green);
+      border: 2px solid @lovebird-red;
+    }
+  }
+
+  .friend-card {
+    background: @lovebird-light;
+    border: 2px solid fade(@lovebird-green, 30%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @lovebird-pink;
+      border-color: @lovebird-red;
+    }
+  }
+
+  // Pair decoration
+  &::before {
+    content: '🥰';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.2;
+  }
+}

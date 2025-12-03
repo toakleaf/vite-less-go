@@ -1,0 +1,205 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Goldfish Theme - Golden, Aquatic, Classic
+@goldfish-orange: #ff7043;
+@goldfish-gold: #ffc107;
+@goldfish-water: #4dd0e1;
+@goldfish-deep: #00838f;
+@goldfish-light: #e0f7fa;
+@goldfish-white: #ffffff;
+@goldfish-fin: #ff5722;
+
+.animal-goldfish {
+  .profile-cover {
+    background: linear-gradient(180deg, @goldfish-light 0%, @goldfish-water 50%, @goldfish-deep 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 40%, fade(@goldfish-gold, 40%) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 60%, fade(@goldfish-water, 50%) 0%, transparent 50%);
+    }
+
+    // Bubbles
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(circle 8px at 20% 30%, fade(@goldfish-white, 40%) 50%, transparent 50%),
+        radial-gradient(circle 5px at 40% 50%, fade(@goldfish-white, 35%) 50%, transparent 50%),
+        radial-gradient(circle 10px at 60% 25%, fade(@goldfish-white, 45%) 50%, transparent 50%),
+        radial-gradient(circle 6px at 80% 45%, fade(@goldfish-white, 30%) 50%, transparent 50%);
+      animation: bubbles 5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes bubbles {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(-20px); opacity: 1; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @goldfish-gold 0%, @goldfish-orange 50%, @goldfish-fin 100%);
+    border: 4px solid @goldfish-water;
+    box-shadow:
+      0 0 30px fade(@goldfish-gold, 50%),
+      0 10px 40px fade(@goldfish-deep, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @goldfish-gold, @goldfish-orange);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@goldfish-deep, 40%));
+      animation: swim 2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes swim {
+    0%, 100% { transform: translateX(0) scaleX(1); }
+    25% { transform: translateX(-5px) scaleX(0.95); }
+    75% { transform: translateX(5px) scaleX(0.95); }
+  }
+
+  .online-status {
+    background: @goldfish-gold;
+    border: 3px solid @goldfish-water;
+    box-shadow: 0 0 15px @goldfish-gold;
+  }
+
+  .profile-name {
+    .text-gradient(@goldfish-orange, @goldfish-gold);
+    font-weight: @font-weight-semibold;
+  }
+
+  .profile-category {
+    color: @goldfish-water;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @goldfish-gold, @goldfish-orange);
+    border-radius: @radius-full;
+    box-shadow: 0 4px 20px fade(@goldfish-gold, 50%);
+
+    &:hover {
+      background: linear-gradient(135deg, @goldfish-orange, @goldfish-fin);
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-message {
+    color: @goldfish-water;
+    border: 2px solid @goldfish-water;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @goldfish-water;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: @goldfish-light;
+    border: 2px solid @goldfish-water;
+    border-radius: @radius-2xl;
+
+    .stat-value {
+      .text-gradient(@goldfish-orange, @goldfish-gold);
+    }
+  }
+
+  .section-title {
+    color: @goldfish-deep;
+    border-bottom: 3px solid @goldfish-water;
+
+    &::before {
+      content: '🏰';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @goldfish-light;
+    border: 2px solid @goldfish-water;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@goldfish-water, 20%);
+      transform: translateY(-3px);
+    }
+
+    .detail-icon {
+      background: @goldfish-water;
+      color: white;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+  }
+
+  .trait-badge {
+    background: @goldfish-light;
+    color: @goldfish-deep;
+    border: 2px solid @goldfish-water;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @goldfish-gold;
+      border-color: @goldfish-gold;
+      transform: scale(1.05);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @goldfish-light 0%, @goldfish-water 100%);
+      border: 2px solid @goldfish-water;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      box-shadow: 0 0 20px fade(@goldfish-gold, 30%);
+    }
+  }
+
+  .post-card {
+    background: @goldfish-light;
+    border: 2px solid @goldfish-water;
+    border-radius: @radius-xl;
+
+    .post-avatar {
+      background: linear-gradient(180deg, @goldfish-gold, @goldfish-orange);
+      border: 2px solid @goldfish-water;
+    }
+  }
+
+  .friend-card {
+    background: @goldfish-light;
+    border: 2px solid @goldfish-water;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@goldfish-water, 20%);
+    }
+  }
+
+  // Water decoration
+  &::after {
+    content: '🫧';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.2;
+    animation: bubble-rise 3s ease-in-out infinite;
+  }
+
+  @keyframes bubble-rise {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}

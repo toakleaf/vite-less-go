@@ -1,0 +1,242 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Maine Coon Theme - Majestic, Forest, Rugged
+@maine-primary: #2e7d32;
+@maine-secondary: #1b5e20;
+@maine-accent: #c8e6c9;
+@maine-dark: #1a3a1c;
+@maine-light: #e8f5e9;
+@maine-brown: #5d4037;
+@maine-tan: #bcaaa4;
+
+.animal-maine-coon {
+  .profile-cover {
+    background: linear-gradient(135deg, @maine-primary 0%, @maine-secondary 50%, @maine-dark 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 20% 30%, fade(@maine-accent, 30%) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 60%, fade(@maine-brown, 30%) 0%, transparent 50%);
+    }
+
+    // Pine tree silhouette
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background:
+        conic-gradient(from 270deg at 10% 100%, @maine-dark 0deg, transparent 30deg),
+        conic-gradient(from 270deg at 30% 100%, @maine-dark 0deg, transparent 25deg),
+        conic-gradient(from 270deg at 50% 100%, @maine-dark 0deg, transparent 35deg),
+        conic-gradient(from 270deg at 70% 100%, @maine-dark 0deg, transparent 28deg),
+        conic-gradient(from 270deg at 90% 100%, @maine-dark 0deg, transparent 32deg);
+      opacity: 0.4;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @maine-tan, @maine-brown);
+    border: 5px solid @maine-primary;
+    box-shadow:
+      0 0 0 5px fade(@maine-accent, 50%),
+      0 15px 50px fade(@maine-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @maine-primary, @maine-secondary);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@maine-dark, 40%));
+      transform: scale(1.2);
+    }
+  }
+
+  .online-status {
+    background: @maine-primary;
+    border: 3px solid @maine-tan;
+    width: 24px;
+    height: 24px;
+  }
+
+  .profile-name {
+    .text-gradient(@maine-secondary, @maine-dark);
+    font-size: @font-size-4xl !important;
+    letter-spacing: @letter-spacing-wide;
+
+    &::before {
+      content: '🌲 ';
+    }
+  }
+
+  .profile-category {
+    color: @maine-primary;
+    font-weight: @font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @maine-primary, @maine-secondary);
+    padding: @space-4 @space-10;
+    font-size: @font-size-lg;
+
+    &:hover {
+      background: linear-gradient(135deg, @maine-secondary, @maine-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px fade(@maine-primary, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @maine-primary;
+    border: 3px solid @maine-primary;
+
+    &:hover {
+      background: @maine-primary;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @maine-light, @maine-accent);
+    border: 3px solid @maine-primary;
+    border-radius: @radius-xl;
+    padding: @space-8 !important;
+
+    .stat-value {
+      .text-gradient(@maine-secondary, @maine-dark);
+      font-size: @font-size-3xl;
+    }
+
+    .stat-label {
+      color: @maine-primary;
+      font-weight: @font-weight-semibold;
+    }
+  }
+
+  .section-title {
+    color: @maine-dark;
+    border-bottom: 4px solid @maine-primary;
+    font-size: @font-size-2xl;
+
+    &::before {
+      content: '🍃';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @maine-light;
+    border: 2px solid @maine-accent;
+    border-radius: @radius-xl;
+    padding: @space-5 !important;
+
+    &:hover {
+      background: @maine-accent;
+      border-color: @maine-primary;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px fade(@maine-primary, 20%);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @maine-primary, @maine-secondary);
+      color: white;
+      font-size: @font-size-2xl !important;
+      border-radius: @radius-lg;
+      padding: @space-3;
+    }
+
+    .detail-label {
+      color: @maine-secondary;
+      font-weight: @font-weight-semibold;
+    }
+
+    .detail-value {
+      font-size: @font-size-base;
+    }
+  }
+
+  .trait-badge {
+    background: linear-gradient(135deg, @maine-accent, @maine-light);
+    color: @maine-dark;
+    border: 2px solid @maine-primary;
+    border-radius: @radius-xl;
+    padding: @space-3 @space-5;
+    font-size: @font-size-base;
+
+    &:hover {
+      background: @maine-primary;
+      color: white;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @maine-light, @maine-accent, @maine-tan);
+      border: 3px solid @maine-accent;
+      border-radius: inherit;
+      font-size: 5rem !important;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @maine-primary;
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @maine-light;
+    border: 2px solid @maine-accent;
+    border-radius: @radius-xl;
+    padding: @space-5 !important;
+
+    &:hover {
+      border-color: @maine-primary;
+      box-shadow: 0 10px 40px fade(@maine-primary, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @maine-tan, @maine-brown);
+      border: 3px solid @maine-primary;
+      width: 56px !important;
+      height: 56px !important;
+    }
+  }
+
+  .friend-card {
+    background: @maine-light;
+    border: 2px solid @maine-accent;
+    border-radius: @radius-xl;
+    padding: @space-5;
+
+    &:hover {
+      background: @maine-accent;
+      border-color: @maine-primary;
+      transform: translateY(-6px);
+    }
+
+    .friend-avatar {
+      font-size: @font-size-4xl !important;
+    }
+  }
+
+  // Forest decoration
+  &::after {
+    content: '🌲';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 50px;
+    opacity: 0.1;
+  }
+}

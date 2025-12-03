@@ -1,0 +1,192 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Golden Retriever Theme - Warm, Golden, Friendly
+@golden-primary: #d4a056;
+@golden-secondary: #c78c3c;
+@golden-accent: #f5d89a;
+@golden-dark: #8b6914;
+@golden-light: #fff8e7;
+
+.animal-golden-retriever {
+  .profile-cover {
+    background: linear-gradient(135deg, @golden-primary, @golden-secondary);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 20% 30%, fade(@golden-accent, 30%) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, fade(@golden-dark, 20%) 0%, transparent 40%);
+    }
+
+    &::after {
+      background: linear-gradient(180deg, transparent 50%, fade(@golden-dark, 40%) 100%);
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @golden-light, @golden-accent);
+
+    &::before {
+      background: linear-gradient(135deg, @golden-primary, @golden-secondary);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@golden-primary, 40%));
+    }
+  }
+
+  .online-status {
+    background: @golden-primary;
+    box-shadow: 0 0 0 0 fade(@golden-primary, 70%);
+    animation: golden-pulse 2s infinite;
+  }
+
+  @keyframes golden-pulse {
+    0% { box-shadow: 0 0 0 0 fade(@golden-primary, 70%); }
+    70% { box-shadow: 0 0 0 10px fade(@golden-primary, 0%); }
+    100% { box-shadow: 0 0 0 0 fade(@golden-primary, 0%); }
+  }
+
+  .profile-name {
+    .text-gradient(@golden-primary, @golden-secondary);
+  }
+
+  .profile-category {
+    color: @golden-primary;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @golden-primary, @golden-secondary);
+
+    &:hover {
+      background: linear-gradient(135deg, @golden-secondary, @golden-dark);
+      .colored-shadow(@golden-primary, 0.4);
+    }
+  }
+
+  .btn-message {
+    color: @golden-primary;
+    border-color: @golden-primary;
+
+    &:hover {
+      background: @golden-primary;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, fade(@golden-accent, 30%), fade(@golden-light, 50%));
+    border: 1px solid fade(@golden-primary, 20%);
+
+    .stat-value {
+      .text-gradient(@golden-primary, @golden-secondary);
+    }
+  }
+
+  .section-title {
+    color: @golden-dark;
+    border-bottom-color: fade(@golden-primary, 30%);
+
+    &::before {
+      content: '🦮';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: fade(@golden-light, 70%);
+    border: 1px solid fade(@golden-accent, 50%);
+
+    &:hover {
+      background: @golden-light;
+      border-color: @golden-primary;
+      .colored-shadow(@golden-primary, 0.2);
+    }
+
+    .detail-label {
+      color: @golden-secondary;
+    }
+  }
+
+  .trait-badge {
+    background: fade(@golden-primary, 15%);
+    color: @golden-dark;
+    border: 1px solid fade(@golden-primary, 30%);
+
+    &:hover {
+      background: fade(@golden-primary, 25%);
+      transform: translateY(-2px);
+      .colored-shadow(@golden-primary, 0.3);
+    }
+
+    &:nth-child(odd) {
+      background: fade(@golden-secondary, 15%);
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: linear-gradient(
+        135deg,
+        fade(@golden-light, 90%),
+        fade(@golden-accent, 70%)
+      );
+      border: 2px solid fade(@golden-primary, 20%);
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @golden-primary;
+    }
+  }
+
+  .post-card {
+    border-color: fade(@golden-accent, 50%);
+
+    &:hover {
+      border-color: @golden-primary;
+      .colored-shadow(@golden-primary, 0.15);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @golden-light, @golden-accent);
+    }
+
+    .post-likes {
+      color: @golden-primary;
+    }
+  }
+
+  .friend-card {
+    background: fade(@golden-light, 80%);
+    border: 1px solid fade(@golden-accent, 40%);
+
+    &:hover {
+      background: @golden-accent;
+      border-color: @golden-primary;
+
+      .friend-name {
+        color: @golden-dark;
+      }
+    }
+  }
+
+  // Decorative paw prints
+  &::before {
+    content: '🐾';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    opacity: 0.1;
+    pointer-events: none;
+    animation: paw-float 3s ease-in-out infinite;
+  }
+
+  @keyframes paw-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(10deg); }
+  }
+}

@@ -1,0 +1,237 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Macaw Theme - Stunning, Red/Blue/Yellow, Majestic
+@macaw-red: #d32f2f;
+@macaw-blue: #1976d2;
+@macaw-yellow: #fbc02d;
+@macaw-green: #388e3c;
+@macaw-dark: #0d47a1;
+@macaw-orange: #f57c00;
+@macaw-light: #e3f2fd;
+
+.animal-macaw {
+  .profile-cover {
+    background: linear-gradient(135deg, @macaw-red 0%, @macaw-orange 25%, @macaw-yellow 50%, @macaw-green 75%, @macaw-blue 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 20% 30%, fade(white, 40%) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 70%, fade(@macaw-dark, 40%) 0%, transparent 50%);
+    }
+
+    // Large feather effect
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background:
+        linear-gradient(45deg, @macaw-red 25%, transparent 25%),
+        linear-gradient(-45deg, @macaw-blue 25%, transparent 25%);
+      background-size: 30px 60px;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @macaw-red 0%, @macaw-yellow 50%, @macaw-blue 100%);
+    border: 5px solid white;
+    box-shadow:
+      0 0 0 5px fade(@macaw-red, 50%),
+      0 15px 50px fade(@macaw-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @macaw-red, @macaw-blue);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 5px 15px fade(@macaw-dark, 50%));
+      font-size: 70px !important;
+    }
+  }
+
+  .online-status {
+    background: @macaw-yellow;
+    border: 4px solid @macaw-red;
+    box-shadow: 0 0 20px @macaw-yellow;
+    width: 25px;
+    height: 25px;
+  }
+
+  .profile-name {
+    .text-gradient(@macaw-red, @macaw-blue);
+    font-size: @font-size-4xl !important;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wide;
+  }
+
+  .profile-category {
+    color: @macaw-orange;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @macaw-red, @macaw-orange);
+    padding: @space-4 @space-10;
+    font-size: @font-size-lg;
+    text-transform: uppercase;
+
+    &:hover {
+      background: linear-gradient(135deg, @macaw-blue, @macaw-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px fade(@macaw-red, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @macaw-red;
+    border: 3px solid @macaw-red;
+
+    &:hover {
+      background: @macaw-red;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(90deg, fade(@macaw-red, 15%), fade(@macaw-yellow, 15%), fade(@macaw-blue, 15%));
+    border: 3px solid transparent;
+    border-image: linear-gradient(90deg, @macaw-red, @macaw-yellow, @macaw-blue) 1;
+    border-radius: 0;
+    padding: @space-8 !important;
+
+    .stat-value {
+      font-size: @font-size-3xl;
+      font-weight: @font-weight-black;
+    }
+
+    .stat-item:nth-child(1) .stat-value { color: @macaw-red; }
+    .stat-item:nth-child(2) .stat-value { color: @macaw-yellow; text-shadow: 1px 1px 0 @macaw-orange; }
+    .stat-item:nth-child(3) .stat-value { color: @macaw-blue; }
+  }
+
+  .section-title {
+    color: @macaw-dark;
+    border-bottom: 5px solid transparent;
+    border-image: linear-gradient(90deg, @macaw-red, @macaw-yellow, @macaw-blue) 1;
+    font-size: @font-size-2xl;
+    text-transform: uppercase;
+
+    &::before {
+      content: '🌎';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: white;
+    border-radius: @radius-lg;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, @macaw-red, @macaw-yellow, @macaw-blue);
+    }
+
+    &:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 30px fade(@macaw-dark, 20%);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @macaw-red, @macaw-orange);
+      color: white;
+      font-size: @font-size-2xl;
+      border-radius: @radius-lg;
+      padding: @space-3;
+    }
+  }
+
+  .trait-badge {
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    padding: @space-3 @space-5;
+    font-size: @font-size-base;
+
+    &:nth-child(1) { background: @macaw-red; color: white; }
+    &:nth-child(2) { background: @macaw-yellow; color: @macaw-dark; }
+    &:nth-child(3) { background: @macaw-green; color: white; }
+    &:nth-child(4) { background: @macaw-blue; color: white; }
+
+    &:hover {
+      transform: scale(1.15) rotate(-5deg);
+      box-shadow: 0 5px 20px currentColor;
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-lg;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, fade(@macaw-red, 30%), fade(@macaw-yellow, 30%), fade(@macaw-blue, 30%));
+      border: 4px solid transparent;
+      border-image: linear-gradient(135deg, @macaw-red, @macaw-blue) 1;
+      border-radius: inherit;
+      font-size: 5rem !important;
+    }
+
+    &:hover .gallery-placeholder {
+      transform: scale(1.08);
+    }
+  }
+
+  .post-card {
+    background: white;
+    border: 3px solid @macaw-yellow;
+    border-radius: @radius-lg;
+
+    &:hover {
+      border-color: @macaw-red;
+      box-shadow: 0 10px 40px fade(@macaw-red, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @macaw-red, @macaw-blue);
+      border: 3px solid @macaw-yellow;
+    }
+  }
+
+  .friend-card {
+    background: white;
+    border-radius: @radius-lg;
+
+    &:nth-child(1) { border: 3px solid @macaw-red; }
+    &:nth-child(2) { border: 3px solid @macaw-yellow; }
+    &:nth-child(3) { border: 3px solid @macaw-green; }
+    &:nth-child(4) { border: 3px solid @macaw-blue; }
+    &:nth-child(5) { border: 3px solid @macaw-orange; }
+    &:nth-child(6) { border: 3px solid @macaw-red; }
+
+    &:hover {
+      transform: translateY(-8px) rotate(3deg);
+    }
+  }
+
+  // Rainforest decoration
+  &::after {
+    content: '🌳';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 50px;
+    opacity: 0.15;
+  }
+}

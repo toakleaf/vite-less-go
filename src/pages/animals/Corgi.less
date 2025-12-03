@@ -1,0 +1,275 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Corgi Theme - Royal, Orange, Cute
+@corgi-primary: #ff9800;
+@corgi-secondary: #f57c00;
+@corgi-accent: #ffe0b2;
+@corgi-dark: #e65100;
+@corgi-light: #fff3e0;
+@corgi-white: #ffffff;
+@corgi-crown: #ffd700;
+
+.animal-corgi {
+  .profile-cover {
+    background: linear-gradient(135deg, @corgi-primary 0%, @corgi-secondary 60%, @corgi-dark 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 20%, fade(@corgi-crown, 30%) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 80%, fade(@corgi-accent, 40%) 0%, transparent 50%);
+    }
+
+    // Royal pattern
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L25 10L35 10L27 17L30 28L20 22L10 28L13 17L5 10L15 10Z' fill='%23ffd70015'/%3E%3C/svg%3E");
+      background-size: 60px 60px;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @corgi-accent, @corgi-white);
+    border: 4px solid @corgi-crown;
+    box-shadow:
+      0 0 0 4px fade(@corgi-primary, 40%),
+      0 10px 40px fade(@corgi-dark, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @corgi-crown, @corgi-primary);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@corgi-dark, 40%));
+    }
+
+    // Crown decoration
+    &::after {
+      content: '👑';
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+      animation: crown-bounce 2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes crown-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-5px); }
+  }
+
+  .online-status {
+    background: #4caf50;
+    border: 3px solid @corgi-crown;
+  }
+
+  .profile-name {
+    .text-gradient(@corgi-primary, @corgi-dark);
+    font-family: @font-family-heading;
+
+    &::before {
+      content: '🏰';
+      margin-right: @space-2;
+    }
+  }
+
+  .profile-category {
+    color: @corgi-secondary;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '★';
+      color: @corgi-crown;
+      margin: 0 @space-2;
+    }
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @corgi-crown, @corgi-primary);
+    border: 2px solid fade(@corgi-white, 50%);
+    box-shadow: 0 4px 20px fade(@corgi-crown, 40%);
+
+    &:hover {
+      background: linear-gradient(135deg, @corgi-primary, @corgi-secondary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px fade(@corgi-crown, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @corgi-primary;
+    border: 2px solid @corgi-primary;
+    background: fade(@corgi-light, 50%);
+
+    &:hover {
+      background: @corgi-primary;
+      color: white;
+      border-color: @corgi-crown;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @corgi-light, @corgi-accent);
+    border: 2px solid @corgi-crown;
+    border-radius: @radius-2xl;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 20px;
+      background: linear-gradient(135deg, @corgi-crown, @corgi-primary);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    }
+
+    .stat-value {
+      .text-gradient(@corgi-secondary, @corgi-dark);
+    }
+  }
+
+  .section-title {
+    color: @corgi-dark;
+    border-bottom: 3px solid @corgi-crown;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 30px;
+      height: 3px;
+      background: @corgi-primary;
+    }
+  }
+
+  .detail-item {
+    background: linear-gradient(135deg, @corgi-white, @corgi-light);
+    border: 2px solid @corgi-accent;
+    border-radius: @radius-xl;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: @corgi-crown;
+    }
+
+    &:hover {
+      background: @corgi-light;
+      border-color: @corgi-primary;
+      transform: translateX(5px);
+    }
+
+    .detail-icon {
+      background: fade(@corgi-crown, 30%);
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @corgi-secondary;
+      font-weight: @font-weight-semibold;
+    }
+  }
+
+  .trait-badge {
+    background: linear-gradient(135deg, @corgi-accent, @corgi-light);
+    color: @corgi-dark;
+    border: 2px solid @corgi-crown;
+    border-radius: @radius-xl;
+    position: relative;
+
+    &::before {
+      content: '⭐';
+      font-size: 10px;
+      margin-right: @space-1;
+    }
+
+    &:hover {
+      background: @corgi-crown;
+      color: @corgi-dark;
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px fade(@corgi-crown, 40%);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+    border: 3px solid @corgi-accent;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @corgi-light, @corgi-accent);
+      border-radius: inherit;
+    }
+
+    &:hover {
+      border-color: @corgi-crown;
+
+      .gallery-placeholder {
+        background: linear-gradient(135deg, @corgi-accent, @corgi-light);
+      }
+    }
+  }
+
+  .post-card {
+    background: @corgi-white;
+    border: 2px solid @corgi-accent;
+    border-left: 5px solid @corgi-crown;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @corgi-primary;
+      box-shadow: 0 8px 30px fade(@corgi-primary, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @corgi-accent, @corgi-light);
+      border: 2px solid @corgi-crown;
+    }
+  }
+
+  .friend-card {
+    background: linear-gradient(135deg, @corgi-light, @corgi-white);
+    border: 2px solid @corgi-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@corgi-crown, 20%);
+      border-color: @corgi-crown;
+      transform: translateY(-5px);
+    }
+  }
+
+  // Fluffy butt decoration
+  &::after {
+    content: '🍑';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 40px;
+    opacity: 0.15;
+    animation: wiggle-butt 1s ease-in-out infinite;
+  }
+
+  @keyframes wiggle-butt {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+}

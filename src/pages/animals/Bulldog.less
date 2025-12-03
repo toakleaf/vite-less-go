@@ -1,0 +1,231 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Bulldog Theme - Strong, Brown, Sturdy
+@bulldog-primary: #8d6e63;
+@bulldog-secondary: #6d4c41;
+@bulldog-accent: #d7ccc8;
+@bulldog-dark: #4e342e;
+@bulldog-light: #efebe9;
+@bulldog-tan: #bcaaa4;
+
+.animal-bulldog {
+  .profile-cover {
+    background: linear-gradient(135deg, @bulldog-secondary 0%, @bulldog-dark 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 10px,
+          fade(@bulldog-tan, 10%) 10px,
+          fade(@bulldog-tan, 10%) 20px
+        );
+    }
+
+    // Brick pattern
+    &::after {
+      content: '';
+      .absolute-fill();
+      background:
+        linear-gradient(90deg, transparent 49%, fade(@bulldog-dark, 30%) 49%, fade(@bulldog-dark, 30%) 51%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, fade(@bulldog-dark, 30%) 49%, fade(@bulldog-dark, 30%) 51%, transparent 51%);
+      background-size: 50px 25px;
+      opacity: 0.3;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @bulldog-light, @bulldog-accent);
+    border: 5px solid @bulldog-tan;
+    box-shadow: 0 8px 30px fade(@bulldog-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @bulldog-primary, @bulldog-secondary);
+      padding: 4px;
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(2px 2px 4px fade(@bulldog-dark, 50%));
+    }
+  }
+
+  .online-status {
+    background: #4caf50;
+    border: 3px solid @bulldog-tan;
+  }
+
+  .profile-name {
+    .text-gradient(@bulldog-secondary, @bulldog-dark);
+    font-weight: @font-weight-black;
+    letter-spacing: @letter-spacing-tight;
+    text-transform: uppercase;
+  }
+
+  .profile-category {
+    color: @bulldog-primary;
+    font-weight: @font-weight-bold;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @bulldog-primary, @bulldog-secondary);
+    border-radius: @radius-md;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wide;
+
+    &:hover {
+      background: linear-gradient(135deg, @bulldog-secondary, @bulldog-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px fade(@bulldog-dark, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @bulldog-secondary;
+    border: 3px solid @bulldog-secondary;
+    border-radius: @radius-md;
+    font-weight: @font-weight-bold;
+
+    &:hover {
+      background: @bulldog-secondary;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: @bulldog-light;
+    border: 3px solid @bulldog-accent;
+    border-radius: @radius-md;
+
+    .stat-value {
+      color: @bulldog-dark;
+      font-weight: @font-weight-black;
+    }
+
+    .stat-label {
+      color: @bulldog-primary;
+      text-transform: uppercase;
+      font-weight: @font-weight-bold;
+      letter-spacing: @letter-spacing-wide;
+    }
+  }
+
+  .section-title {
+    color: @bulldog-dark;
+    border-bottom: 4px solid @bulldog-primary;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wide;
+
+    &::before {
+      content: '🏋️';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @bulldog-light;
+    border: 2px solid @bulldog-accent;
+    border-radius: @radius-md;
+
+    &:hover {
+      background: @bulldog-accent;
+      border-color: @bulldog-primary;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px fade(@bulldog-dark, 20%);
+    }
+
+    .detail-icon {
+      background: @bulldog-tan;
+      border-radius: @radius-md;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @bulldog-primary;
+      text-transform: uppercase;
+      font-weight: @font-weight-bold;
+    }
+
+    .detail-value {
+      font-weight: @font-weight-semibold;
+    }
+  }
+
+  .trait-badge {
+    background: @bulldog-accent;
+    color: @bulldog-dark;
+    border: 2px solid @bulldog-tan;
+    border-radius: @radius-md;
+    font-weight: @font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-wide;
+
+    &:hover {
+      background: @bulldog-tan;
+      border-color: @bulldog-secondary;
+      transform: scale(1.05);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-md;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @bulldog-light, @bulldog-accent);
+      border: 3px solid @bulldog-tan;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @bulldog-primary;
+    }
+  }
+
+  .post-card {
+    background: @bulldog-light;
+    border: 2px solid @bulldog-accent;
+    border-radius: @radius-md;
+
+    &:hover {
+      border-color: @bulldog-primary;
+      box-shadow: 0 6px 25px fade(@bulldog-dark, 15%);
+    }
+
+    .post-avatar {
+      background: @bulldog-accent;
+      border: 2px solid @bulldog-tan;
+    }
+
+    .post-text {
+      font-weight: @font-weight-medium;
+    }
+  }
+
+  .friend-card {
+    background: @bulldog-light;
+    border: 2px solid @bulldog-accent;
+    border-radius: @radius-md;
+
+    &:hover {
+      background: @bulldog-accent;
+      border-color: @bulldog-primary;
+    }
+  }
+
+  // Bone decoration
+  &::after {
+    content: '🦴';
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    font-size: 35px;
+    opacity: 0.2;
+    transform: rotate(-20deg);
+  }
+}

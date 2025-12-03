@@ -1,0 +1,196 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Turtle Theme - Ancient, Green, Patient
+@turtle-green: #689f38;
+@turtle-dark: #33691e;
+@turtle-shell: #5d4037;
+@turtle-light: #dcedc8;
+@turtle-water: #4dd0e1;
+@turtle-tan: #a1887f;
+@turtle-yellow: #c0ca33;
+
+.animal-turtle {
+  .profile-cover {
+    background: linear-gradient(180deg, @turtle-water 0%, @turtle-green 40%, @turtle-dark 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      // Shell pattern
+      background-image:
+        radial-gradient(ellipse 40px 35px at 30% 50%, fade(@turtle-shell, 40%) 50%, transparent 50%),
+        radial-gradient(ellipse 35px 30px at 50% 45%, fade(@turtle-shell, 35%) 50%, transparent 50%),
+        radial-gradient(ellipse 38px 32px at 70% 55%, fade(@turtle-shell, 40%) 50%, transparent 50%);
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @turtle-green 0%, @turtle-shell 50%, @turtle-dark 100%);
+    border: 5px solid @turtle-tan;
+    box-shadow:
+      0 0 0 4px @turtle-green,
+      0 15px 45px fade(@turtle-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @turtle-green, @turtle-shell);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@turtle-dark, 50%));
+    }
+  }
+
+  .online-status {
+    background: @turtle-yellow;
+    border: 3px solid @turtle-green;
+  }
+
+  .profile-name {
+    .text-gradient(@turtle-green, @turtle-dark);
+    font-weight: @font-weight-semibold;
+    letter-spacing: @letter-spacing-wide;
+  }
+
+  .profile-category {
+    color: @turtle-shell;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @turtle-green, @turtle-dark);
+    border: 2px solid @turtle-tan;
+
+    &:hover {
+      background: linear-gradient(135deg, @turtle-shell, @turtle-dark);
+      // Slow hover effect for turtle
+      transition: all 0.8s ease;
+    }
+  }
+
+  .btn-message {
+    color: @turtle-green;
+    border: 2px solid @turtle-green;
+
+    &:hover {
+      background: @turtle-green;
+      color: white;
+      transition: all 0.8s ease;
+    }
+  }
+
+  .profile-stats {
+    background: @turtle-light;
+    border: 3px solid @turtle-green;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@turtle-dark, @turtle-shell);
+    }
+  }
+
+  .section-title {
+    color: @turtle-dark;
+    border-bottom: 4px solid @turtle-shell;
+
+    &::before {
+      content: '🐚';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @turtle-light;
+    border: 2px solid @turtle-green;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@turtle-green, 20%);
+      border-color: @turtle-shell;
+      // Slow transition
+      transition: all 0.5s ease;
+    }
+
+    .detail-icon {
+      background: @turtle-shell;
+      color: @turtle-light;
+      border-radius: @radius-lg;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @turtle-dark;
+    }
+  }
+
+  .trait-badge {
+    background: @turtle-light;
+    color: @turtle-dark;
+    border: 2px solid @turtle-green;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @turtle-green;
+      color: white;
+      transition: all 0.5s ease;
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @turtle-water 0%, @turtle-green 50%, @turtle-shell 100%);
+      border: 3px solid @turtle-green;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @turtle-shell;
+    }
+  }
+
+  .post-card {
+    background: @turtle-light;
+    border: 2px solid @turtle-green;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @turtle-shell;
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @turtle-green, @turtle-shell);
+      border: 2px solid @turtle-tan;
+    }
+  }
+
+  .friend-card {
+    background: @turtle-light;
+    border: 2px solid @turtle-green;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@turtle-green, 20%);
+      border-color: @turtle-shell;
+    }
+  }
+
+  // Water decoration
+  &::after {
+    content: '🌊';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.15;
+    animation: wave 3s ease-in-out infinite;
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+  }
+}

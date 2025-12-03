@@ -1,0 +1,225 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Finch Theme - Tiny, Orange/White, Chirpy
+@finch-orange: #ff5722;
+@finch-white: #ffffff;
+@finch-gray: #9e9e9e;
+@finch-dark: #bf360c;
+@finch-light: #fff3e0;
+@finch-stripe: #4e342e;
+@finch-beak: #ff8a65;
+
+.animal-finch {
+  .profile-cover {
+    background: linear-gradient(180deg, @finch-light 0%, @finch-orange 60%, @finch-dark 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      // Zebra stripe pattern
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 8px,
+        fade(@finch-stripe, 15%) 8px,
+        fade(@finch-stripe, 15%) 12px
+      );
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @finch-white 0%, @finch-gray 30%, @finch-orange 60%, @finch-dark 100%);
+    border: 3px solid @finch-orange;
+    box-shadow:
+      0 0 15px fade(@finch-orange, 50%),
+      0 8px 30px fade(@finch-dark, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @finch-orange, @finch-dark);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 3px 6px fade(@finch-dark, 40%));
+      font-size: 50px !important;
+    }
+  }
+
+  .online-status {
+    background: @finch-orange;
+    border: 2px solid @finch-white;
+    width: 14px;
+    height: 14px;
+  }
+
+  .profile-name {
+    .text-gradient(@finch-orange, @finch-dark);
+    font-size: @font-size-2xl !important;
+  }
+
+  .profile-category {
+    color: @finch-orange;
+    font-size: @font-size-xs;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @finch-orange, @finch-dark);
+    padding: @space-2 @space-5;
+    font-size: @font-size-sm;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  .btn-message {
+    color: @finch-orange;
+    border: 2px solid @finch-orange;
+    padding: @space-2 @space-5;
+    font-size: @font-size-sm;
+
+    &:hover {
+      background: @finch-orange;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: @finch-light;
+    border: 2px solid @finch-orange;
+    border-radius: @radius-xl;
+    padding: @space-4 !important;
+
+    .stat-value {
+      .text-gradient(@finch-orange, @finch-dark);
+      font-size: @font-size-xl;
+    }
+
+    .stat-label {
+      font-size: @font-size-xs;
+    }
+  }
+
+  .section-title {
+    color: @finch-dark;
+    border-bottom: 2px solid @finch-orange;
+    font-size: @font-size-lg;
+
+    &::before {
+      content: '🎶';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @finch-light;
+    border: 1px solid fade(@finch-orange, 30%);
+    border-radius: @radius-lg;
+    padding: @space-3 !important;
+
+    &:hover {
+      border-color: @finch-orange;
+      transform: translateY(-2px);
+    }
+
+    .detail-icon {
+      background: @finch-orange;
+      color: white;
+      border-radius: @radius-md;
+      padding: @space-1;
+      font-size: @font-size-lg !important;
+    }
+
+    .detail-label, .detail-value {
+      font-size: @font-size-sm;
+    }
+  }
+
+  .trait-badge {
+    background: @finch-light;
+    color: @finch-dark;
+    border: 1px solid @finch-orange;
+    border-radius: @radius-lg;
+    padding: @space-1 @space-3;
+    font-size: @font-size-sm;
+
+    &:hover {
+      background: @finch-orange;
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-lg;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @finch-white 30%, @finch-orange 100%);
+      border: 2px solid @finch-orange;
+      border-radius: inherit;
+      font-size: 2.5rem !important;
+    }
+
+    &:hover .gallery-placeholder {
+      transform: scale(1.05);
+    }
+  }
+
+  .post-card {
+    background: @finch-light;
+    border: 1px solid fade(@finch-orange, 30%);
+    border-radius: @radius-lg;
+    padding: @space-3 !important;
+
+    &:hover {
+      border-color: @finch-orange;
+    }
+
+    .post-avatar {
+      width: 36px !important;
+      height: 36px !important;
+      background: @finch-orange;
+    }
+
+    .post-text {
+      font-size: @font-size-sm;
+    }
+  }
+
+  .friend-card {
+    background: @finch-light;
+    border: 1px solid fade(@finch-orange, 30%);
+    border-radius: @radius-lg;
+    padding: @space-3;
+
+    &:hover {
+      border-color: @finch-orange;
+      transform: translateY(-3px);
+    }
+
+    .friend-avatar {
+      font-size: @font-size-2xl !important;
+    }
+
+    .friend-name {
+      font-size: @font-size-xs;
+    }
+  }
+
+  // Chirp decoration
+  &::after {
+    content: '🎵';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 25px;
+    opacity: 0.2;
+    animation: chirp 0.5s ease-in-out infinite;
+  }
+
+  @keyframes chirp {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+}

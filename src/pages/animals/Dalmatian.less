@@ -1,0 +1,274 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Dalmatian Theme - Black & White, Spotted, Firefighter
+@dalmatian-black: #1a1a1a;
+@dalmatian-white: #ffffff;
+@dalmatian-spot: #2d2d2d;
+@dalmatian-red: #d32f2f;
+@dalmatian-gray: #9e9e9e;
+@dalmatian-light: #f5f5f5;
+
+.animal-dalmatian {
+  .profile-cover {
+    background: @dalmatian-white;
+    position: relative;
+    overflow: hidden;
+
+    // Spots pattern
+    &::before {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(circle 20px at 10% 20%, @dalmatian-black 100%, transparent 100%),
+        radial-gradient(circle 15px at 30% 50%, @dalmatian-black 100%, transparent 100%),
+        radial-gradient(circle 25px at 50% 30%, @dalmatian-black 100%, transparent 100%),
+        radial-gradient(circle 18px at 70% 60%, @dalmatian-black 100%, transparent 100%),
+        radial-gradient(circle 22px at 90% 25%, @dalmatian-black 100%, transparent 100%),
+        radial-gradient(circle 12px at 20% 80%, @dalmatian-black 100%, transparent 100%),
+        radial-gradient(circle 28px at 60% 85%, @dalmatian-black 100%, transparent 100%),
+        radial-gradient(circle 16px at 85% 75%, @dalmatian-black 100%, transparent 100%);
+    }
+
+    &::after {
+      background: linear-gradient(180deg, transparent 60%, fade(@dalmatian-black, 30%) 100%);
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @dalmatian-white, @dalmatian-light);
+    border: 5px solid @dalmatian-black;
+    box-shadow: 0 10px 40px fade(@dalmatian-black, 30%);
+    position: relative;
+
+    &::before {
+      background: linear-gradient(135deg, @dalmatian-black, @dalmatian-spot);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(2px 2px 4px fade(@dalmatian-black, 40%));
+    }
+
+    // Spot on avatar
+    &::after {
+      content: '';
+      position: absolute;
+      top: 15%;
+      right: 20%;
+      width: 20px;
+      height: 20px;
+      background: @dalmatian-black;
+      border-radius: 50%;
+    }
+  }
+
+  .online-status {
+    background: @dalmatian-red;
+    border: 3px solid @dalmatian-white;
+    box-shadow: 0 0 10px @dalmatian-red;
+  }
+
+  .profile-name {
+    color: @dalmatian-black;
+    text-shadow: 2px 2px 0 @dalmatian-gray;
+    letter-spacing: @letter-spacing-wide;
+  }
+
+  .profile-category {
+    color: @dalmatian-gray;
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: @dalmatian-black;
+    color: @dalmatian-white;
+    border: 3px solid @dalmatian-black;
+
+    &:hover {
+      background: @dalmatian-red;
+      border-color: @dalmatian-red;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px fade(@dalmatian-red, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @dalmatian-black;
+    border: 3px solid @dalmatian-black;
+    background: @dalmatian-white;
+
+    &:hover {
+      background: @dalmatian-black;
+      color: @dalmatian-white;
+    }
+  }
+
+  .profile-stats {
+    background: @dalmatian-white;
+    border: 3px solid @dalmatian-black;
+    position: relative;
+
+    // Spots on stats
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      background: @dalmatian-black;
+      border-radius: 50%;
+    }
+
+    &::before {
+      width: 15px;
+      height: 15px;
+      top: 10px;
+      left: 10px;
+    }
+
+    &::after {
+      width: 12px;
+      height: 12px;
+      bottom: 10px;
+      right: 15px;
+    }
+
+    .stat-value {
+      color: @dalmatian-black;
+      font-weight: @font-weight-black;
+    }
+  }
+
+  .section-title {
+    color: @dalmatian-black;
+    border-bottom: 4px solid @dalmatian-black;
+
+    &::before {
+      content: '🚒';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @dalmatian-white;
+    border: 2px solid @dalmatian-black;
+    position: relative;
+
+    // Random spots
+    &:nth-child(odd)::before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 10px;
+      height: 10px;
+      background: @dalmatian-black;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      background: @dalmatian-light;
+      transform: translateY(-3px);
+      box-shadow: 3px 3px 0 @dalmatian-black;
+    }
+
+    .detail-icon {
+      background: @dalmatian-black;
+      color: @dalmatian-white;
+      border-radius: @radius-md;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @dalmatian-gray;
+    }
+  }
+
+  .trait-badge {
+    background: @dalmatian-white;
+    color: @dalmatian-black;
+    border: 2px solid @dalmatian-black;
+
+    &:nth-child(even) {
+      background: @dalmatian-black;
+      color: @dalmatian-white;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 3px 3px 0 @dalmatian-black;
+
+      &:nth-child(even) {
+        box-shadow: 3px 3px 0 @dalmatian-gray;
+      }
+    }
+  }
+
+  .gallery-item {
+    .gallery-placeholder {
+      background: @dalmatian-white;
+      border: 3px solid @dalmatian-black;
+      position: relative;
+
+      // Spots
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        background: @dalmatian-black;
+        border-radius: 50%;
+      }
+
+      &::before {
+        width: 20%;
+        height: 20%;
+        top: 20%;
+        left: 30%;
+      }
+
+      &::after {
+        width: 15%;
+        height: 15%;
+        bottom: 30%;
+        right: 25%;
+      }
+    }
+
+    &:hover .gallery-placeholder {
+      box-shadow: 5px 5px 0 @dalmatian-black;
+    }
+  }
+
+  .post-card {
+    background: @dalmatian-white;
+    border: 3px solid @dalmatian-black;
+
+    &:hover {
+      box-shadow: 5px 5px 0 @dalmatian-black;
+    }
+
+    .post-avatar {
+      background: @dalmatian-light;
+      border: 2px solid @dalmatian-black;
+    }
+  }
+
+  .friend-card {
+    background: @dalmatian-white;
+    border: 2px solid @dalmatian-black;
+
+    &:hover {
+      background: @dalmatian-light;
+      box-shadow: 3px 3px 0 @dalmatian-black;
+    }
+  }
+
+  // Fire hydrant decoration
+  &::after {
+    content: '🧯';
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 35px;
+    opacity: 0.2;
+  }
+}

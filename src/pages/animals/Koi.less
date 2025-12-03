@@ -1,0 +1,211 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Koi Fish Theme - Japanese, Orange/White, Zen
+@koi-orange: #ff5722;
+@koi-white: #fafafa;
+@koi-black: #212121;
+@koi-gold: #ffc107;
+@koi-water: #81d4fa;
+@koi-pond: #0288d1;
+@koi-red: #d32f2f;
+
+.animal-koi {
+  .profile-cover {
+    background: linear-gradient(180deg, @koi-water 0%, @koi-pond 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 30%, fade(@koi-white, 30%) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 70%, fade(@koi-orange, 25%) 0%, transparent 40%);
+    }
+
+    // Lily pad pattern
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        radial-gradient(ellipse 40px 30px at 20% 80%, fade(#4caf50, 30%) 50%, transparent 50%),
+        radial-gradient(ellipse 35px 25px at 80% 85%, fade(#4caf50, 25%) 50%, transparent 50%),
+        radial-gradient(ellipse 30px 20px at 50% 90%, fade(#4caf50, 20%) 50%, transparent 50%);
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @koi-white 30%, @koi-orange 50%, @koi-white 70%, @koi-red 100%);
+    border: 4px solid @koi-gold;
+    box-shadow:
+      0 0 0 4px @koi-pond,
+      0 15px 50px fade(@koi-pond, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @koi-gold, @koi-orange);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@koi-pond, 50%));
+      animation: koi-swim 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes koi-swim {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-10px) rotate(-5deg); }
+    75% { transform: translateX(10px) rotate(5deg); }
+  }
+
+  .online-status {
+    background: @koi-gold;
+    border: 3px solid @koi-white;
+    box-shadow: 0 0 15px @koi-gold;
+  }
+
+  .profile-name {
+    .text-gradient(@koi-orange, @koi-red);
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    letter-spacing: @letter-spacing-wide;
+  }
+
+  .profile-category {
+    color: @koi-pond;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @koi-orange, @koi-red);
+    border: 2px solid @koi-gold;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @koi-gold;
+      color: @koi-black;
+    }
+  }
+
+  .btn-message {
+    color: @koi-pond;
+    border: 2px solid @koi-pond;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @koi-pond;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: fade(@koi-white, 90%);
+    border: 2px solid @koi-gold;
+    border-radius: @radius-2xl;
+    box-shadow: 0 4px 25px fade(@koi-pond, 20%);
+
+    .stat-value {
+      .text-gradient(@koi-red, @koi-orange);
+      font-family: 'Georgia', serif;
+    }
+  }
+
+  .section-title {
+    color: @koi-black;
+    border-bottom: 3px solid @koi-orange;
+    font-family: 'Georgia', serif;
+
+    &::before {
+      content: '⛩️';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @koi-white;
+    border: 2px solid fade(@koi-pond, 30%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @koi-gold;
+      box-shadow: 0 5px 20px fade(@koi-pond, 20%);
+    }
+
+    .detail-icon {
+      background: @koi-orange;
+      color: white;
+      border-radius: @radius-lg;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @koi-pond;
+      font-family: 'Georgia', serif;
+    }
+  }
+
+  .trait-badge {
+    background: @koi-white;
+    border: 2px solid @koi-orange;
+    border-radius: @radius-xl;
+    font-family: 'Georgia', serif;
+
+    &:nth-child(1) { color: @koi-orange; }
+    &:nth-child(2) { color: @koi-red; }
+    &:nth-child(3) { color: @koi-gold; border-color: @koi-gold; }
+    &:nth-child(4) { color: @koi-pond; border-color: @koi-pond; }
+
+    &:hover {
+      background: @koi-orange;
+      color: white;
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @koi-water 0%, @koi-pond 100%);
+      border: 2px solid @koi-gold;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      box-shadow: 0 10px 40px fade(@koi-pond, 25%);
+    }
+  }
+
+  .post-card {
+    background: @koi-white;
+    border: 2px solid fade(@koi-pond, 30%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @koi-gold;
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @koi-white, @koi-orange);
+      border: 2px solid @koi-gold;
+    }
+  }
+
+  .friend-card {
+    background: @koi-white;
+    border: 2px solid fade(@koi-pond, 30%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @koi-gold;
+    }
+  }
+
+  // Japanese garden decoration
+  &::after {
+    content: '🎋';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 40px;
+    opacity: 0.15;
+  }
+}

@@ -1,0 +1,219 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Rabbit Theme - Soft, Gray/White, Hoppy
+@rabbit-gray: #9e9e9e;
+@rabbit-white: #fafafa;
+@rabbit-pink: #f48fb1;
+@rabbit-brown: #795548;
+@rabbit-dark: #616161;
+@rabbit-light: #f5f5f5;
+@rabbit-cream: #fff8e1;
+
+.animal-rabbit {
+  .profile-cover {
+    background: linear-gradient(180deg, @rabbit-white 0%, @rabbit-gray 60%, @rabbit-dark 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 30%, fade(@rabbit-pink, 30%) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 70%, fade(@rabbit-cream, 40%) 0%, transparent 50%);
+    }
+
+    // Carrot pattern
+    &::after {
+      content: '🥕';
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-size: 40px;
+      opacity: 0.3;
+      transform: rotate(-20deg);
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @rabbit-white 0%, @rabbit-light 50%, @rabbit-gray 100%);
+    border: 4px solid @rabbit-pink;
+    box-shadow:
+      0 0 25px fade(@rabbit-pink, 30%),
+      0 10px 35px fade(@rabbit-dark, 25%);
+
+    &::before {
+      background: linear-gradient(135deg, @rabbit-pink, @rabbit-gray);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@rabbit-dark, 30%));
+    }
+
+    // Ears indication
+    &::after {
+      content: '🐰';
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      opacity: 0.5;
+    }
+  }
+
+  .online-status {
+    background: @rabbit-pink;
+    border: 3px solid @rabbit-white;
+  }
+
+  .profile-name {
+    .text-gradient(@rabbit-gray, @rabbit-dark);
+    font-weight: @font-weight-medium;
+
+    &::after {
+      content: ' 🥕';
+    }
+  }
+
+  .profile-category {
+    color: @rabbit-pink;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @rabbit-pink, @rabbit-gray);
+    border-radius: @radius-full;
+
+    &:hover {
+      background: linear-gradient(135deg, @rabbit-gray, @rabbit-dark);
+      transform: translateY(-4px);
+    }
+  }
+
+  .btn-message {
+    color: @rabbit-pink;
+    border: 2px solid @rabbit-pink;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @rabbit-pink;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: @rabbit-light;
+    border: 2px solid @rabbit-gray;
+    border-radius: @radius-2xl;
+
+    .stat-value {
+      .text-gradient(@rabbit-dark, @rabbit-gray);
+    }
+  }
+
+  .section-title {
+    color: @rabbit-dark;
+    border-bottom: 3px solid @rabbit-pink;
+
+    &::before {
+      content: '🐇';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @rabbit-white;
+    border: 2px solid @rabbit-light;
+    border-radius: @radius-2xl;
+
+    &:hover {
+      background: @rabbit-light;
+      border-color: @rabbit-pink;
+      transform: translateY(-4px);
+    }
+
+    .detail-icon {
+      background: @rabbit-pink;
+      color: white;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @rabbit-gray;
+    }
+  }
+
+  .trait-badge {
+    background: @rabbit-light;
+    color: @rabbit-dark;
+    border: 2px solid @rabbit-gray;
+    border-radius: @radius-full;
+
+    &:nth-child(odd) {
+      background: fade(@rabbit-pink, 20%);
+      border-color: @rabbit-pink;
+    }
+
+    &:hover {
+      transform: translateY(-3px) rotate(-3deg);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-2xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @rabbit-white, @rabbit-light, @rabbit-gray);
+      border: 2px solid @rabbit-gray;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @rabbit-pink;
+    }
+  }
+
+  .post-card {
+    background: @rabbit-white;
+    border: 2px solid @rabbit-light;
+    border-radius: @radius-2xl;
+
+    &:hover {
+      border-color: @rabbit-pink;
+    }
+
+    .post-avatar {
+      background: @rabbit-light;
+      border: 2px solid @rabbit-pink;
+    }
+  }
+
+  .friend-card {
+    background: @rabbit-white;
+    border: 2px solid @rabbit-light;
+    border-radius: @radius-2xl;
+
+    &:hover {
+      background: @rabbit-light;
+      border-color: @rabbit-pink;
+      transform: translateY(-4px);
+    }
+  }
+
+  // Hop decoration
+  &::before {
+    content: '✨';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 30px;
+    opacity: 0.2;
+    animation: hop-sparkle 1s ease-in-out infinite;
+  }
+
+  @keyframes hop-sparkle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+}

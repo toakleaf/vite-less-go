@@ -1,0 +1,223 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// British Shorthair Theme - Regal, Gray, Sophisticated
+@british-primary: #607d8b;
+@british-secondary: #546e7a;
+@british-accent: #cfd8dc;
+@british-dark: #37474f;
+@british-light: #eceff1;
+@british-copper: #bf8040;
+@british-navy: #263238;
+
+.animal-british-shorthair {
+  .profile-cover {
+    background: linear-gradient(135deg, @british-secondary 0%, @british-dark 50%, @british-navy 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 30%, fade(@british-accent, 30%) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 70%, fade(@british-copper, 20%) 0%, transparent 40%);
+    }
+
+    // Union Jack inspired pattern
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg,
+        @british-navy 20%,
+        white 20%,
+        white 40%,
+        #c8102e 40%,
+        #c8102e 60%,
+        white 60%,
+        white 80%,
+        @british-navy 80%);
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @british-accent, @british-light);
+    border: 5px solid @british-copper;
+    box-shadow:
+      0 0 0 4px @british-dark,
+      0 15px 50px fade(@british-navy, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @british-copper, @british-dark);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@british-navy, 40%));
+    }
+  }
+
+  .online-status {
+    background: @british-copper;
+    border: 3px solid @british-light;
+  }
+
+  .profile-name {
+    .text-gradient(@british-dark, @british-navy);
+    font-family: 'Georgia', serif;
+    letter-spacing: @letter-spacing-wide;
+
+    &::after {
+      content: ' 🇬🇧';
+      font-size: @font-size-lg;
+    }
+  }
+
+  .profile-category {
+    color: @british-copper;
+    font-family: 'Georgia', serif;
+    letter-spacing: @letter-spacing-widest;
+    text-transform: uppercase;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @british-dark, @british-navy);
+    border: 2px solid @british-copper;
+
+    &:hover {
+      background: @british-copper;
+      color: @british-navy;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px fade(@british-copper, 40%);
+    }
+  }
+
+  .btn-message {
+    color: @british-dark;
+    border: 2px solid @british-dark;
+
+    &:hover {
+      background: @british-dark;
+      color: @british-light;
+    }
+  }
+
+  .profile-stats {
+    background: @british-light;
+    border: 3px solid @british-dark;
+    border-radius: @radius-lg;
+
+    .stat-value {
+      .text-gradient(@british-dark, @british-navy);
+      font-family: 'Georgia', serif;
+    }
+
+    .stat-label {
+      color: @british-secondary;
+      text-transform: uppercase;
+      font-family: 'Georgia', serif;
+    }
+  }
+
+  .section-title {
+    color: @british-navy;
+    border-bottom: 3px solid @british-copper;
+    font-family: 'Georgia', serif;
+
+    &::before {
+      content: '🏰';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @british-light;
+    border: 2px solid @british-accent;
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: @british-accent;
+      border-color: @british-copper;
+      transform: translateY(-3px);
+    }
+
+    .detail-icon {
+      background: @british-dark;
+      color: @british-copper;
+      border-radius: @radius-md;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @british-secondary;
+      font-family: 'Georgia', serif;
+      text-transform: uppercase;
+    }
+  }
+
+  .trait-badge {
+    background: @british-light;
+    color: @british-dark;
+    border: 2px solid @british-dark;
+    font-family: 'Georgia', serif;
+
+    &:hover {
+      background: @british-dark;
+      color: @british-light;
+      transform: translateY(-2px);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-lg;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @british-light, @british-accent);
+      border: 3px solid @british-dark;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @british-copper;
+    }
+  }
+
+  .post-card {
+    background: @british-light;
+    border: 2px solid @british-accent;
+    border-radius: @radius-lg;
+
+    &:hover {
+      border-color: @british-copper;
+      box-shadow: 0 8px 30px fade(@british-dark, 15%);
+    }
+
+    .post-avatar {
+      background: @british-accent;
+      border: 2px solid @british-dark;
+    }
+  }
+
+  .friend-card {
+    background: @british-light;
+    border: 2px solid @british-accent;
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: @british-accent;
+      border-color: @british-copper;
+    }
+  }
+
+  // Tea cup decoration
+  &::after {
+    content: '☕';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.15;
+  }
+}

@@ -1,0 +1,209 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Hamster Theme - Cute, Tan, Energetic
+@hamster-tan: #d7a86e;
+@hamster-brown: #8b5a2b;
+@hamster-cream: #fef9e7;
+@hamster-dark: #5d4037;
+@hamster-light: #fff8e1;
+@hamster-pink: #f8bbd9;
+@hamster-orange: #ffb74d;
+
+.animal-hamster {
+  .profile-cover {
+    background: linear-gradient(135deg, @hamster-tan 0%, @hamster-brown 50%, @hamster-dark 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 30% 40%, fade(@hamster-cream, 50%) 0%, transparent 40%),
+        radial-gradient(circle at 70% 60%, fade(@hamster-orange, 30%) 0%, transparent 40%);
+    }
+
+    // Bedding texture
+    &::after {
+      content: '';
+      .absolute-fill();
+      background-image:
+        linear-gradient(45deg, fade(@hamster-cream, 5%) 25%, transparent 25%),
+        linear-gradient(-45deg, fade(@hamster-cream, 5%) 25%, transparent 25%);
+      background-size: 20px 20px;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @hamster-cream 0%, @hamster-tan 50%, @hamster-brown 100%);
+    border: 4px solid @hamster-orange;
+    box-shadow:
+      0 0 20px fade(@hamster-tan, 50%),
+      0 10px 30px fade(@hamster-dark, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @hamster-orange, @hamster-tan);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@hamster-dark, 40%));
+      animation: cheeky 0.5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes cheeky {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05) translateX(2px); }
+  }
+
+  .online-status {
+    background: @hamster-pink;
+    border: 3px solid @hamster-cream;
+  }
+
+  .profile-name {
+    .text-gradient(@hamster-tan, @hamster-dark);
+    font-weight: @font-weight-semibold;
+
+    &::after {
+      content: ' 🥜';
+    }
+  }
+
+  .profile-category {
+    color: @hamster-brown;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @hamster-tan, @hamster-brown);
+    border-radius: @radius-full;
+
+    &:hover {
+      background: linear-gradient(135deg, @hamster-orange, @hamster-tan);
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-message {
+    color: @hamster-brown;
+    border: 2px solid @hamster-brown;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @hamster-brown;
+      color: @hamster-cream;
+    }
+  }
+
+  .profile-stats {
+    background: @hamster-light;
+    border: 2px solid @hamster-tan;
+    border-radius: @radius-2xl;
+
+    .stat-value {
+      .text-gradient(@hamster-brown, @hamster-dark);
+    }
+  }
+
+  .section-title {
+    color: @hamster-dark;
+    border-bottom: 3px solid @hamster-tan;
+
+    &::before {
+      content: '🌻';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @hamster-cream;
+    border: 2px solid @hamster-tan;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @hamster-light;
+      border-color: @hamster-orange;
+      transform: translateY(-3px);
+    }
+
+    .detail-icon {
+      background: @hamster-tan;
+      color: @hamster-cream;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @hamster-brown;
+    }
+  }
+
+  .trait-badge {
+    background: @hamster-cream;
+    color: @hamster-dark;
+    border: 2px solid @hamster-tan;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @hamster-tan;
+      color: @hamster-cream;
+      transform: scale(1.05);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @hamster-cream, @hamster-tan);
+      border: 2px solid @hamster-tan;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @hamster-orange;
+    }
+  }
+
+  .post-card {
+    background: @hamster-cream;
+    border: 2px solid @hamster-tan;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @hamster-orange;
+    }
+
+    .post-avatar {
+      background: @hamster-tan;
+      border: 2px solid @hamster-orange;
+    }
+  }
+
+  .friend-card {
+    background: @hamster-cream;
+    border: 2px solid @hamster-tan;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @hamster-light;
+      border-color: @hamster-orange;
+    }
+  }
+
+  // Wheel decoration
+  &::after {
+    content: '🎡';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.15;
+    animation: spin 3s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+}

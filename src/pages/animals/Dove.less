@@ -1,0 +1,221 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Dove Theme - Peaceful, White, Serene
+@dove-white: #ffffff;
+@dove-gray: #e0e0e0;
+@dove-silver: #bdbdbd;
+@dove-dark: #757575;
+@dove-light: #fafafa;
+@dove-gold: #ffd54f;
+@dove-sky: #e3f2fd;
+
+.animal-dove {
+  .profile-cover {
+    background: linear-gradient(180deg, @dove-sky 0%, @dove-white 50%, @dove-gray 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 30% 30%, fade(@dove-gold, 40%) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, fade(@dove-silver, 50%) 0%, transparent 50%);
+    }
+
+    // Feather softness
+    &::after {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse 200px 100px at 20% 80%, fade(@dove-white, 80%) 0%, transparent 60%),
+        radial-gradient(ellipse 150px 80px at 80% 70%, fade(@dove-white, 70%) 0%, transparent 60%);
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @dove-white, @dove-gray);
+    border: 4px solid @dove-silver;
+    box-shadow:
+      0 0 30px fade(@dove-white, 80%),
+      0 15px 50px fade(@dove-dark, 20%);
+
+    &::before {
+      background: linear-gradient(135deg, @dove-silver, @dove-gray);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 15px fade(@dove-dark, 30%));
+    }
+  }
+
+  .online-status {
+    background: @dove-gold;
+    border: 3px solid @dove-white;
+    box-shadow: 0 0 15px fade(@dove-gold, 50%);
+  }
+
+  .profile-name {
+    .text-gradient(@dove-dark, @dove-silver);
+    font-weight: @font-weight-light;
+    letter-spacing: @letter-spacing-wide;
+    font-style: italic;
+  }
+
+  .profile-category {
+    color: @dove-silver;
+    font-style: italic;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @dove-gray, @dove-silver);
+    color: @dove-dark;
+    border: 2px solid @dove-white;
+    box-shadow: 0 4px 20px fade(@dove-silver, 40%);
+
+    &:hover {
+      background: @dove-white;
+      color: @dove-dark;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px fade(@dove-silver, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @dove-dark;
+    border: 2px solid @dove-silver;
+    background: fade(@dove-white, 80%);
+
+    &:hover {
+      background: @dove-silver;
+      color: @dove-white;
+    }
+  }
+
+  .profile-stats {
+    background: fade(@dove-white, 90%);
+    border: 1px solid @dove-gray;
+    border-radius: @radius-3xl;
+    box-shadow: 0 4px 30px fade(@dove-silver, 30%);
+
+    .stat-value {
+      color: @dove-dark;
+      font-weight: @font-weight-light;
+    }
+
+    .stat-label {
+      color: @dove-silver;
+      font-style: italic;
+    }
+  }
+
+  .section-title {
+    color: @dove-dark;
+    border-bottom: 1px solid @dove-gray;
+    font-weight: @font-weight-light;
+    font-style: italic;
+
+    &::before {
+      content: '☮️';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: fade(@dove-white, 90%);
+    border: 1px solid @dove-gray;
+    border-radius: @radius-2xl;
+    box-shadow: 0 2px 15px fade(@dove-silver, 20%);
+
+    &:hover {
+      background: @dove-white;
+      border-color: @dove-silver;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px fade(@dove-silver, 30%);
+    }
+
+    .detail-icon {
+      background: @dove-gray;
+      color: @dove-dark;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @dove-silver;
+      font-style: italic;
+    }
+  }
+
+  .trait-badge {
+    background: fade(@dove-white, 90%);
+    color: @dove-dark;
+    border: 1px solid @dove-gray;
+    border-radius: @radius-full;
+    font-weight: @font-weight-light;
+    font-style: italic;
+
+    &:hover {
+      background: @dove-silver;
+      color: @dove-white;
+      transform: translateY(-2px);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-2xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @dove-sky 0%, @dove-white 50%, @dove-gray 100%);
+      border: 1px solid @dove-gray;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      box-shadow: 0 10px 40px fade(@dove-silver, 30%);
+    }
+  }
+
+  .post-card {
+    background: fade(@dove-white, 95%);
+    border: 1px solid @dove-gray;
+    border-radius: @radius-2xl;
+
+    &:hover {
+      box-shadow: 0 8px 30px fade(@dove-silver, 20%);
+    }
+
+    .post-avatar {
+      background: @dove-gray;
+      border: 1px solid @dove-silver;
+    }
+  }
+
+  .friend-card {
+    background: fade(@dove-white, 90%);
+    border: 1px solid @dove-gray;
+    border-radius: @radius-2xl;
+
+    &:hover {
+      background: @dove-white;
+      box-shadow: 0 8px 25px fade(@dove-silver, 25%);
+    }
+  }
+
+  // Olive branch decoration
+  &::after {
+    content: '🕊️';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 40px;
+    opacity: 0.15;
+    animation: gentle-float 4s ease-in-out infinite;
+  }
+
+  @keyframes gentle-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
