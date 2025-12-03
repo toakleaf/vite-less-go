@@ -13,6 +13,9 @@ dist-ssr
 dist-lessjs
 *.local
 
+# Benchmark outputs
+comparison-report.txt
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
