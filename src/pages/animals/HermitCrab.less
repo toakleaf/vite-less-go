@@ -1,0 +1,213 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Hermit Crab Theme - Beach, Sandy, Shell Home
+@crab-orange: #ff7043;
+@crab-sand: #ffe0b2;
+@crab-shell: #8d6e63;
+@crab-water: #4dd0e1;
+@crab-deep: #00838f;
+@crab-light: #fff8e1;
+@crab-coral: #ff5722;
+
+.animal-hermit-crab {
+  .profile-cover {
+    background: linear-gradient(180deg, @crab-water 0%, @crab-sand 60%, @crab-shell 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 30%, fade(white, 40%) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 70%, fade(@crab-orange, 30%) 0%, transparent 40%);
+    }
+
+    // Beach pattern
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background:
+        radial-gradient(ellipse 20px 15px at 20% 50%, fade(@crab-shell, 40%) 50%, transparent 50%),
+        radial-gradient(ellipse 15px 12px at 50% 70%, fade(@crab-shell, 35%) 50%, transparent 50%),
+        radial-gradient(ellipse 25px 18px at 80% 40%, fade(@crab-shell, 45%) 50%, transparent 50%);
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @crab-sand 0%, @crab-shell 50%, @crab-orange 100%);
+    border: 4px solid @crab-shell;
+    box-shadow:
+      0 0 0 4px @crab-sand,
+      0 10px 40px fade(@crab-deep, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @crab-orange, @crab-shell);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@crab-shell, 50%));
+      animation: scuttle 0.5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes scuttle {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+  }
+
+  .online-status {
+    background: @crab-orange;
+    border: 3px solid @crab-sand;
+  }
+
+  .profile-name {
+    .text-gradient(@crab-orange, @crab-shell);
+    font-weight: @font-weight-semibold;
+
+    &::after {
+      content: ' 🏖️';
+    }
+  }
+
+  .profile-category {
+    color: @crab-water;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @crab-orange, @crab-coral);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: linear-gradient(135deg, @crab-shell, @crab-orange);
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-message {
+    color: @crab-shell;
+    border: 2px solid @crab-shell;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @crab-shell;
+      color: @crab-sand;
+    }
+  }
+
+  .profile-stats {
+    background: @crab-sand;
+    border: 2px solid @crab-shell;
+    border-radius: @radius-2xl;
+
+    .stat-value {
+      .text-gradient(@crab-coral, @crab-shell);
+    }
+  }
+
+  .section-title {
+    color: @crab-shell;
+    border-bottom: 3px solid @crab-orange;
+
+    &::before {
+      content: '🐚';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @crab-light;
+    border: 2px solid @crab-sand;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @crab-sand;
+      border-color: @crab-orange;
+      transform: translateX(5px);
+    }
+
+    .detail-icon {
+      background: @crab-shell;
+      color: @crab-sand;
+      border-radius: @radius-lg;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @crab-shell;
+    }
+  }
+
+  .trait-badge {
+    background: @crab-light;
+    color: @crab-shell;
+    border: 2px solid @crab-sand;
+    border-radius: @radius-xl;
+
+    &:nth-child(odd) {
+      background: @crab-sand;
+      border-color: @crab-shell;
+    }
+
+    &:hover {
+      background: @crab-orange;
+      color: white;
+      border-color: @crab-orange;
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @crab-water 0%, @crab-sand 50%, @crab-shell 100%);
+      border: 2px solid @crab-shell;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @crab-orange;
+    }
+  }
+
+  .post-card {
+    background: @crab-light;
+    border: 2px solid @crab-sand;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @crab-shell;
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @crab-sand, @crab-shell);
+      border: 2px solid @crab-orange;
+    }
+  }
+
+  .friend-card {
+    background: @crab-light;
+    border: 2px solid @crab-sand;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @crab-sand;
+      border-color: @crab-shell;
+    }
+  }
+
+  // Shell collection decoration
+  &::after {
+    content: '🐚';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.2;
+  }
+}

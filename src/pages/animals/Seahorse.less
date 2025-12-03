@@ -1,0 +1,233 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Seahorse Theme - Magical, Teal, Delicate
+@seahorse-teal: #009688;
+@seahorse-coral: #ff7043;
+@seahorse-gold: #ffd54f;
+@seahorse-deep: #004d40;
+@seahorse-light: #e0f2f1;
+@seahorse-pink: #f48fb1;
+@seahorse-purple: #ba68c8;
+
+.animal-seahorse {
+  .profile-cover {
+    background: linear-gradient(180deg, @seahorse-light 0%, @seahorse-teal 50%, @seahorse-deep 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 20% 30%, fade(@seahorse-gold, 30%) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 70%, fade(@seahorse-pink, 25%) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 50%, fade(@seahorse-purple, 20%) 0%, transparent 50%);
+    }
+
+    // Seaweed
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background:
+        linear-gradient(180deg, transparent 0%, fade(@seahorse-deep, 30%) 100%),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 30px,
+          fade(#4caf50, 15%) 30px,
+          fade(#4caf50, 15%) 35px
+        );
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @seahorse-teal 0%, @seahorse-coral 50%, @seahorse-gold 100%);
+    border: 4px solid @seahorse-gold;
+    box-shadow:
+      0 0 30px fade(@seahorse-gold, 40%),
+      0 15px 50px fade(@seahorse-deep, 35%);
+
+    &::before {
+      background: linear-gradient(135deg, @seahorse-gold, @seahorse-teal);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 12px fade(@seahorse-deep, 40%));
+      animation: upright-swim 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes upright-swim {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(-3deg); }
+    75% { transform: translateY(-3px) rotate(3deg); }
+  }
+
+  .online-status {
+    background: @seahorse-gold;
+    border: 3px solid @seahorse-light;
+    box-shadow: 0 0 15px @seahorse-gold;
+  }
+
+  .profile-name {
+    .text-gradient(@seahorse-teal, @seahorse-coral);
+    font-style: italic;
+    letter-spacing: @letter-spacing-wide;
+
+    &::before {
+      content: '✨ ';
+    }
+  }
+
+  .profile-category {
+    color: @seahorse-coral;
+    font-style: italic;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @seahorse-teal, @seahorse-coral);
+    border: 2px solid @seahorse-gold;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @seahorse-gold;
+      color: @seahorse-deep;
+    }
+  }
+
+  .btn-message {
+    color: @seahorse-teal;
+    border: 2px solid @seahorse-teal;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @seahorse-teal;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: @seahorse-light;
+    border: 2px solid @seahorse-gold;
+    border-radius: @radius-3xl;
+    box-shadow: 0 4px 25px fade(@seahorse-teal, 20%);
+
+    .stat-value {
+      .text-gradient(@seahorse-teal, @seahorse-coral);
+      font-style: italic;
+    }
+  }
+
+  .section-title {
+    color: @seahorse-deep;
+    border-bottom: 3px solid @seahorse-gold;
+    font-style: italic;
+
+    &::before {
+      content: '🌊';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @seahorse-light;
+    border: 2px solid fade(@seahorse-teal, 30%);
+    border-radius: @radius-2xl;
+
+    &:hover {
+      background: fade(@seahorse-gold, 15%);
+      border-color: @seahorse-gold;
+      transform: translateY(-4px);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @seahorse-teal, @seahorse-coral);
+      color: white;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @seahorse-teal;
+      font-style: italic;
+    }
+  }
+
+  .trait-badge {
+    background: @seahorse-light;
+    border: 2px solid @seahorse-teal;
+    border-radius: @radius-full;
+    font-style: italic;
+
+    &:nth-child(1) { color: @seahorse-teal; }
+    &:nth-child(2) { color: @seahorse-coral; border-color: @seahorse-coral; }
+    &:nth-child(3) { color: @seahorse-gold; border-color: @seahorse-gold; }
+    &:nth-child(4) { color: @seahorse-purple; border-color: @seahorse-purple; }
+
+    &:hover {
+      background: @seahorse-gold;
+      border-color: @seahorse-gold;
+      color: @seahorse-deep;
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-2xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @seahorse-light 0%, @seahorse-teal 100%);
+      border: 2px solid @seahorse-gold;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      box-shadow: 0 0 25px fade(@seahorse-gold, 30%);
+    }
+  }
+
+  .post-card {
+    background: @seahorse-light;
+    border: 2px solid fade(@seahorse-teal, 30%);
+    border-radius: @radius-2xl;
+
+    &:hover {
+      border-color: @seahorse-gold;
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @seahorse-teal, @seahorse-coral);
+      border: 2px solid @seahorse-gold;
+    }
+  }
+
+  .friend-card {
+    background: @seahorse-light;
+    border: 2px solid fade(@seahorse-teal, 30%);
+    border-radius: @radius-2xl;
+
+    &:hover {
+      background: fade(@seahorse-gold, 15%);
+      border-color: @seahorse-gold;
+    }
+  }
+
+  // Magic decoration
+  &::before {
+    content: '💫';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.2;
+    animation: twinkle-magic 2s ease-in-out infinite;
+  }
+
+  @keyframes twinkle-magic {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.2; }
+    50% { transform: scale(1.2) rotate(180deg); opacity: 0.4; }
+  }
+}

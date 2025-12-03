@@ -1,0 +1,222 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Betta Fish Theme - Elegant, Purple/Red, Flowing
+@betta-purple: #7b1fa2;
+@betta-red: #c62828;
+@betta-blue: #1565c0;
+@betta-water: #e1f5fe;
+@betta-dark: #4a148c;
+@betta-light: #f3e5f5;
+@betta-fin: #d500f9;
+
+.animal-betta {
+  .profile-cover {
+    background: linear-gradient(135deg, @betta-purple 0%, @betta-red 50%, @betta-blue 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 20% 30%, fade(@betta-fin, 40%) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, fade(@betta-blue, 40%) 0%, transparent 50%);
+    }
+
+    // Flowing fins effect
+    &::after {
+      content: '';
+      .absolute-fill();
+      background:
+        linear-gradient(45deg, transparent 45%, fade(@betta-fin, 20%) 50%, transparent 55%),
+        linear-gradient(-45deg, transparent 45%, fade(@betta-purple, 20%) 50%, transparent 55%);
+      background-size: 30px 30px;
+      animation: fins-flow 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes fins-flow {
+    0%, 100% { background-position: 0 0; }
+    50% { background-position: 30px 30px; }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @betta-purple 0%, @betta-red 50%, @betta-blue 100%);
+    border: 4px solid @betta-fin;
+    box-shadow:
+      0 0 30px @betta-fin,
+      0 15px 50px fade(@betta-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @betta-fin, @betta-purple);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 0 15px @betta-fin);
+      animation: betta-flare 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes betta-flare {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .online-status {
+    background: @betta-fin;
+    border: 3px solid @betta-light;
+    box-shadow: 0 0 20px @betta-fin;
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 10px @betta-fin; }
+    50% { box-shadow: 0 0 30px @betta-fin, 0 0 40px @betta-purple; }
+  }
+
+  .profile-name {
+    .text-gradient(@betta-purple, @betta-red);
+    font-weight: @font-weight-semibold;
+    font-style: italic;
+    letter-spacing: @letter-spacing-wide;
+  }
+
+  .profile-category {
+    color: @betta-fin;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @betta-purple, @betta-red);
+    border: 2px solid @betta-fin;
+    box-shadow: 0 4px 20px fade(@betta-purple, 50%);
+
+    &:hover {
+      background: linear-gradient(135deg, @betta-fin, @betta-purple);
+      box-shadow: 0 8px 30px @betta-fin;
+    }
+  }
+
+  .btn-message {
+    color: @betta-purple;
+    border: 2px solid @betta-purple;
+
+    &:hover {
+      background: @betta-purple;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: @betta-light;
+    border: 2px solid @betta-fin;
+    border-radius: @radius-2xl;
+    box-shadow: inset 0 0 30px fade(@betta-fin, 15%);
+
+    .stat-value {
+      .text-gradient(@betta-purple, @betta-red);
+    }
+  }
+
+  .section-title {
+    color: @betta-dark;
+    border-bottom: 3px solid @betta-fin;
+
+    &::before {
+      content: '👑';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @betta-light;
+    border: 2px solid fade(@betta-fin, 30%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@betta-fin, 10%);
+      border-color: @betta-fin;
+      box-shadow: 0 0 20px fade(@betta-fin, 20%);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @betta-purple, @betta-fin);
+      color: white;
+      border-radius: @radius-lg;
+      padding: @space-2;
+    }
+  }
+
+  .trait-badge {
+    background: @betta-light;
+    border: 2px solid @betta-fin;
+    border-radius: @radius-full;
+
+    &:nth-child(1) { color: @betta-purple; }
+    &:nth-child(2) { color: @betta-red; }
+    &:nth-child(3) { color: @betta-blue; }
+    &:nth-child(4) { color: @betta-fin; }
+
+    &:hover {
+      background: linear-gradient(135deg, @betta-purple, @betta-fin);
+      color: white;
+      box-shadow: 0 0 15px @betta-fin;
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @betta-purple, @betta-red, @betta-blue);
+      border: 2px solid @betta-fin;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      box-shadow: 0 0 30px @betta-fin;
+    }
+  }
+
+  .post-card {
+    background: @betta-light;
+    border: 2px solid fade(@betta-fin, 30%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @betta-fin;
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @betta-purple, @betta-red);
+      border: 2px solid @betta-fin;
+    }
+  }
+
+  .friend-card {
+    background: @betta-light;
+    border: 2px solid fade(@betta-fin, 30%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@betta-fin, 10%);
+      border-color: @betta-fin;
+    }
+  }
+
+  // Fin decoration
+  &::after {
+    content: '✨';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.2;
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+
+  @keyframes sparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+  }
+}

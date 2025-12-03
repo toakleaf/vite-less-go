@@ -1,0 +1,207 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Ferret Theme - Mischievous, Sable, Playful
+@ferret-sable: #4a3728;
+@ferret-cream: #f5f0e6;
+@ferret-mask: #2d1f15;
+@ferret-light: #d7ccc8;
+@ferret-dark: #1a1210;
+@ferret-pink: #ffab91;
+@ferret-tan: #a1887f;
+
+.animal-ferret {
+  .profile-cover {
+    background: linear-gradient(180deg, @ferret-cream 0%, @ferret-sable 50%, @ferret-mask 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 40%, fade(@ferret-cream, 60%) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 70%, fade(@ferret-mask, 40%) 0%, transparent 50%);
+    }
+
+    // Tunnel pattern
+    &::after {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle 50px at 20% 80%, fade(@ferret-dark, 30%) 0%, transparent 70%),
+        radial-gradient(circle 40px at 80% 70%, fade(@ferret-dark, 25%) 0%, transparent 70%);
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @ferret-cream 30%, @ferret-sable 70%, @ferret-mask 100%);
+    border: 4px solid @ferret-tan;
+    box-shadow:
+      0 0 0 3px @ferret-cream,
+      0 10px 35px fade(@ferret-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @ferret-sable, @ferret-mask);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@ferret-dark, 50%));
+      animation: sneak 1s ease-in-out infinite;
+    }
+  }
+
+  @keyframes sneak {
+    0%, 100% { transform: translateX(0) scaleX(1); }
+    25% { transform: translateX(-5px) scaleX(1.1); }
+    75% { transform: translateX(5px) scaleX(1.1); }
+  }
+
+  .online-status {
+    background: @ferret-pink;
+    border: 3px solid @ferret-cream;
+  }
+
+  .profile-name {
+    .text-gradient(@ferret-sable, @ferret-dark);
+    font-weight: @font-weight-semibold;
+    font-style: italic;
+
+    &::after {
+      content: ' 🕳️';
+    }
+  }
+
+  .profile-category {
+    color: @ferret-tan;
+    letter-spacing: @letter-spacing-wide;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @ferret-sable, @ferret-mask);
+    border: 2px solid @ferret-tan;
+
+    &:hover {
+      background: linear-gradient(135deg, @ferret-tan, @ferret-sable);
+      transform: translateY(-3px) scaleX(1.02);
+    }
+  }
+
+  .btn-message {
+    color: @ferret-sable;
+    border: 2px solid @ferret-sable;
+
+    &:hover {
+      background: @ferret-sable;
+      color: @ferret-cream;
+    }
+  }
+
+  .profile-stats {
+    background: @ferret-cream;
+    border: 2px solid @ferret-tan;
+    border-radius: @radius-2xl;
+
+    .stat-value {
+      .text-gradient(@ferret-sable, @ferret-mask);
+    }
+  }
+
+  .section-title {
+    color: @ferret-mask;
+    border-bottom: 3px solid @ferret-sable;
+    font-style: italic;
+
+    &::before {
+      content: '🎭';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @ferret-cream;
+    border: 2px solid @ferret-light;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @ferret-light;
+      border-color: @ferret-sable;
+      transform: translateX(8px);
+    }
+
+    .detail-icon {
+      background: @ferret-sable;
+      color: @ferret-cream;
+      border-radius: @radius-lg;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @ferret-tan;
+    }
+  }
+
+  .trait-badge {
+    background: @ferret-cream;
+    color: @ferret-mask;
+    border: 2px solid @ferret-sable;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @ferret-sable;
+      color: @ferret-cream;
+      transform: scale(1.05) translateX(5px);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @ferret-cream 30%, @ferret-sable 100%);
+      border: 2px solid @ferret-tan;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @ferret-sable;
+      transform: scaleX(1.05);
+    }
+  }
+
+  .post-card {
+    background: @ferret-cream;
+    border: 2px solid @ferret-light;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @ferret-sable;
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @ferret-cream, @ferret-sable);
+      border: 2px solid @ferret-tan;
+    }
+  }
+
+  .friend-card {
+    background: @ferret-cream;
+    border: 2px solid @ferret-light;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @ferret-light;
+      border-color: @ferret-sable;
+      transform: translateX(5px);
+    }
+  }
+
+  // Sock decoration
+  &::after {
+    content: '🧦';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.15;
+  }
+}

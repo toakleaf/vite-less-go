@@ -1,0 +1,203 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Parakeet/Budgie Theme - Vibrant, Green/Blue, Playful
+@parakeet-green: #4caf50;
+@parakeet-blue: #2196f3;
+@parakeet-yellow: #ffeb3b;
+@parakeet-white: #ffffff;
+@parakeet-dark: #1b5e20;
+@parakeet-light: #e8f5e9;
+@parakeet-stripe: #1a237e;
+
+.animal-parakeet {
+  .profile-cover {
+    background: linear-gradient(180deg, @parakeet-yellow 0%, @parakeet-green 50%, @parakeet-blue 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      // Wing stripe pattern
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 5px,
+        fade(@parakeet-stripe, 10%) 5px,
+        fade(@parakeet-stripe, 10%) 10px
+      );
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @parakeet-yellow 0%, @parakeet-green 100%);
+    border: 4px solid @parakeet-blue;
+    box-shadow:
+      0 0 20px fade(@parakeet-green, 50%),
+      0 10px 40px fade(@parakeet-dark, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @parakeet-green, @parakeet-blue);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@parakeet-dark, 40%));
+      animation: hop 0.5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes hop {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .online-status {
+    background: @parakeet-green;
+    border: 3px solid @parakeet-yellow;
+  }
+
+  .profile-name {
+    .text-gradient(@parakeet-green, @parakeet-blue);
+    font-weight: @font-weight-bold;
+  }
+
+  .profile-category {
+    color: @parakeet-green;
+    text-transform: uppercase;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @parakeet-green, @parakeet-blue);
+
+    &:hover {
+      background: linear-gradient(135deg, @parakeet-blue, @parakeet-green);
+      transform: translateY(-3px) rotate(2deg);
+    }
+  }
+
+  .btn-message {
+    color: @parakeet-green;
+    border: 2px solid @parakeet-green;
+
+    &:hover {
+      background: @parakeet-green;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(90deg, fade(@parakeet-yellow, 20%), fade(@parakeet-green, 20%), fade(@parakeet-blue, 20%));
+    border: 2px solid @parakeet-green;
+    border-radius: @radius-2xl;
+
+    .stat-item:nth-child(1) .stat-value { color: @parakeet-dark; }
+    .stat-item:nth-child(2) .stat-value { color: @parakeet-green; }
+    .stat-item:nth-child(3) .stat-value { color: @parakeet-blue; }
+  }
+
+  .section-title {
+    color: @parakeet-dark;
+    border-bottom: 3px solid @parakeet-green;
+
+    &::before {
+      content: '🌿';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @parakeet-light;
+    border: 2px solid fade(@parakeet-green, 30%);
+    border-radius: @radius-xl;
+
+    &:nth-child(odd) {
+      background: fade(@parakeet-blue, 10%);
+      border-color: fade(@parakeet-blue, 30%);
+    }
+
+    &:hover {
+      transform: translateX(5px);
+      border-color: @parakeet-green;
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @parakeet-green, @parakeet-blue);
+      color: white;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+  }
+
+  .trait-badge {
+    border-radius: @radius-full;
+    font-weight: @font-weight-medium;
+
+    &:nth-child(1) { background: @parakeet-green; color: white; }
+    &:nth-child(2) { background: @parakeet-blue; color: white; }
+    &:nth-child(3) { background: @parakeet-yellow; color: @parakeet-dark; }
+    &:nth-child(4) { background: @parakeet-dark; color: white; }
+
+    &:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @parakeet-yellow 0%, @parakeet-green 50%, @parakeet-blue 100%);
+      border: 2px solid @parakeet-green;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @parakeet-blue;
+      transform: scale(1.05) rotate(-2deg);
+    }
+  }
+
+  .post-card {
+    background: white;
+    border: 2px solid @parakeet-light;
+    border-left: 5px solid @parakeet-green;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-left-color: @parakeet-blue;
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @parakeet-yellow, @parakeet-green);
+      border: 2px solid @parakeet-blue;
+    }
+  }
+
+  .friend-card {
+    background: @parakeet-light;
+    border: 2px solid fade(@parakeet-green, 30%);
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: fade(@parakeet-green, 20%);
+      border-color: @parakeet-green;
+      transform: translateY(-5px);
+    }
+  }
+
+  // Swing decoration
+  &::after {
+    content: '🪺';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.15;
+    animation: swing 2s ease-in-out infinite;
+  }
+
+  @keyframes swing {
+    0%, 100% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+  }
+}

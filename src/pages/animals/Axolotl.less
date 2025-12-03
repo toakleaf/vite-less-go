@@ -1,0 +1,231 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Axolotl Theme - Cute, Pink, Smiling
+@axolotl-pink: #f48fb1;
+@axolotl-white: #fce4ec;
+@axolotl-gills: #ec407a;
+@axolotl-water: #81d4fa;
+@axolotl-deep: #0288d1;
+@axolotl-light: #fff8e1;
+@axolotl-dark: #880e4f;
+
+.animal-axolotl {
+  .profile-cover {
+    background: linear-gradient(180deg, @axolotl-light 0%, @axolotl-water 40%, @axolotl-deep 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 30%, fade(@axolotl-pink, 40%) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 70%, fade(@axolotl-gills, 30%) 0%, transparent 50%);
+    }
+
+    // Gill frills
+    &::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      right: 20%;
+      width: 80px;
+      height: 80px;
+      background:
+        radial-gradient(ellipse 10px 30px at 50% 30%, @axolotl-gills 50%, transparent 50%),
+        radial-gradient(ellipse 10px 30px at 30% 50%, @axolotl-gills 50%, transparent 50%),
+        radial-gradient(ellipse 10px 30px at 70% 50%, @axolotl-gills 50%, transparent 50%),
+        radial-gradient(ellipse 10px 30px at 40% 70%, @axolotl-gills 50%, transparent 50%),
+        radial-gradient(ellipse 10px 30px at 60% 70%, @axolotl-gills 50%, transparent 50%);
+      opacity: 0.5;
+      animation: gill-flutter 2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes gill-flutter {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @axolotl-white 0%, @axolotl-pink 100%);
+    border: 4px solid @axolotl-gills;
+    box-shadow:
+      0 0 30px fade(@axolotl-pink, 50%),
+      0 15px 50px fade(@axolotl-deep, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @axolotl-pink, @axolotl-gills);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 10px fade(@axolotl-dark, 30%));
+    }
+
+    // Smile indicator
+    &::after {
+      content: '😊';
+      position: absolute;
+      bottom: 10px;
+      right: -10px;
+      font-size: 20px;
+      opacity: 0.7;
+    }
+  }
+
+  .online-status {
+    background: @axolotl-gills;
+    border: 3px solid @axolotl-white;
+    box-shadow: 0 0 15px @axolotl-pink;
+  }
+
+  .profile-name {
+    .text-gradient(@axolotl-pink, @axolotl-gills);
+    font-weight: @font-weight-semibold;
+
+    &::after {
+      content: ' :3';
+      font-style: normal;
+    }
+  }
+
+  .profile-category {
+    color: @axolotl-gills;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @axolotl-pink, @axolotl-gills);
+    border-radius: @radius-full;
+    box-shadow: 0 4px 20px fade(@axolotl-pink, 50%);
+
+    &:hover {
+      background: linear-gradient(135deg, @axolotl-gills, @axolotl-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px fade(@axolotl-pink, 60%);
+    }
+  }
+
+  .btn-message {
+    color: @axolotl-pink;
+    border: 2px solid @axolotl-pink;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @axolotl-pink;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: @axolotl-white;
+    border: 2px solid @axolotl-pink;
+    border-radius: @radius-3xl;
+    box-shadow: 0 4px 25px fade(@axolotl-pink, 20%);
+
+    .stat-value {
+      .text-gradient(@axolotl-pink, @axolotl-gills);
+    }
+  }
+
+  .section-title {
+    color: @axolotl-dark;
+    border-bottom: 3px solid @axolotl-pink;
+
+    &::before {
+      content: '💕';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @axolotl-white;
+    border: 2px solid @axolotl-pink;
+    border-radius: @radius-2xl;
+
+    &:hover {
+      background: fade(@axolotl-pink, 20%);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px fade(@axolotl-pink, 25%);
+    }
+
+    .detail-icon {
+      background: @axolotl-pink;
+      color: white;
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @axolotl-gills;
+    }
+  }
+
+  .trait-badge {
+    background: @axolotl-white;
+    color: @axolotl-dark;
+    border: 2px solid @axolotl-pink;
+    border-radius: @radius-full;
+
+    &:hover {
+      background: @axolotl-pink;
+      color: white;
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-2xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @axolotl-white 0%, @axolotl-pink 100%);
+      border: 2px solid @axolotl-pink;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      box-shadow: 0 10px 40px fade(@axolotl-pink, 30%);
+    }
+  }
+
+  .post-card {
+    background: @axolotl-white;
+    border: 2px solid @axolotl-pink;
+    border-radius: @radius-2xl;
+
+    &:hover {
+      box-shadow: 0 8px 30px fade(@axolotl-pink, 20%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @axolotl-white, @axolotl-pink);
+      border: 2px solid @axolotl-gills;
+    }
+  }
+
+  .friend-card {
+    background: @axolotl-white;
+    border: 2px solid @axolotl-pink;
+    border-radius: @radius-2xl;
+
+    &:hover {
+      background: fade(@axolotl-pink, 20%);
+      box-shadow: 0 8px 25px fade(@axolotl-pink, 25%);
+    }
+  }
+
+  // Bubble heart decoration
+  &::after {
+    content: '💖';
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 35px;
+    opacity: 0.2;
+    animation: float-heart 3s ease-in-out infinite;
+  }
+
+  @keyframes float-heart {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.1); }
+  }
+}

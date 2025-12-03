@@ -1,0 +1,242 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Siamese Cat Theme - Elegant, Blue, Thai
+@siamese-primary: #1565c0;
+@siamese-secondary: #0d47a1;
+@siamese-accent: #e3f2fd;
+@siamese-dark: #0a2472;
+@siamese-light: #f5f9ff;
+@siamese-cream: #faf8f5;
+@siamese-point: #6d4c41;
+
+.animal-siamese {
+  .profile-cover {
+    background: linear-gradient(180deg, @siamese-cream 0%, @siamese-point 60%, @siamese-dark 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(ellipse at 30% 20%, fade(@siamese-primary, 30%) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, fade(@siamese-point, 40%) 0%, transparent 40%);
+    }
+
+    // Thai pattern
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: repeating-linear-gradient(
+        90deg,
+        @siamese-primary 0px,
+        @siamese-primary 10px,
+        @siamese-secondary 10px,
+        @siamese-secondary 20px,
+        @siamese-dark 20px,
+        @siamese-dark 30px
+      );
+      opacity: 0.8;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(180deg, @siamese-cream 50%, @siamese-point 100%);
+    border: 4px solid @siamese-primary;
+    box-shadow:
+      0 0 0 4px @siamese-accent,
+      0 10px 40px fade(@siamese-dark, 30%);
+
+    &::before {
+      background: linear-gradient(135deg, @siamese-primary, @siamese-secondary);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 4px 8px fade(@siamese-dark, 40%));
+    }
+
+    // Blue eyes effect
+    &::after {
+      content: '👀';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      opacity: 0;
+      filter: hue-rotate(180deg);
+    }
+  }
+
+  .online-status {
+    background: @siamese-primary;
+    border: 3px solid @siamese-cream;
+    animation: blink 3s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 90%, 100% { opacity: 1; }
+    95% { opacity: 0.3; }
+  }
+
+  .profile-name {
+    .text-gradient(@siamese-primary, @siamese-dark);
+    letter-spacing: @letter-spacing-wide;
+
+    &::after {
+      content: ' 💎';
+      font-size: @font-size-lg;
+    }
+  }
+
+  .profile-category {
+    color: @siamese-secondary;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @siamese-primary, @siamese-secondary);
+    box-shadow: 0 4px 20px fade(@siamese-primary, 40%);
+
+    &:hover {
+      background: linear-gradient(135deg, @siamese-secondary, @siamese-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px fade(@siamese-primary, 50%);
+    }
+  }
+
+  .btn-message {
+    color: @siamese-primary;
+    border: 2px solid @siamese-primary;
+
+    &:hover {
+      background: @siamese-primary;
+      color: @siamese-cream;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @siamese-light, @siamese-accent);
+    border: 2px solid @siamese-primary;
+    border-radius: @radius-xl;
+
+    .stat-value {
+      .text-gradient(@siamese-primary, @siamese-dark);
+    }
+  }
+
+  .section-title {
+    color: @siamese-dark;
+    border-bottom: 3px solid @siamese-primary;
+    position: relative;
+
+    &::before {
+      content: '🔮';
+      margin-right: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: @siamese-light;
+    border: 2px solid @siamese-accent;
+    border-radius: @radius-xl;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, @siamese-cream, @siamese-point);
+    }
+
+    &:hover {
+      background: @siamese-accent;
+      border-color: @siamese-primary;
+      transform: translateX(5px);
+    }
+
+    .detail-icon {
+      background: linear-gradient(135deg, @siamese-primary, @siamese-secondary);
+      color: white;
+      border-radius: @radius-lg;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @siamese-secondary;
+    }
+  }
+
+  .trait-badge {
+    background: linear-gradient(135deg, @siamese-accent, @siamese-light);
+    color: @siamese-dark;
+    border: 2px solid @siamese-primary;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @siamese-primary;
+      color: white;
+      transform: scale(1.05) translateY(-2px);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-xl;
+
+    .gallery-placeholder {
+      background: linear-gradient(180deg, @siamese-cream 50%, @siamese-point 100%);
+      border: 2px solid @siamese-accent;
+      border-radius: inherit;
+    }
+
+    &:hover .gallery-placeholder {
+      border-color: @siamese-primary;
+      box-shadow: 0 8px 30px fade(@siamese-primary, 20%);
+    }
+  }
+
+  .post-card {
+    background: @siamese-light;
+    border: 2px solid @siamese-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      border-color: @siamese-primary;
+      box-shadow: 0 8px 30px fade(@siamese-primary, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(180deg, @siamese-cream, @siamese-point);
+      border: 2px solid @siamese-primary;
+    }
+  }
+
+  .friend-card {
+    background: @siamese-light;
+    border: 2px solid @siamese-accent;
+    border-radius: @radius-xl;
+
+    &:hover {
+      background: @siamese-accent;
+      border-color: @siamese-primary;
+    }
+  }
+
+  // Thai temple decoration
+  &::after {
+    content: '🏯';
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    font-size: 35px;
+    opacity: 0.15;
+  }
+}

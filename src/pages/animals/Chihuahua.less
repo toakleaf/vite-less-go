@@ -1,0 +1,268 @@
+@import '../../styles/variables.less';
+@import '../AnimalProfile.less';
+
+// Chihuahua Theme - Small, Fierce, Mexican
+@chihuahua-primary: #e53935;
+@chihuahua-secondary: #c62828;
+@chihuahua-accent: #ffcdd2;
+@chihuahua-dark: #b71c1c;
+@chihuahua-light: #ffebee;
+@chihuahua-tan: #d7a86e;
+@chihuahua-green: #4caf50;
+
+.animal-chihuahua {
+  .profile-cover {
+    background: linear-gradient(135deg, @chihuahua-primary 0%, @chihuahua-secondary 50%, @chihuahua-dark 100%);
+    position: relative;
+
+    &::before {
+      content: '';
+      .absolute-fill();
+      background:
+        radial-gradient(circle at 20% 30%, fade(@chihuahua-green, 30%) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, fade(@chihuahua-tan, 30%) 0%, transparent 30%);
+    }
+
+    // Papel picado style border
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background:
+        linear-gradient(135deg, transparent 25%, @chihuahua-accent 25%),
+        linear-gradient(225deg, transparent 25%, @chihuahua-accent 25%),
+        linear-gradient(45deg, transparent 25%, @chihuahua-accent 25%),
+        linear-gradient(315deg, transparent 25%, @chihuahua-accent 25%);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
+    }
+  }
+
+  .profile-avatar {
+    background: linear-gradient(135deg, @chihuahua-tan, @chihuahua-light);
+    border: 4px solid @chihuahua-primary;
+    box-shadow:
+      0 0 0 3px @chihuahua-green,
+      0 10px 30px fade(@chihuahua-dark, 40%);
+
+    &::before {
+      background: linear-gradient(135deg, @chihuahua-primary, @chihuahua-green);
+    }
+
+    .avatar-emoji {
+      filter: drop-shadow(0 3px 6px fade(@chihuahua-dark, 40%));
+      animation: tiny-shake 0.3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes tiny-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+  }
+
+  .online-status {
+    background: @chihuahua-green;
+    border: 3px solid @chihuahua-light;
+    animation: fierce-pulse 0.5s ease-in-out infinite;
+  }
+
+  @keyframes fierce-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  .profile-name {
+    .text-gradient(@chihuahua-primary, @chihuahua-dark);
+    font-size: @font-size-3xl !important;
+    text-transform: uppercase;
+
+    &::after {
+      content: ' 💪';
+      font-size: @font-size-xl;
+    }
+  }
+
+  .profile-category {
+    color: @chihuahua-secondary;
+    text-transform: uppercase;
+    font-weight: @font-weight-bold;
+    letter-spacing: @letter-spacing-widest;
+  }
+
+  .btn-follow {
+    background: linear-gradient(135deg, @chihuahua-primary, @chihuahua-secondary);
+    animation: button-dance 2s ease-in-out infinite;
+
+    &:hover {
+      background: linear-gradient(135deg, @chihuahua-green, @chihuahua-primary);
+      animation: none;
+      transform: translateY(-3px) scale(1.05);
+    }
+  }
+
+  @keyframes button-dance {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
+  }
+
+  .btn-message {
+    color: @chihuahua-primary;
+    border: 3px solid @chihuahua-primary;
+    background: fade(@chihuahua-light, 50%);
+
+    &:hover {
+      background: @chihuahua-primary;
+      color: white;
+    }
+  }
+
+  .profile-stats {
+    background: linear-gradient(135deg, @chihuahua-light, @chihuahua-accent);
+    border: 3px solid @chihuahua-primary;
+    border-radius: @radius-2xl;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '🌮';
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: @font-size-xl;
+      opacity: 0.3;
+    }
+
+    .stat-value {
+      .text-gradient(@chihuahua-primary, @chihuahua-secondary);
+      font-size: @font-size-3xl !important;
+    }
+
+    .stat-label {
+      text-transform: uppercase;
+      font-weight: @font-weight-bold;
+    }
+  }
+
+  .section-title {
+    color: @chihuahua-dark;
+    border-bottom: 4px solid @chihuahua-primary;
+    position: relative;
+
+    &::before {
+      content: '🌶️';
+      margin-right: @space-2;
+    }
+
+    &::after {
+      content: '🌶️';
+      margin-left: @space-2;
+    }
+  }
+
+  .detail-item {
+    background: linear-gradient(135deg, @chihuahua-light, white);
+    border: 2px solid @chihuahua-accent;
+    border-left: 5px solid @chihuahua-primary;
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: @chihuahua-accent;
+      border-left-color: @chihuahua-green;
+      transform: translateX(10px);
+    }
+
+    .detail-icon {
+      background: fade(@chihuahua-primary, 20%);
+      border-radius: @radius-full;
+      padding: @space-2;
+    }
+
+    .detail-label {
+      color: @chihuahua-secondary;
+      font-weight: @font-weight-bold;
+    }
+  }
+
+  .trait-badge {
+    background: linear-gradient(135deg, @chihuahua-accent, @chihuahua-light);
+    color: @chihuahua-dark;
+    border: 2px solid @chihuahua-primary;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+
+    &:nth-child(odd) {
+      border-color: @chihuahua-green;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, @chihuahua-primary, @chihuahua-green);
+      color: white;
+      transform: scale(1.1) rotate(-5deg);
+    }
+  }
+
+  .gallery-item {
+    border-radius: @radius-lg;
+    border: 3px solid @chihuahua-accent;
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, @chihuahua-light, @chihuahua-accent);
+      border-radius: inherit;
+    }
+
+    &:hover {
+      border-color: @chihuahua-primary;
+      transform: scale(1.05) rotate(2deg);
+    }
+  }
+
+  .post-card {
+    background: white;
+    border: 2px solid @chihuahua-accent;
+    border-left: 5px solid @chihuahua-primary;
+    border-radius: @radius-lg;
+
+    &:hover {
+      border-left-color: @chihuahua-green;
+      box-shadow: 0 8px 30px fade(@chihuahua-primary, 15%);
+    }
+
+    .post-avatar {
+      background: linear-gradient(135deg, @chihuahua-tan, @chihuahua-accent);
+      border: 2px solid @chihuahua-primary;
+    }
+  }
+
+  .friend-card {
+    background: linear-gradient(135deg, @chihuahua-light, white);
+    border: 2px solid @chihuahua-accent;
+    border-radius: @radius-lg;
+
+    &:hover {
+      background: @chihuahua-accent;
+      border-color: @chihuahua-primary;
+      transform: translateY(-5px) rotate(-3deg);
+    }
+  }
+
+  // Sombrero decoration
+  &::before {
+    content: '🎺';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 35px;
+    opacity: 0.2;
+    animation: mariachi 1s ease-in-out infinite;
+  }
+
+  @keyframes mariachi {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+  }
+}
