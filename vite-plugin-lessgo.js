@@ -1,43 +1,20 @@
-import { execFileSync } from 'child_process';
+import { compile } from 'lessgo';
 import fs from 'fs';
 import path from 'path';
-import os from 'os';
 
 /**
  * Vite plugin for using less.go (lessc-go) as the LESS preprocessor
  *
- * This plugin intercepts .less imports and returns compiled CSS,
- * bypassing Vite's built-in LESS handling.
+ * This plugin intercepts .less imports and compiles them using the
+ * lessgo Node.js API, bypassing Vite's built-in LESS handling.
+ *
+ * @param {Object} options - Plugin options
+ * @param {boolean} [options.compress] - Minify CSS output
+ * @param {string[]} [options.paths] - Additional include paths for @import resolution
+ * @param {Object} [options.globalVars] - Global variables to inject
+ * @param {Object} [options.modifyVars] - Variables to modify
  */
 export default function lessgoPlugin(options = {}) {
-  // Try to find the lessc-go binary
-  const findBinary = () => {
-    const locations = [
-      path.join(os.homedir(), 'go', 'bin', 'lessc-go'),
-      path.join(process.cwd(), 'node_modules', '@lessgo', `${os.platform()}-${os.arch()}`, 'bin', 'lessc-go'),
-    ];
-
-    for (const loc of locations) {
-      if (fs.existsSync(loc)) {
-        return loc;
-      }
-    }
-
-    try {
-      const which = os.platform() === 'win32' ? 'where' : 'which';
-      const result = execFileSync(which, ['lessc-go'], { encoding: 'utf8' }).trim();
-      if (result) return result.split('\n')[0];
-    } catch {
-      // Not in PATH
-    }
-
-    throw new Error(
-      'lessc-go binary not found. Install it via:\n' +
-      '  go install github.com/toakleaf/less.go/cmd/lessc-go@latest'
-    );
-  };
-
-  let binaryPath;
   // Use .css extension in virtual module ID so Vite treats it as CSS
   const VIRTUAL_PREFIX = '\0lessgo-compiled:';
   const VIRTUAL_SUFFIX = '.css';
@@ -48,11 +25,6 @@ export default function lessgoPlugin(options = {}) {
   return {
     name: 'vite-plugin-lessgo',
     enforce: 'pre', // Run before Vite's built-in CSS handling
-
-    configResolved() {
-      binaryPath = findBinary();
-      console.log(`[lessgo] Using binary: ${binaryPath}`);
-    },
 
     resolveId(source, importer) {
       // Handle .less imports
@@ -76,7 +48,7 @@ export default function lessgoPlugin(options = {}) {
       return null;
     },
 
-    load(id) {
+    async load(id) {
       // Handle our virtual modules
       if (!id.startsWith(VIRTUAL_PREFIX)) {
         return null;
@@ -92,16 +64,23 @@ export default function lessgoPlugin(options = {}) {
       }
 
       try {
-        // Compile with lessc-go
-        let css = execFileSync(binaryPath, [lessPath], {
-          encoding: 'utf8',
-          maxBuffer: 50 * 1024 * 1024,
-          cwd: path.dirname(lessPath),
+        // Build include paths - always include the file's directory
+        const includePaths = [path.dirname(lessPath)];
+        if (options.paths) {
+          includePaths.push(...options.paths);
+        }
+
+        // Compile using lessgo Node.js API
+        const result = await compile(lessPath, {
+          paths: includePaths,
+          compress: options.compress,
+          globalVars: options.globalVars,
+          modifyVars: options.modifyVars,
         });
 
-        // Return as CSS for Vite to process
+        // Return compiled CSS for Vite to process
         return {
-          code: css,
+          code: result.css,
           map: null,
         };
       } catch (error) {

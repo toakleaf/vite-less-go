@@ -10,30 +10,23 @@ less.go is a complete Go port of Less.js, providing 100% feature parity with Les
 
 ### Prerequisites
 
-1. **Go** (for installing the less.go binary)
-2. **Node.js** >= 14
+- **Node.js** >= 14
 
 ### Installation
 
-1. Install the less.go compiler:
-
-```bash
-go install github.com/toakleaf/less.go/cmd/lessc-go@latest
-```
-
-2. Install project dependencies:
+1. Install project dependencies:
 
 ```bash
 npm install
 ```
 
-3. Run the development server:
+2. Run the development server:
 
 ```bash
 npm run dev
 ```
 
-4. Build for production:
+3. Build for production:
 
 ```bash
 npm run build
@@ -44,34 +37,34 @@ npm run build
 This project uses a custom Vite plugin (`vite-plugin-lessgo.js`) that:
 
 1. Intercepts `.less` file imports before Vite's built-in CSS handling
-2. Compiles the LESS files using the `lessc-go` binary
+2. Compiles the LESS files using the `lessgo` Node.js API
 3. Returns the compiled CSS to Vite for processing
 
-The plugin automatically finds the `lessc-go` binary in:
-- `~/go/bin/lessc-go` (standard Go installation path)
-- `node_modules/@lessgo/{platform}-{arch}/bin/lessc-go` (npm package, when binaries are available)
-- System PATH
+The plugin uses the `lessgo` npm package which includes pre-built binaries for all major platforms (macOS, Linux, Windows on x64 and arm64).
 
-## Current Limitations
+## Plugin Options
 
-As of December 2024, less.go is still in active development. The following CLI features are not yet implemented:
+The plugin accepts the following options:
 
-- `--stdin` flag for reading LESS content from standard input
-- `--include-path` for specifying import paths
-- `--compress` for minified output
-- `--source-map` for source map generation
+```javascript
+import lessgo from './vite-plugin-lessgo.js'
 
-The npm package (`lessgo`) currently contains placeholder packages without the actual binaries. You must install `lessc-go` via Go as shown above.
-
-### What less.go Needs for Full Vite Integration
-
-For seamless Vite integration, less.go would benefit from:
-
-1. **stdin support**: Allow reading LESS content from stdin (`--stdin` or `-` argument) to avoid temp file overhead
-2. **Include paths**: Support `--include-path` for resolving `@import` statements
-3. **Published binaries**: Release pre-built binaries in the npm packages for each platform
-4. **Compression flag**: Support `--compress` for minified output
-5. **Source maps**: Support `--source-map` for debugging
+export default defineConfig({
+  plugins: [
+    lessgo({
+      compress: false,           // Minify CSS output
+      paths: ['./src/styles'],   // Additional include paths for @import
+      globalVars: {              // Global variables (injected before parsing)
+        primaryColor: '#646cff',
+      },
+      modifyVars: {              // Modify variables (override after parsing)
+        logoHeight: '8em',
+      },
+    }),
+    react(),
+  ],
+})
+```
 
 ## Project Structure
 
