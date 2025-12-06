@@ -13,14 +13,14 @@
     "compare": "node benchmark.js --compare-only"
   },
   "dependencies": {
-    "lessgo": "^0.2.1",
+    "lessgo": "^0.2.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@lessgo/plugin-vite": "^0.2.1",
+    "@lessgo/plugin-vite": "^0.2.2",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
